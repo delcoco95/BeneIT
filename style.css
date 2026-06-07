@@ -1091,11 +1091,15 @@ details[open].faq-item > summary .faq-icon::after  { opacity: 0; transform: rota
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   opacity: 0;
+  pointer-events: none; /* ⚠️ empêche de bloquer les clics quand invisible */
   transition: opacity .28s var(--ease);
 }
+/* Forcer display:none quand l'attribut HTML hidden est présent */
+.modal-overlay[hidden] { display: none !important; }
 
 .modal-overlay.open {
   opacity: 1;
+  pointer-events: auto;
 }
 
 .modal-overlay.open .modal-panel {
