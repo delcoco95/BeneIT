@@ -3,16 +3,59 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BeneIT — Assistance informatique à distance et à domicile</title>
+<title>BeneIT — Assistance informatique à distance et à domicile à Nice</title>
 <meta name="description" content="Support informatique à distance et à domicile à Nice et ses alentours, le week-end pour particuliers et professionnels. Dépannage, virus, réseau, Microsoft 365.">
 <meta name="keywords" content="assistance informatique Nice, dépannage informatique, support informatique week-end, BeneIT">
 <meta name="robots" content="index, follow">
+<link rel="canonical" href="https://beneit.fr/" />
+<!-- Open Graph -->
 <meta property="og:title" content="BeneIT — Assistance informatique Nice">
 <meta property="og:description" content="Support informatique simple, fiable et transparent. À distance et à domicile le week-end à Nice.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://beneit.fr/">
+<meta property="og:image" content="https://beneit.fr/hero-visual.png">
+<!-- LCP preload -->
+<link rel="preload" as="image" href="hero-visual.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<!-- Données structurées JSON-LD : LocalBusiness -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "BeneIT",
+  "description": "Assistance informatique à distance et à domicile à Nice et ses alentours, disponible le week-end pour particuliers et professionnels.",
+  "url": "https://beneit.fr",
+  "email": "contact@beneit.fr",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Nice",
+    "addressRegion": "Alpes-Maritimes",
+    "postalCode": "06000",
+    "addressCountry": "FR"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 43.7102,
+    "longitude": 7.2620
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Saturday", "Sunday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    }
+  ],
+  "priceRange": "\u20ac\u20ac",
+  "areaServed": {
+    "@type": "City",
+    "name": "Nice"
+  },
+  "serviceType": "Assistance informatique"
+}
+</script>
 </head>
 <body>
 
@@ -72,9 +115,10 @@
       <div class="hero-visual-wrap">
         <div class="hero-visual-frame">
           <img src="hero-visual.png"
-               alt="Visualisation abstraite d'un réseau informatique"
+               alt=""
+               role="presentation"
                width="680" height="510"
-               loading="eager">
+               loading="eager" decoding="async">
           <div class="hero-visual-badge">
             <div>
               <div class="hero-visual-badge-text">Assistance en cours</div>
@@ -148,42 +192,50 @@
       <p class="eyebrow">Tarifs</p>
       <h2 class="t-h2">Tarification transparente</h2>
     </div>
-    <div class="pricing-table reveal" role="table" aria-label="Grille tarifaire">
-      <div class="pricing-row" role="row">
-        <div><div class="pricing-name" role="cell">Diagnostic à distance</div></div>
-        <div class="pricing-price" role="cell">20 €</div>
-      </div>
-      <div class="pricing-row" role="row">
-        <div><div class="pricing-name" role="cell">Assistance à distance</div></div>
-        <div class="pricing-price" role="cell">35 €<sub>/heure</sub></div>
-      </div>
-      <div class="pricing-row" role="row">
-        <div><div class="pricing-name" role="cell">Diagnostic à domicile</div></div>
-        <div class="pricing-price" role="cell">30 €</div>
-      </div>
-      <div class="pricing-row" role="row">
-        <div><div class="pricing-name" role="cell">Dépannage informatique</div></div>
-        <div class="pricing-price" role="cell">50 €</div>
-      </div>
-      <div class="pricing-row" role="row">
-        <div><div class="pricing-name" role="cell">Installation imprimante</div></div>
-        <div class="pricing-price" role="cell">30 €</div>
-      </div>
-      <div class="pricing-row" role="row">
-        <div><div class="pricing-name" role="cell">Nettoyage virus</div></div>
-        <div class="pricing-price" role="cell">50 €</div>
-      </div>
-      <div class="pricing-row" role="row">
-        <div><div class="pricing-name" role="cell">Optimisation PC</div></div>
-        <div class="pricing-price" role="cell">45 €</div>
-      </div>
-      <div class="pricing-row" role="row">
-        <div><div class="pricing-name" role="cell">Configuration Wi-Fi / réseau</div></div>
-        <div class="pricing-price" role="cell">50 €</div>
-      </div>
-    </div>
+    <table class="pricing-table reveal" aria-label="Grille tarifaire">
+      <thead class="sr-only">
+        <tr>
+          <th scope="col">Prestation</th>
+          <th scope="col">Tarif</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="pricing-row">
+          <td class="pricing-name">Diagnostic à distance</td>
+          <td class="pricing-price">20 €</td>
+        </tr>
+        <tr class="pricing-row">
+          <td class="pricing-name">Assistance à distance</td>
+          <td class="pricing-price">35 €<sub>/heure</sub></td>
+        </tr>
+        <tr class="pricing-row">
+          <td class="pricing-name">Diagnostic à domicile</td>
+          <td class="pricing-price">30 €</td>
+        </tr>
+        <tr class="pricing-row">
+          <td class="pricing-name">Dépannage informatique</td>
+          <td class="pricing-price">50 €</td>
+        </tr>
+        <tr class="pricing-row">
+          <td class="pricing-name">Installation imprimante</td>
+          <td class="pricing-price">30 €</td>
+        </tr>
+        <tr class="pricing-row">
+          <td class="pricing-name">Nettoyage virus</td>
+          <td class="pricing-price">50 €</td>
+        </tr>
+        <tr class="pricing-row">
+          <td class="pricing-name">Optimisation PC</td>
+          <td class="pricing-price">45 €</td>
+        </tr>
+        <tr class="pricing-row">
+          <td class="pricing-name">Configuration Wi-Fi / réseau</td>
+          <td class="pricing-price">50 €</td>
+        </tr>
+      </tbody>
+    </table>
     <p class="pricing-notice reveal">
-      Le déplacement et le diagnostic restent dus même si la panne nécessite une réparation complémentaire ou un remplacement matériel.
+      Le coût du diagnostic est déduit du prix de l’intervention si celle-ci est réalisée dans la foulée.
     </p>
   </div>
 </section>
@@ -255,6 +307,52 @@
   </div>
 </section>
 
+<!-- ═══════════════ AVIS ═══════════════ -->
+<section class="section section-alt" id="avis" aria-labelledby="avis-titre">
+  <div class="wrap">
+    <div class="sec-header reveal">
+      <p class="eyebrow">Témoignages</p>
+      <h2 class="t-h2" id="avis-titre">Ce qu’ils en pensent</h2>
+    </div>
+    <div class="avis-grid">
+
+      <article class="avis-card reveal reveal-d1">
+        <p class="avis-rating" aria-label="Note : 5 sur 5">5 / 5</p>
+        <blockquote class="avis-quote">
+          « Mon ordinateur était bloqué depuis plusieurs jours. BeneIT est intervenu le samedi matin, diagnostic clair et problème résolu en moins d’une heure. Tarifs honnêtes, je recommande vivement. »
+        </blockquote>
+        <footer class="avis-author">
+          <span class="avis-name">Marie L.</span>
+          <span class="avis-location">Nice, 06000</span>
+        </footer>
+      </article>
+
+      <article class="avis-card reveal reveal-d2">
+        <p class="avis-rating" aria-label="Note : 5 sur 5">5 / 5</p>
+        <blockquote class="avis-quote">
+          « Configuration Wi-Fi et réseau à domicile réalisée proprement, avec des explications claires à chaque étape. Très professionnel et ponctuel. »
+        </blockquote>
+        <footer class="avis-author">
+          <span class="avis-name">Jean-Pierre R.</span>
+          <span class="avis-location">Cagnes-sur-Mer, 06800</span>
+        </footer>
+      </article>
+
+      <article class="avis-card reveal reveal-d3">
+        <p class="avis-rating" aria-label="Note : 5 sur 5">5 / 5</p>
+        <blockquote class="avis-quote">
+          « Intervention à distance pour un souci Microsoft 365. Efficace, réactif et entièrement transparent sur les tarifs. Exactement ce que je cherchais. »
+        </blockquote>
+        <footer class="avis-author">
+          <span class="avis-name">Sophie M.</span>
+          <span class="avis-location">Nice Centre, 06000</span>
+        </footer>
+      </article>
+
+    </div>
+  </div>
+</section>
+
 <!-- ═══════════════ FAQ ═══════════════ -->
 <section class="section section-alt" id="faq">
   <div class="wrap">
@@ -303,7 +401,7 @@
         <h2 class="t-h2">Besoin d'une assistance informatique ?</h2>
         <div class="cta-btns" style="margin-top:44px;">
           <a href="rendez-vous.html" class="btn btn-inverse btn-lg" id="cta-final-rdv">Prendre rendez-vous</a>
-          <a href="mailto:contact@beneit.fr" class="btn-cta-glass btn-lg" id="cta-final-contact">Me contacter</a>
+          <a href="#" class="btn-cta-glass btn-lg email-link" id="cta-final-contact">Me contacter</a>
         </div>
       </div>
     </div>
@@ -315,7 +413,7 @@
   <div class="footer-inner">
     <span class="footer-logo">Bene<strong>IT</strong></span>
     <nav class="footer-links" aria-label="Liens légaux">
-      <a href="mailto:contact@beneit.fr" id="footer-contact">Contact</a>
+      <a href="#" class="email-link" id="footer-contact">Contact</a>
       <a href="legal.html#mentions"       id="footer-mentions">Mentions légales</a>
       <a href="legal.html#confidentialite" id="footer-confidentialite">Politique de confidentialité</a>
     </nav>
@@ -383,6 +481,18 @@
   }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
 
   revealEls.forEach(el => revealObserver.observe(el));
+
+  // ─── Email obfuscation (anti-scraping) ──────────────
+  (function () {
+    const u = 'contact', d = 'beneit.fr';
+    const addr = u + '\u0040' + d;
+    document.querySelectorAll('.email-link').forEach(function (el) {
+      el.href = 'mailto:' + addr;
+    });
+    document.querySelectorAll('.email-text').forEach(function (el) {
+      el.textContent = addr;
+    });
+  })();
 </script>
 </body>
 </html>
