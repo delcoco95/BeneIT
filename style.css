@@ -1078,6 +1078,109 @@ details[open].faq-item > summary .faq-icon::after  { opacity: 0; transform: rota
 }
 .f-success strong { font-weight: 600; }
 
+/* ─── MODAL CONTACT ──────────────────── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(10, 20, 40, .45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  transition: opacity .28s var(--ease);
+}
+
+.modal-overlay.open {
+  opacity: 1;
+}
+
+.modal-overlay.open .modal-panel {
+  transform: scale(1) translateY(0);
+}
+
+.modal-panel {
+  width: 100%;
+  max-width: 520px;
+  background: rgba(255, 255, 255, .92);
+  backdrop-filter: blur(32px) saturate(200%);
+  -webkit-backdrop-filter: blur(32px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, .7);
+  border-radius: 24px;
+  box-shadow:
+    0 32px 80px rgba(10, 31, 68, .2),
+    0 8px 24px rgba(10, 31, 68, .1),
+    inset 0 1px 0 rgba(255, 255, 255, .9);
+  transform: scale(.96) translateY(16px);
+  transition: transform .28s var(--ease-spring);
+  overflow: hidden;
+}
+
+.modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 28px 28px 0;
+}
+
+.modal-title {
+  font-size: 1.15rem;
+  font-weight: 300;
+  color: var(--ink);
+  letter-spacing: -.02em;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.modal-close {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--white);
+  color: var(--sub);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: all var(--t-fast) var(--ease);
+  margin-top: 2px;
+}
+.modal-close:hover {
+  background: var(--off);
+  color: var(--ink);
+  border-color: #D1D5DB;
+}
+
+.modal-form-body {
+  padding: 24px 28px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Bouton footer style lien */
+.footer-link-btn {
+  font-family: inherit;
+  font-size: .78rem;
+  font-weight: 400;
+  color: var(--muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: color var(--t-fast) var(--ease);
+  letter-spacing: inherit;
+}
+.footer-link-btn:hover {
+  color: var(--ink);
+}
+
 /* ─── LEGAL ──────────────────────────────────────── */
 .legal-body { max-width: 700px; padding: 72px 0 96px; }
 .legal-body h2 {
