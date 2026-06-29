@@ -25,6 +25,8 @@
     href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <!-- GSAP for MagicBento -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <!-- Données structurées JSON-LD : LocalBusiness -->
   <script type="application/ld+json">
 {
@@ -61,7 +63,7 @@
   },
   "serviceType": "Assistance informatique"
 }
-</script>
+  </script>
 </head>
 
 <body>
@@ -110,7 +112,13 @@
             <span class="hero-dot" role="presentation"></span>
             Disponible le week-end
           </div>
-          <h1>Votre assistance informatique<br><em>simple et efficace.</em></h1>
+
+          <!-- DecryptedText : titre animé lettre par lettre -->
+          <h1 aria-label="Votre assistance informatique simple et efficace.">
+            <span class="dt-target" id="dt-line1" data-text="Votre assistance informatique"></span><br>
+            <em><span class="dt-target" id="dt-line2" data-text="simple et efficace." data-delay="600"></span></em>
+          </h1>
+
           <p class="hero-sub">Support informatique à distance et à domicile à Nice et ses alentours, disponible le
             week-end pour particuliers et professionnels.</p>
           <div class="hero-btns">
@@ -138,56 +146,90 @@
     </div>
   </section>
 
-  <!-- ═══════════════ SERVICES ═══════════════ -->
-  <section class="section section-alt" id="services">
+  <!-- ═══════════════ SERVICES — MagicBento ═══════════════ -->
+  <section class="section section-dark" id="services">
     <div class="wrap">
-      <div class="sec-header reveal">
-        <p class="eyebrow">Services</p>
-        <h2 class="t-h2">Ce que je propose</h2>
+      <div class="sec-header reveal" style="--header-color: rgba(255,255,255,0.5); --h2-color: #fff;">
+        <p class="eyebrow" style="color: var(--accent-lt);">Services</p>
+        <h2 class="t-h2" style="color: #fff;">Ce que je propose</h2>
       </div>
-      <div class="services-grid">
-        <div class="service-card reveal reveal-d1">
-          <div class="service-num">01</div>
-          <div class="service-title">Assistance à distance</div>
-          <div class="service-desc">Prise en main à distance de votre ordinateur pour résoudre rapidement tout problème.
+
+      <!-- MagicBento Grid -->
+      <div class="bento-section">
+        <div class="bento-grid" id="bento-grid">
+
+          <div class="bento-card bento-span2 reveal reveal-d1" data-index="0">
+            <div class="bento-card-inner">
+              <div class="bento-icon">🖥️</div>
+              <div class="bento-num">01</div>
+              <div class="bento-title">Assistance à distance</div>
+              <div class="bento-desc">Prise en main à distance de votre ordinateur pour résoudre rapidement tout problème.</div>
+            </div>
           </div>
-        </div>
-        <div class="service-card reveal reveal-d2">
-          <div class="service-num">02</div>
-          <div class="service-title">Dépannage informatique</div>
-          <div class="service-desc">Diagnostic et réparation des pannes logicielles et matérielles à domicile.</div>
-        </div>
-        <div class="service-card reveal reveal-d3">
-          <div class="service-num">03</div>
-          <div class="service-title">Suppression de virus</div>
-          <div class="service-desc">Nettoyage complet de votre système et mise en place d'une protection adaptée.</div>
-        </div>
-        <div class="service-card reveal reveal-d4">
-          <div class="service-num">04</div>
-          <div class="service-title">Installation imprimante</div>
-          <div class="service-desc">Configuration et test de votre imprimante sur tous vos appareils.</div>
-        </div>
-        <div class="service-card reveal reveal-d5">
-          <div class="service-num">05</div>
-          <div class="service-title">Réseau et Wi-Fi</div>
-          <div class="service-desc">Configuration de votre box, routeur et réseau domestique ou professionnel.</div>
-        </div>
-        <div class="service-card reveal reveal-d6">
-          <div class="service-num">06</div>
-          <div class="service-title">Optimisation PC</div>
-          <div class="service-desc">Accélération et nettoyage de votre ordinateur pour retrouver des performances
-            optimales.</div>
-        </div>
-        <div class="service-card reveal reveal-d7">
-          <div class="service-num">07</div>
-          <div class="service-title">Sauvegarde des données</div>
-          <div class="service-desc">Mise en place d'une solution de sauvegarde sécurisée pour protéger vos fichiers.
+
+          <div class="bento-card reveal reveal-d2" data-index="1">
+            <div class="bento-card-inner">
+              <div class="bento-icon">🔧</div>
+              <div class="bento-num">02</div>
+              <div class="bento-title">Dépannage informatique</div>
+              <div class="bento-desc">Diagnostic et réparation des pannes logicielles et matérielles à domicile.</div>
+            </div>
           </div>
-        </div>
-        <div class="service-card reveal reveal-d8">
-          <div class="service-num">08</div>
-          <div class="service-title">Support Microsoft 365</div>
-          <div class="service-desc">Installation, configuration et assistance sur toute la suite Microsoft 365.</div>
+
+          <div class="bento-card reveal reveal-d3" data-index="2">
+            <div class="bento-card-inner">
+              <div class="bento-icon">🛡️</div>
+              <div class="bento-num">03</div>
+              <div class="bento-title">Suppression de virus</div>
+              <div class="bento-desc">Nettoyage complet de votre système et mise en place d'une protection adaptée.</div>
+            </div>
+          </div>
+
+          <div class="bento-card reveal reveal-d2" data-index="3">
+            <div class="bento-card-inner">
+              <div class="bento-icon">🖨️</div>
+              <div class="bento-num">04</div>
+              <div class="bento-title">Installation imprimante</div>
+              <div class="bento-desc">Configuration et test de votre imprimante sur tous vos appareils.</div>
+            </div>
+          </div>
+
+          <div class="bento-card bento-span2 reveal reveal-d3" data-index="4">
+            <div class="bento-card-inner">
+              <div class="bento-icon">📡</div>
+              <div class="bento-num">05</div>
+              <div class="bento-title">Réseau et Wi-Fi</div>
+              <div class="bento-desc">Configuration de votre box, routeur et réseau domestique ou professionnel.</div>
+            </div>
+          </div>
+
+          <div class="bento-card bento-span2 reveal reveal-d1" data-index="5">
+            <div class="bento-card-inner">
+              <div class="bento-icon">⚡</div>
+              <div class="bento-num">06</div>
+              <div class="bento-title">Optimisation PC</div>
+              <div class="bento-desc">Accélération et nettoyage de votre ordinateur pour retrouver des performances optimales.</div>
+            </div>
+          </div>
+
+          <div class="bento-card reveal reveal-d2" data-index="6">
+            <div class="bento-card-inner">
+              <div class="bento-icon">💾</div>
+              <div class="bento-num">07</div>
+              <div class="bento-title">Sauvegarde des données</div>
+              <div class="bento-desc">Mise en place d'une solution de sauvegarde sécurisée pour protéger vos fichiers.</div>
+            </div>
+          </div>
+
+          <div class="bento-card reveal reveal-d3" data-index="7">
+            <div class="bento-card-inner">
+              <div class="bento-icon">☁️</div>
+              <div class="bento-num">08</div>
+              <div class="bento-title">Support Microsoft 365</div>
+              <div class="bento-desc">Installation, configuration et assistance sur toute la suite Microsoft 365.</div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -243,7 +285,7 @@
         </tbody>
       </table>
       <p class="pricing-notice reveal">
-        Le coût du diagnostic est déduit du prix de l’intervention si celle-ci est réalisée dans la foulée.
+        Le coût du diagnostic est déduit du prix de l'intervention si celle-ci est réalisée dans la foulée.
       </p>
     </div>
   </section>
@@ -288,84 +330,209 @@
     </div>
   </section>
 
-  <!-- ═══════════════ PROCESSUS ═══════════════ -->
-  <section class="section" id="processus">
+  <!-- ═══════════════ OUTILS — LogoLoop ═══════════════ -->
+  <section class="section section-outils" id="outils">
     <div class="wrap">
-      <div class="sec-header reveal">
-        <p class="eyebrow">Comment ça marche</p>
-        <h2 class="t-h2">En 3 étapes</h2>
+      <div class="sec-header reveal" style="text-align:center; margin-bottom: 56px;">
+        <p class="eyebrow">Outils &amp; Technologies</p>
+        <h2 class="t-h2">Technologies maîtrisées</h2>
+        <p class="t-body" style="margin-top:12px; max-width:480px; margin-inline:auto;">
+          Des solutions éprouvées pour garantir la fiabilité de chaque intervention.
+        </p>
       </div>
-      <div class="process-grid reveal">
-        <div class="process-step">
-          <div class="process-num">01</div>
-          <div class="process-title">Prise de contact</div>
-          <p class="process-desc">Décrivez votre problème par formulaire ou par email. Je vous réponds rapidement pour
-            convenir d'un créneau.</p>
+    </div>
+
+    <!-- LogoLoop — carousel infini -->
+    <div class="logoloop" aria-label="Technologies et outils maîtrisés" role="region">
+      <div class="logoloop-track" id="logoloop-track">
+        <!-- Premier jeu -->
+        <div class="logoloop-list">
+          <div class="logoloop-item" title="Windows 11">
+            <img src="https://cdn.simpleicons.org/windows11/0078d4" alt="Windows 11" loading="lazy" width="40" height="40">
+            <span>Windows 11</span>
+          </div>
+          <div class="logoloop-item" title="Microsoft Azure">
+            <img src="https://cdn.simpleicons.org/microsoftazure/0078d4" alt="Microsoft Azure" loading="lazy" width="40" height="40">
+            <span>Azure</span>
+          </div>
+          <div class="logoloop-item" title="Microsoft 365">
+            <img src="https://cdn.simpleicons.org/microsoftoffice/d83b01" alt="Microsoft 365" loading="lazy" width="40" height="40">
+            <span>Microsoft 365</span>
+          </div>
+          <div class="logoloop-item" title="Microsoft Teams">
+            <img src="https://cdn.simpleicons.org/microsoftteams/6264a7" alt="Microsoft Teams" loading="lazy" width="40" height="40">
+            <span>Teams</span>
+          </div>
+          <div class="logoloop-item" title="PowerShell">
+            <img src="https://cdn.simpleicons.org/powershell/5391fe" alt="PowerShell" loading="lazy" width="40" height="40">
+            <span>PowerShell</span>
+          </div>
+          <div class="logoloop-item" title="Microsoft OneDrive">
+            <img src="https://cdn.simpleicons.org/microsoftonedrive/0078d4" alt="OneDrive" loading="lazy" width="40" height="40">
+            <span>OneDrive</span>
+          </div>
+          <div class="logoloop-item" title="Microsoft Outlook">
+            <img src="https://cdn.simpleicons.org/microsoftoutlook/0072c6" alt="Outlook" loading="lazy" width="40" height="40">
+            <span>Outlook</span>
+          </div>
+          <div class="logoloop-item" title="VMware">
+            <img src="https://cdn.simpleicons.org/vmware/607078" alt="VMware" loading="lazy" width="40" height="40">
+            <span>VMware</span>
+          </div>
+          <div class="logoloop-item" title="Cisco">
+            <img src="https://cdn.simpleicons.org/cisco/1ba0d7" alt="Cisco" loading="lazy" width="40" height="40">
+            <span>Cisco</span>
+          </div>
+          <div class="logoloop-item" title="Veeam">
+            <img src="https://cdn.simpleicons.org/veeam/00b336" alt="Veeam" loading="lazy" width="40" height="40">
+            <span>Veeam</span>
+          </div>
+          <div class="logoloop-item" title="Active Directory">
+            <img src="https://cdn.simpleicons.org/microsoft/0078d4" alt="Active Directory" loading="lazy" width="40" height="40">
+            <span>Active Directory</span>
+          </div>
+          <div class="logoloop-item" title="Hyper-V">
+            <img src="https://cdn.simpleicons.org/microsofthyperv/0078d4" alt="Hyper-V" loading="lazy" width="40" height="40">
+            <span>Hyper-V</span>
+          </div>
         </div>
-        <div class="process-step">
-          <div class="process-num">02</div>
-          <div class="process-title">Diagnostic</div>
-          <p class="process-desc">J'analyse votre situation à distance ou à domicile et vous explique clairement ce qui
-            doit être fait.</p>
-        </div>
-        <div class="process-step">
-          <div class="process-num">03</div>
-          <div class="process-title">Intervention</div>
-          <p class="process-desc">Je résous le problème et m'assure que tout fonctionne avant de clôturer
-            l'intervention.</p>
+
+        <!-- Second jeu (dupliqué pour boucle infinie) -->
+        <div class="logoloop-list" aria-hidden="true">
+          <div class="logoloop-item" title="Windows 11">
+            <img src="https://cdn.simpleicons.org/windows11/0078d4" alt="" width="40" height="40">
+            <span>Windows 11</span>
+          </div>
+          <div class="logoloop-item" title="Microsoft Azure">
+            <img src="https://cdn.simpleicons.org/microsoftazure/0078d4" alt="" width="40" height="40">
+            <span>Azure</span>
+          </div>
+          <div class="logoloop-item" title="Microsoft 365">
+            <img src="https://cdn.simpleicons.org/microsoftoffice/d83b01" alt="" width="40" height="40">
+            <span>Microsoft 365</span>
+          </div>
+          <div class="logoloop-item" title="Microsoft Teams">
+            <img src="https://cdn.simpleicons.org/microsoftteams/6264a7" alt="" width="40" height="40">
+            <span>Teams</span>
+          </div>
+          <div class="logoloop-item" title="PowerShell">
+            <img src="https://cdn.simpleicons.org/powershell/5391fe" alt="" width="40" height="40">
+            <span>PowerShell</span>
+          </div>
+          <div class="logoloop-item" title="Microsoft OneDrive">
+            <img src="https://cdn.simpleicons.org/microsoftonedrive/0078d4" alt="" width="40" height="40">
+            <span>OneDrive</span>
+          </div>
+          <div class="logoloop-item" title="Microsoft Outlook">
+            <img src="https://cdn.simpleicons.org/microsoftoutlook/0072c6" alt="" width="40" height="40">
+            <span>Outlook</span>
+          </div>
+          <div class="logoloop-item" title="VMware">
+            <img src="https://cdn.simpleicons.org/vmware/607078" alt="" width="40" height="40">
+            <span>VMware</span>
+          </div>
+          <div class="logoloop-item" title="Cisco">
+            <img src="https://cdn.simpleicons.org/cisco/1ba0d7" alt="" width="40" height="40">
+            <span>Cisco</span>
+          </div>
+          <div class="logoloop-item" title="Veeam">
+            <img src="https://cdn.simpleicons.org/veeam/00b336" alt="" width="40" height="40">
+            <span>Veeam</span>
+          </div>
+          <div class="logoloop-item" title="Active Directory">
+            <img src="https://cdn.simpleicons.org/microsoft/0078d4" alt="" width="40" height="40">
+            <span>Active Directory</span>
+          </div>
+          <div class="logoloop-item" title="Hyper-V">
+            <img src="https://cdn.simpleicons.org/microsofthyperv/0078d4" alt="" width="40" height="40">
+            <span>Hyper-V</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════ AVIS ═══════════════ -->
-  <!-- <section class="section section-alt" id="avis" aria-labelledby="avis-titre">
-  <div class="wrap">
-    <div class="sec-header reveal">
-      <p class="eyebrow">Témoignages</p>
-      <h2 class="t-h2" id="avis-titre">Ce qu’ils en pensent</h2>
+  <!-- ═══════════════ PROCESSUS — Folder ═══════════════ -->
+  <section class="section section-alt" id="processus">
+    <div class="wrap">
+      <div class="sec-header reveal" style="text-align:center; margin-bottom: 64px;">
+        <p class="eyebrow">Comment ça marche</p>
+        <h2 class="t-h2">En 3 étapes</h2>
+      </div>
+
+      <!-- Folder Stack -->
+      <div class="folder-wrap">
+
+        <!-- Step navigation tabs -->
+        <div class="folder-nav" id="folder-nav" aria-label="Navigation entre les étapes">
+          <button class="folder-nav-btn active" data-target="0" id="fnav-0">
+            <span class="fnav-num">01</span>
+            <span class="fnav-label">Prise de contact</span>
+          </button>
+          <div class="folder-nav-sep" aria-hidden="true"></div>
+          <button class="folder-nav-btn" data-target="1" id="fnav-1">
+            <span class="fnav-num">02</span>
+            <span class="fnav-label">Diagnostic</span>
+          </button>
+          <div class="folder-nav-sep" aria-hidden="true"></div>
+          <button class="folder-nav-btn" data-target="2" id="fnav-2">
+            <span class="fnav-num">03</span>
+            <span class="fnav-label">Intervention</span>
+          </button>
+        </div>
+
+        <div class="folder-stack" id="folder-stack" aria-label="Étapes du processus d'intervention">
+
+          <div class="folder-card" data-index="0" role="button" tabindex="0" aria-label="Étape 1 : Prise de contact">
+            <div class="folder-header">
+              <span class="folder-num">01</span>
+              <span class="folder-step-label">Prise de contact</span>
+              <span class="folder-hint">Cliquer pour voir les autres étapes</span>
+            </div>
+            <div class="folder-body">
+              <div class="folder-icon">📬</div>
+              <h3 class="folder-title">Prise de contact</h3>
+              <p class="folder-desc">Décrivez votre problème par formulaire ou par email. Je vous réponds rapidement pour convenir d'un créneau adapté à vos disponibilités.</p>
+              <a href="rendez-vous.html" class="folder-cta">Prendre rendez-vous →</a>
+            </div>
+          </div>
+
+          <div class="folder-card" data-index="1" role="button" tabindex="0" aria-label="Étape 2 : Diagnostic">
+            <div class="folder-header">
+              <span class="folder-num">02</span>
+              <span class="folder-step-label">Diagnostic</span>
+              <span class="folder-hint">Cliquer pour voir les autres étapes</span>
+            </div>
+            <div class="folder-body">
+              <div class="folder-icon">🔍</div>
+              <h3 class="folder-title">Diagnostic</h3>
+              <p class="folder-desc">J'analyse votre situation à distance ou à domicile et vous explique clairement ce qui doit être fait — sans jargon technique inutile.</p>
+              <span class="folder-badge">Gratuit si intervention dans la foulée</span>
+            </div>
+          </div>
+
+          <div class="folder-card" data-index="2" role="button" tabindex="0" aria-label="Étape 3 : Intervention">
+            <div class="folder-header">
+              <span class="folder-num">03</span>
+              <span class="folder-step-label">Intervention</span>
+              <span class="folder-hint">Cliquer pour voir les autres étapes</span>
+            </div>
+            <div class="folder-body">
+              <div class="folder-icon">✅</div>
+              <h3 class="folder-title">Intervention</h3>
+              <p class="folder-desc">Je résous le problème et m'assure que tout fonctionne parfaitement avant de clôturer l'intervention. Paiement uniquement si satisfait.</p>
+              <span class="folder-badge folder-badge-green">Satisfaction garantie</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
     </div>
-    <div class="avis-grid">
-
-      <article class="avis-card reveal reveal-d1">
-        <p class="avis-rating" aria-label="Note : 5 sur 5">5 / 5</p>
-        <blockquote class="avis-quote">
-          « Mon ordinateur était bloqué depuis plusieurs jours. BeneIT est intervenu le samedi matin, diagnostic clair et problème résolu en moins d’une heure. Tarifs honnêtes, je recommande vivement. »
-        </blockquote>
-        <footer class="avis-author">
-          <span class="avis-name">Marie L.</span>
-          <span class="avis-location">Nice, 06000</span>
-        </footer>
-      </article>
-
-      <article class="avis-card reveal reveal-d2">
-        <p class="avis-rating" aria-label="Note : 5 sur 5">5 / 5</p>
-        <blockquote class="avis-quote">
-          « Configuration Wi-Fi et réseau à domicile réalisée proprement, avec des explications claires à chaque étape. Très professionnel et ponctuel. »
-        </blockquote>
-        <footer class="avis-author">
-          <span class="avis-name">Jean-Pierre R.</span>
-          <span class="avis-location">Cagnes-sur-Mer, 06800</span>
-        </footer>
-      </article>
-
-      <article class="avis-card reveal reveal-d3">
-        <p class="avis-rating" aria-label="Note : 5 sur 5">5 / 5</p>
-        <blockquote class="avis-quote">
-          « Intervention à distance pour un souci Microsoft 365. Efficace, réactif et entièrement transparent sur les tarifs. Exactement ce que je cherchais. »
-        </blockquote>
-        <footer class="avis-author">
-          <span class="avis-name">Sophie M.</span>
-          <span class="avis-location">Nice Centre, 06000</span>
-        </footer>
-      </article>
-
-    </div>
-  </div>
-</section> -->
+  </section>
 
   <!-- ═══════════════ FAQ ═══════════════ -->
-  <section class="section section-alt" id="faq">
+  <section class="section" id="faq">
     <div class="wrap">
       <div class="sec-header reveal">
         <p class="eyebrow">FAQ</p>
@@ -436,14 +603,60 @@
     </div>
   </footer>
 
+  <!-- ═══════════════ SCRIPTS ═══════════════ -->
   <script>
-    // ─── Nav scroll state ─────────────────────────────
+    // ─── DecryptedText ──────────────────────────────────
+    (function () {
+      const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+';
+
+      function scramble(text, revealed) {
+        return text.split('').map((c, i) => {
+          if (c === ' ') return ' ';
+          if (revealed.has(i)) return c;
+          return CHARS[Math.floor(Math.random() * CHARS.length)];
+        }).join('');
+      }
+
+      function animateDecrypt(el, delay) {
+        const text = el.dataset.text || '';
+        const speed = 38;
+        el.setAttribute('aria-hidden', 'true');
+
+        // Start scrambled
+        el.textContent = text.split('').map(c => c === ' ' ? ' ' : CHARS[Math.floor(Math.random() * CHARS.length)]).join('');
+
+        setTimeout(() => {
+          const revealed = new Set();
+          const interval = setInterval(() => {
+            // Reveal next character
+            const nextIdx = revealed.size;
+            if (nextIdx >= text.length) {
+              clearInterval(interval);
+              el.textContent = text;
+              return;
+            }
+            revealed.add(nextIdx);
+            el.textContent = scramble(text, revealed);
+          }, speed);
+        }, delay || 0);
+      }
+
+      // Trigger on page load after small delay for LCP
+      window.addEventListener('DOMContentLoaded', () => {
+        const targets = document.querySelectorAll('.dt-target');
+        targets.forEach(el => {
+          animateDecrypt(el, parseInt(el.dataset.delay) || 200);
+        });
+      });
+    })();
+
+    // ─── Nav scroll state ─────────────────────────────────
     const mainNav = document.getElementById('main-nav');
     window.addEventListener('scroll', () => {
       mainNav.classList.toggle('scrolled', window.scrollY > 20);
     }, { passive: true });
 
-    // ─── Burger menu ─────────────────────────────────
+    // ─── Burger menu ─────────────────────────────────────
     const burger = document.getElementById('burger');
     const mobNav = document.getElementById('mob-nav');
     const mobLinks = document.querySelectorAll('.mob-link');
@@ -462,7 +675,7 @@
       });
     });
 
-    // ─── Active nav on scroll ─────────────────────────
+    // ─── Active nav on scroll ─────────────────────────────
     const sections = ['services', 'tarifs', 'expertise', 'faq'];
     const navLinkMap = {
       services: document.getElementById('nav-services'),
@@ -484,7 +697,7 @@
     }
     window.addEventListener('scroll', onScroll, { passive: true });
 
-    // ─── Scroll reveal (Intersection Observer) ────────
+    // ─── Scroll reveal ────────────────────────────────────
     const revealEls = document.querySelectorAll('.reveal');
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -493,9 +706,219 @@
           revealObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+    }, { threshold: 0.06, rootMargin: '0px 0px -24px 0px' });
 
     revealEls.forEach(el => revealObserver.observe(el));
+  </script>
+
+  <!-- MagicBento Script (requires GSAP) -->
+  <script>
+    (function () {
+      if (!window.gsap) return;
+
+      const grid = document.getElementById('bento-grid');
+      if (!grid) return;
+
+      const glowR = 45, glowG = 107, glowB = 255; // accent color RGB
+
+      // Create global spotlight
+      const spotlight = document.createElement('div');
+      spotlight.className = 'mb-spotlight';
+      document.body.appendChild(spotlight);
+
+      const cards = Array.from(grid.querySelectorAll('.bento-card'));
+
+      // Mouse move — spotlight + glow on cards
+      document.addEventListener('mousemove', (e) => {
+        const section = grid.closest('section');
+        const rect = section.getBoundingClientRect();
+        const inside = e.clientX >= rect.left && e.clientX <= rect.right
+          && e.clientY >= rect.top && e.clientY <= rect.bottom;
+
+        gsap.to(spotlight, { left: e.clientX, top: e.clientY, duration: 0.12, ease: 'power2.out' });
+
+        if (!inside) {
+          gsap.to(spotlight, { opacity: 0, duration: 0.4 });
+          cards.forEach(c => c.style.setProperty('--glow-intensity', '0'));
+          return;
+        }
+
+        const radius = 320;
+        const proximity = radius * 0.45;
+        const fadeDist = radius * 0.75;
+        let minDist = Infinity;
+
+        cards.forEach(card => {
+          const r = card.getBoundingClientRect();
+          const cx = r.left + r.width / 2;
+          const cy = r.top + r.height / 2;
+          const raw = Math.hypot(e.clientX - cx, e.clientY - cy);
+          const dist = Math.max(0, raw - Math.max(r.width, r.height) / 2);
+          minDist = Math.min(minDist, dist);
+
+          let intensity = 0;
+          if (dist <= proximity) intensity = 1;
+          else if (dist <= fadeDist) intensity = (fadeDist - dist) / (fadeDist - proximity);
+
+          const rx = ((e.clientX - r.left) / r.width) * 100;
+          const ry = ((e.clientY - r.top) / r.height) * 100;
+          card.style.setProperty('--glow-x', `${rx}%`);
+          card.style.setProperty('--glow-y', `${ry}%`);
+          card.style.setProperty('--glow-intensity', intensity.toFixed(3));
+        });
+
+        const targetOpacity = minDist <= proximity ? 0.9
+          : minDist <= fadeDist ? ((fadeDist - minDist) / (fadeDist - proximity)) * 0.9 : 0;
+
+        gsap.to(spotlight, {
+          opacity: targetOpacity,
+          duration: targetOpacity > 0 ? 0.15 : 0.5
+        });
+      });
+
+      document.addEventListener('mouseleave', () => {
+        gsap.to(spotlight, { opacity: 0, duration: 0.4 });
+        cards.forEach(c => c.style.setProperty('--glow-intensity', '0'));
+      });
+
+      // Per-card effects
+      cards.forEach(card => {
+        let particleInterval = null;
+        let particleList = [];
+
+        const startParticles = () => {
+          particleInterval = setInterval(() => {
+            const p = document.createElement('div');
+            p.className = 'mb-particle';
+            const { width, height } = card.getBoundingClientRect();
+            p.style.cssText = `left:${Math.random() * width}px;top:${Math.random() * height}px;`;
+            card.appendChild(p);
+            particleList.push(p);
+
+            gsap.fromTo(p,
+              { scale: 0, opacity: 0 },
+              { scale: 1, opacity: 0.8, duration: 0.35, ease: 'back.out(2)' }
+            );
+            gsap.to(p, {
+              x: (Math.random() - 0.5) * 90,
+              y: (Math.random() - 0.5) * 90,
+              rotation: Math.random() * 360,
+              duration: 2.5 + Math.random() * 1.5,
+              ease: 'sine.inOut',
+              repeat: -1,
+              yoyo: true
+            });
+
+            setTimeout(() => {
+              gsap.to(p, {
+                opacity: 0, scale: 0, duration: 0.35,
+                onComplete: () => {
+                  p.remove();
+                  particleList = particleList.filter(x => x !== p);
+                }
+              });
+            }, 3000);
+          }, 280);
+        };
+
+        const stopParticles = () => {
+          clearInterval(particleInterval);
+          particleInterval = null;
+          particleList.forEach(p => {
+            gsap.killTweensOf(p);
+            gsap.to(p, { opacity: 0, scale: 0, duration: 0.3, onComplete: () => p.remove() });
+          });
+          particleList = [];
+        };
+
+        card.addEventListener('mouseenter', () => {
+          startParticles();
+        });
+
+        card.addEventListener('mouseleave', () => {
+          stopParticles();
+          gsap.to(card, { rotateX: 0, rotateY: 0, duration: 0.4, ease: 'power2.out' });
+        });
+
+        card.addEventListener('mousemove', (e) => {
+          const r = card.getBoundingClientRect();
+          const x = e.clientX - r.left;
+          const y = e.clientY - r.top;
+          const rotX = ((y - r.height / 2) / r.height) * -8;
+          const rotY = ((x - r.width / 2) / r.width) * 8;
+          gsap.to(card, { rotateX: rotX, rotateY: rotY, duration: 0.12, transformPerspective: 1000, ease: 'power1.out' });
+        });
+
+        card.addEventListener('click', (e) => {
+          const r = card.getBoundingClientRect();
+          const x = e.clientX - r.left;
+          const y = e.clientY - r.top;
+          const maxD = Math.max(
+            Math.hypot(x, y),
+            Math.hypot(x - r.width, y),
+            Math.hypot(x, y - r.height),
+            Math.hypot(x - r.width, y - r.height)
+          );
+          const ripple = document.createElement('div');
+          ripple.className = 'mb-ripple';
+          ripple.style.cssText = `width:${maxD * 2}px;height:${maxD * 2}px;left:${x - maxD}px;top:${y - maxD}px;`;
+          card.appendChild(ripple);
+          gsap.fromTo(ripple,
+            { scale: 0, opacity: 1 },
+            { scale: 1, opacity: 0, duration: 0.85, ease: 'power2.out', onComplete: () => ripple.remove() }
+          );
+        });
+      });
+    })();
+  </script>
+
+  <!-- Folder component -->
+  <script>
+    (function () {
+      const stack = document.getElementById('folder-stack');
+      const nav = document.getElementById('folder-nav');
+      if (!stack) return;
+
+      const cards = Array.from(stack.querySelectorAll('.folder-card'));
+      const navBtns = nav ? Array.from(nav.querySelectorAll('.folder-nav-btn')) : [];
+      let activeIndex = 0;
+
+      function setPositions(active) {
+        activeIndex = active;
+        cards.forEach((card, i) => {
+          const offset = (i - active + cards.length) % cards.length;
+          card.setAttribute('data-pos', ['front', 'mid', 'back'][offset] || 'back');
+        });
+        navBtns.forEach((btn, i) => {
+          btn.classList.toggle('active', i === active);
+        });
+      }
+
+      setPositions(0);
+
+      // Clicking on a non-front card still works
+      cards.forEach((card) => {
+        card.addEventListener('click', () => {
+          const idx = parseInt(card.dataset.index);
+          if (idx !== activeIndex) setPositions(idx);
+        });
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            const idx = parseInt(card.dataset.index);
+            if (idx !== activeIndex) setPositions(idx);
+          }
+        });
+      });
+
+      // Primary: clicking the nav buttons
+      navBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const target = parseInt(btn.dataset.target);
+          setPositions(target);
+        });
+      });
+    })();
   </script>
 
   <!-- ═══════════════ MODAL CONTACT ═══════════════ -->
@@ -571,17 +994,14 @@
       setTimeout(() => { modal.hidden = true; }, 280);
     }
 
-    // Clic sur l'overlay pour fermer
     modal.addEventListener('click', function (e) {
       if (e.target === modal) closeContactModal();
     });
 
-    // Touche ESC pour fermer
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && !modal.hidden) closeContactModal();
     });
 
-    // Soumission async vers Formspree
     document.getElementById('contact-form').addEventListener('submit', async function (e) {
       e.preventDefault();
       const btn = document.getElementById('modal-submit');
@@ -616,6 +1036,7 @@
       }
     });
   </script>
+
 </body>
 
 </html>
