@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demande de service — BeneIT</title>
+  <meta name="description" content="Formulaire de demande de service BeneIT. Décrivez votre problème, obtenez un devis instantané et planifiez votre intervention IA.">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ═══════════════ NAV ═══════════════ -->
+  <nav class="nav" id="main-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Bene<strong>IT</strong></a>
+      <ul class="nav-links">
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#tarifs">Tarifs</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+      </ul>
+      <a href="index.html" class="nav-cta">← Retour</a>
+      <button class="nav-burger" id="burger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══════════════ HEADER ═══════════════ -->
+  <div class="page-head">
+    <div class="wrap">
+      <p class="eyebrow">Demande de service</p>
+      <h1 class="t-h2">Décrivez votre problème,<br><em>notre IA s'occupe du reste</em></h1>
+      <p class="t-body">Remplissez ce formulaire en 5 étapes. Notre IA analysera votre demande et vous proposera un devis instantané et transparent.</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════ FORMULAIRE MULTI-ÉTAPES ═══════════════ -->
+  <div class="wrap">
+
+    <!-- Stepper -->
+    <div class="form-stepper-wrap">
+      <div class="form-stepper" id="form-stepper" aria-label="Progression du formulaire">
+        <div class="form-step-item active" id="step-item-1">
+          <div class="form-step-circle">1</div>
+          <div class="form-step-label">Service</div>
+        </div>
+        <div class="form-step-item" id="step-item-2">
+          <div class="form-step-circle">2</div>
+          <div class="form-step-label">Problème</div>
+        </div>
+        <div class="form-step-item" id="step-item-3">
+          <div class="form-step-circle">3</div>
+          <div class="form-step-label">Préparation</div>
+        </div>
+        <div class="form-step-item" id="step-item-4">
+          <div class="form-step-circle">4</div>
+          <div class="form-step-label">Créneau</div>
+        </div>
+        <div class="form-step-item" id="step-item-5">
+          <div class="form-step-circle">5</div>
+          <div class="form-step-label">Devis</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main form layout -->
+    <div class="form-layout" id="form-main">
+      <div id="form-panels">
+
+        <!-- ══ ÉTAPE 1 : Sélection du service ══ -->
+        <div class="form-step-panel active" id="panel-1">
+          <h2 class="form-step-panel-title">Quel service souhaitez-vous ?</h2>
+          <p class="form-step-panel-subtitle">Sélectionnez le service qui correspond le mieux à votre besoin. Notre IA adaptera ses questions et son diagnostic en conséquence.</p>
+
+          <div class="service-select-grid" id="service-select-grid">
+            <label class="service-select-card">
+              <input type="radio" name="service" value="optimisation-pc" id="svc-optimisation">
+              <div class="service-select-lbl">
+                <span class="service-select-emoji">🚀</span>
+                <div class="service-select-info">
+                  <div class="service-select-name">Optimisation PC</div>
+                  <div class="service-select-price">dès 35 € · 30–60 min</div>
+                </div>
+              </div>
+            </label>
+            <label class="service-select-card">
+              <input type="radio" name="service" value="suppression-virus" id="svc-virus">
+              <div class="service-select-lbl">
+                <span class="service-select-emoji">🛡️</span>
+                <div class="service-select-info">
+                  <div class="service-select-name">Suppression de virus</div>
+                  <div class="service-select-price">dès 50 € · 45–90 min</div>
+                </div>
+              </div>
+            </label>
+            <label class="service-select-card">
+              <input type="radio" name="service" value="sauvegarde" id="svc-sauvegarde">
+              <div class="service-select-lbl">
+                <span class="service-select-emoji">☁️</span>
+                <div class="service-select-info">
+                  <div class="service-select-name">Sauvegarde des données</div>
+                  <div class="service-select-price">dès 30 € · 20–40 min</div>
+                </div>
+              </div>
+            </label>
+            <label class="service-select-card">
+              <input type="radio" name="service" value="microsoft365" id="svc-m365">
+              <div class="service-select-lbl">
+                <span class="service-select-emoji">📧</span>
+                <div class="service-select-info">
+                  <div class="service-select-name">Support Microsoft 365</div>
+                  <div class="service-select-price">dès 30 € · 20–60 min</div>
+                </div>
+              </div>
+            </label>
+            <label class="service-select-card">
+              <input type="radio" name="service" value="wifi-reseau" id="svc-wifi">
+              <div class="service-select-lbl">
+                <span class="service-select-emoji">📶</span>
+                <div class="service-select-info">
+                  <div class="service-select-name">Configuration Wi-Fi / Réseau</div>
+                  <div class="service-select-price">dès 40 € · 30–60 min</div>
+                </div>
+              </div>
+            </label>
+            <label class="service-select-card">
+              <input type="radio" name="service" value="diagnostic" id="svc-diagnostic">
+              <div class="service-select-lbl">
+                <span class="service-select-emoji">🔍</span>
+                <div class="service-select-info">
+                  <div class="service-select-name">Diagnostic complet</div>
+                  <div class="service-select-price">20 € · 20–30 min</div>
+                </div>
+              </div>
+            </label>
+          </div>
+
+          <div id="service-desc-box" style="display:none;" class="pricing-transparent-note"></div>
+
+          <div class="form-nav-btns">
+            <span></span>
+            <button type="button" class="btn btn-primary" onclick="goToStep(2)" id="step1-next">Suivant →</button>
+          </div>
+        </div>
+
+        <!-- ══ ÉTAPE 2 : Description du problème ══ -->
+        <div class="form-step-panel" id="panel-2">
+          <h2 class="form-step-panel-title">Décrivez votre problème</h2>
+          <p class="form-step-panel-subtitle">Plus vos réponses sont précises, plus notre estimation sera juste. Ces informations permettent à l'IA d'anticiper les actions nécessaires.</p>
+
+          <div class="dynamic-questions">
+            <!-- Questions générales -->
+            <div class="q-block">
+              <label class="q-label" for="q-description">Décrivez votre problème ou besoin en détail <sup style="color:#ef4444">*</sup></label>
+              <p class="q-sub">Exemple : "Mon PC met 5 minutes à démarrer et le disque C: est presque plein (120/128 Go)"</p>
+              <textarea class="f-textarea" id="q-description" name="description" placeholder="Décrivez votre problème ici..." style="min-height: 100px;" required></textarea>
+            </div>
+
+            <div class="q-block">
+              <label class="q-label">Depuis quand ce problème existe-t-il ?</label>
+              <div class="radio-group">
+                <label class="radio-pill"><input type="radio" name="duree" value="24h"><span class="radio-pill-lbl">Moins de 24h</span></label>
+                <label class="radio-pill"><input type="radio" name="duree" value="1-7j"><span class="radio-pill-lbl">1 à 7 jours</span></label>
+                <label class="radio-pill"><input type="radio" name="duree" value="1-4sem"><span class="radio-pill-lbl">1 à 4 semaines</span></label>
+                <label class="radio-pill"><input type="radio" name="duree" value="1mois+"><span class="radio-pill-lbl">Plus d'un mois</span></label>
+              </div>
+            </div>
+
+            <div class="q-block">
+              <label class="q-label" for="q-essais">Avez-vous déjà tenté de résoudre ce problème ?</label>
+              <input class="f-input" type="text" id="q-essais" name="essais" placeholder="Ex : J'ai redémarré le PC, lancé l'antivirus...">
+            </div>
+
+            <!-- Questions dynamiques par service (injectées par JS) -->
+            <div id="dynamic-service-questions"></div>
+
+            <!-- Questions communes -->
+            <div class="q-block">
+              <label class="q-label">Quel est votre système d'exploitation ?</label>
+              <div class="radio-group">
+                <label class="radio-pill"><input type="radio" name="os" value="win11"><span class="radio-pill-lbl">Windows 11</span></label>
+                <label class="radio-pill"><input type="radio" name="os" value="win10"><span class="radio-pill-lbl">Windows 10</span></label>
+                <label class="radio-pill"><input type="radio" name="os" value="macos"><span class="radio-pill-lbl">macOS</span></label>
+                <label class="radio-pill"><input type="radio" name="os" value="linux"><span class="radio-pill-lbl">Linux</span></label>
+                <label class="radio-pill"><input type="radio" name="os" value="autre"><span class="radio-pill-lbl">Autre</span></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-nav-btns">
+            <button type="button" class="btn btn-secondary" onclick="goToStep(1)">← Retour</button>
+            <button type="button" class="btn btn-primary" onclick="goToStep(3)">Suivant →</button>
+          </div>
+        </div>
+
+        <!-- ══ ÉTAPE 3 : Préparation accès distant ══ -->
+        <div class="form-step-panel" id="panel-3">
+          <h2 class="form-step-panel-title">Préparez l'accès à distance</h2>
+          <p class="form-step-panel-subtitle">Pour que notre IA puisse intervenir sur votre machine, un outil de connexion sécurisée est nécessaire. Voici comment vous préparer.</p>
+
+          <div class="prep-card">
+            <div class="prep-title">📌 Checklist de préparation (à faire avant l'intervention)</div>
+            <div class="prep-list">
+              <div class="prep-item">
+                <div class="prep-check"></div>
+                <span>Téléchargez <a href="https://anydesk.com/fr/downloads" target="_blank" rel="noopener" style="color: #16a34a; font-weight: 500;">AnyDesk</a> (recommandé) ou TeamViewer sur votre ordinateur</span>
+              </div>
+              <div class="prep-item">
+                <div class="prep-check"></div>
+                <span>Notez votre <strong>ID AnyDesk</strong> (9 chiffres affichés dans l'application). Partagez-le uniquement au moment de l'intervention</span>
+              </div>
+              <div class="prep-item">
+                <div class="prep-check"></div>
+                <span>Fermez les <strong>applications sensibles</strong> (banque en ligne, messagerie personnelle) avant la connexion</span>
+              </div>
+              <div class="prep-item">
+                <div class="prep-check"></div>
+                <span>Assurez-vous d'avoir une <strong>connexion internet stable</strong> (Wi-Fi ou câble ethernet de préférence)</span>
+              </div>
+              <div class="prep-item">
+                <div class="prep-check"></div>
+                <span>Si votre antivirus bloque la connexion, désactivez-le temporairement — notre IA vous guidera étape par étape</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dynamic-questions">
+            <div class="q-block">
+              <label class="q-label">Avez-vous déjà utilisé un outil de connexion à distance ?</label>
+              <div class="radio-group">
+                <label class="radio-pill"><input type="radio" name="experience-remote" value="oui"><span class="radio-pill-lbl">Oui, j'ai déjà utilisé</span></label>
+                <label class="radio-pill"><input type="radio" name="experience-remote" value="non"><span class="radio-pill-lbl">Non, première fois</span></label>
+              </div>
+            </div>
+
+            <div class="q-block">
+              <label class="q-label">Quel outil préférez-vous utiliser ?</label>
+              <div class="radio-group">
+                <label class="radio-pill"><input type="radio" name="outil-remote" value="anydesk"><span class="radio-pill-lbl">AnyDesk (recommandé)</span></label>
+                <label class="radio-pill"><input type="radio" name="outil-remote" value="teamviewer"><span class="radio-pill-lbl">TeamViewer</span></label>
+                <label class="radio-pill"><input type="radio" name="outil-remote" value="indifferent"><span class="radio-pill-lbl">Peu importe</span></label>
+              </div>
+            </div>
+
+            <div class="q-block">
+              <label class="q-label" for="q-contact-email">Votre email pour recevoir la fiche préparatoire <sup style="color:#ef4444">*</sup></label>
+              <input class="f-input" type="email" id="q-contact-email" name="email" placeholder="vous@exemple.fr" required autocomplete="email">
+            </div>
+
+            <div class="q-block">
+              <label class="q-label" for="q-contact-prenom">Votre prénom</label>
+              <input class="f-input" type="text" id="q-contact-prenom" name="prenom" placeholder="Votre prénom" autocomplete="given-name">
+            </div>
+
+            <div class="q-block">
+              <label class="q-label">Confirmez-vous être disponible pour autoriser la connexion à l'heure convenue ?</label>
+              <div class="radio-group">
+                <label class="radio-pill"><input type="radio" name="disponible" value="oui"><span class="radio-pill-lbl">✓ Oui, je serai disponible</span></label>
+                <label class="radio-pill"><input type="radio" name="disponible" value="non"><span class="radio-pill-lbl">Non (nous vous proposerons un autre créneau)</span></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-nav-btns">
+            <button type="button" class="btn btn-secondary" onclick="goToStep(2)">← Retour</button>
+            <button type="button" class="btn btn-primary" onclick="goToStep(4)">Suivant →</button>
+          </div>
+        </div>
+
+        <!-- ══ ÉTAPE 4 : Sélection du créneau ══ -->
+        <div class="form-step-panel" id="panel-4">
+          <h2 class="form-step-panel-title">Choisissez votre créneau</h2>
+          <p class="form-step-panel-subtitle">Notre IA est disponible 24h/24 et 7j/7. Sélectionnez la date et l'heure qui vous conviennent le mieux.</p>
+
+          <div class="q-block" style="margin-bottom: 24px;">
+            <label class="q-label">Type d'intervention</label>
+            <div class="urgency-options">
+              <label class="urgency-option">
+                <input type="radio" name="urgence" value="immediate" id="urgence-immediate">
+                <div class="urgency-lbl">
+                  <span class="urgency-icon">⚡</span>
+                  <div class="urgency-info">
+                    <div class="urgency-name">Intervention immédiate</div>
+                    <div class="urgency-desc">Disponible maintenant — l'IA se connecte dans les 15 minutes</div>
+                  </div>
+                </div>
+              </label>
+              <label class="urgency-option">
+                <input type="radio" name="urgence" value="24h" id="urgence-24h">
+                <div class="urgency-lbl">
+                  <span class="urgency-icon">🌙</span>
+                  <div class="urgency-info">
+                    <div class="urgency-name">Dans les 24h</div>
+                    <div class="urgency-desc">Choisissez un créneau aujourd'hui ou demain</div>
+                  </div>
+                </div>
+              </label>
+              <label class="urgency-option">
+                <input type="radio" name="urgence" value="semaine" id="urgence-semaine">
+                <div class="urgency-lbl">
+                  <span class="urgency-icon">📅</span>
+                  <div class="urgency-info">
+                    <div class="urgency-name">Cette semaine</div>
+                    <div class="urgency-desc">Planifiez à votre convenance sur les 7 prochains jours</div>
+                  </div>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <div class="calendar-section" id="calendar-section" style="display:none;">
+            <div>
+              <div class="slots-day-label-new">Lundi 30 juin</div>
+              <div class="slots-grid-new">
+                <label class="slot-new"><input type="radio" name="creneau" value="lun-09"><span class="slot-new-lbl">09:00</span></label>
+                <label class="slot-new"><input type="radio" name="creneau" value="lun-10"><span class="slot-new-lbl">10:00</span></label>
+                <label class="slot-new"><input type="radio" name="creneau" value="lun-11"><span class="slot-new-lbl">11:00</span></label>
+                <label class="slot-new"><input type="radio" name="creneau" value="lun-14"><span class="slot-new-lbl">14:00</span></label>
+                <label class="slot-new"><input type="radio" name="creneau" value="lun-15"><span class="slot-new-lbl">15:00</span></label>
+                <label class="slot-new"><input type="radio" name="creneau" value="lun-16"><span class="slot-new-lbl">16:00</span></label>
+              </div>
+              <div class="slots-day-label-new" style="margin-top: 16px;">Mardi 1er juillet</div>
+              <div class="slots-grid-new">
+                <label class="slot-new"><input type="radio" name="creneau" value="mar-09"><span class="slot-new-lbl">09:00</span></label>
+                <label class="slot-new"><input type="radio" name="creneau" value="mar-10"><span class="slot-new-lbl">10:00</span></label>
+                <label class="slot-new"><input type="radio" name="creneau" value="mar-14"><span class="slot-new-lbl">14:00</span></label>
+                <label class="slot-new"><input type="radio" name="creneau" value="mar-17"><span class="slot-new-lbl">17:00</span></label>
+                <label class="slot-new"><input type="radio" name="creneau" value="mar-19"><span class="slot-new-lbl">19:00</span></label>
+                <label class="slot-new"><input type="radio" name="creneau" value="mar-21"><span class="slot-new-lbl">21:00</span></label>
+              </div>
+            </div>
+            <div>
+              <div class="slots-day-label-new">Mercredi 2 juillet</div>
+              <div class="slots-grid-new">
+                <label class="slot-new"><input type="radio" name="creneau" value="mer-08"><span class="slot-new-lbl">08:00</span></label>
+                <label class="slot-new"><input type="radio" name="creneau" value="mer-10"><span class="slot-new-lbl">10:00</span></label>
+                <label class="slot-new"><input type="radio" name="creneau" value="mer-14"><span class="slot-new-lbl">14:00</span></label>
+                <label class="slot-new"><input type="radio" name="creneau" value="mer-16"><span class="slot-new-lbl">16:00</span></label>
+                <label class="slot-new"><input type="radio" name="creneau" value="mer-20"><span class="slot-new-lbl">20:00</span></label>
+                <label class="slot-new"><input type="radio" name="creneau" value="mer-22"><span class="slot-new-lbl">22:00</span></label>
+              </div>
+              <div class="slots-day-label-new" style="margin-top: 16px;">Jeudi 3 juillet</div>
+              <div class="slots-grid-new">
+                <label class="slot-new"><input type="radio" name="creneau" value="jeu-09"><span class="slot-new-lbl">09:00</span></label>
+                <label class="slot-new"><input type="radio" name="creneau" value="jeu-11"><span class="slot-new-lbl">11:00</span></label>
+                <label class="slot-new"><input type="radio" name="creneau" value="jeu-15"><span class="slot-new-lbl">15:00</span></label>
+                <label class="slot-new"><input type="radio" name="creneau" value="jeu-18"><span class="slot-new-lbl">18:00</span></label>
+                <label class="slot-new"><input type="radio" name="creneau" value="jeu-20"><span class="slot-new-lbl">20:00</span></label>
+                <label class="slot-new"><input type="radio" name="creneau" value="jeu-23"><span class="slot-new-lbl">23:00</span></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-nav-btns">
+            <button type="button" class="btn btn-secondary" onclick="goToStep(3)">← Retour</button>
+            <button type="button" class="btn btn-primary" onclick="goToStep(5)">Voir mon devis →</button>
+          </div>
+        </div>
+
+        <!-- ══ ÉTAPE 5 : Récapitulatif & Devis ══ -->
+        <div class="form-step-panel" id="panel-5">
+          <h2 class="form-step-panel-title">Votre devis personnalisé</h2>
+          <p class="form-step-panel-subtitle">Notre IA a analysé votre demande. Voici le récapitulatif complet et la décomposition du coût de votre intervention.</p>
+
+          <!-- Quote breakdown card -->
+          <div class="quote-breakdown-card" id="quote-card">
+            <div class="quote-header">
+              <div class="quote-header-left">
+                <div class="quote-label">Service sélectionné</div>
+                <div class="quote-service-name" id="quote-service-name">—</div>
+              </div>
+              <div class="quote-total">
+                <div class="quote-total-label">Total estimé</div>
+                <div class="quote-total-price" id="quote-total-price">— €</div>
+                <div class="quote-total-time" id="quote-total-time">⏱ — min</div>
+              </div>
+            </div>
+            <div class="quote-breakdown-table" id="quote-breakdown-table">
+              <!-- généré par JS -->
+            </div>
+          </div>
+
+          <!-- Récapitulatif infos -->
+          <div class="quote-recap" id="quote-recap">
+            <!-- généré par JS -->
+          </div>
+
+          <!-- Explication du prix -->
+          <div class="quote-why-box" id="quote-why-box">
+            💡 <strong>Pourquoi ce prix ?</strong> Notre IA a estimé les actions nécessaires pour résoudre votre problème en analysant vos réponses. Ce devis est basé sur la complexité détectée et les outils requis. <strong>Vous ne payez que si votre problème est résolu.</strong>
+          </div>
+
+          <!-- Options de paiement -->
+          <p style="font-size: 0.8rem; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 12px;">Choisissez votre mode de paiement</p>
+          <div class="payment-options">
+            <button class="payment-btn-primary" onclick="handlePayment('now')" id="pay-now-btn">
+              <span>💳 Payer maintenant</span>
+              <span>Paiement sécurisé via Stripe</span>
+            </button>
+            <button class="payment-btn-secondary" onclick="handlePayment('after')" id="pay-after-btn">
+              <span>✅ Payer après l'intervention</span>
+              <span>Lien envoyé par email si satisfait</span>
+            </button>
+          </div>
+
+          <div class="satisfaction-note">
+            🔒 Paiement 100% sécurisé · SSL · Stripe · Satisfaction garantie
+          </div>
+
+          <div class="form-nav-btns">
+            <button type="button" class="btn btn-secondary" onclick="goToStep(4)">← Modifier le créneau</button>
+            <span></span>
+          </div>
+        </div>
+
+      </div><!-- /form-panels -->
+
+      <!-- Aside sticky -->
+      <aside class="form-aside" id="form-aside">
+        <div class="aside-card">
+          <div class="aside-head">
+            <div class="aside-head-label">Récapitulatif en cours</div>
+            <div class="aside-head-val" id="aside-service">Sélectionnez un service →</div>
+          </div>
+          <div class="aside-items">
+            <div class="aside-item">
+              <div class="aside-item-label">Étape actuelle</div>
+              <div class="aside-item-val" id="aside-step">Étape 1 sur 5 — Service</div>
+            </div>
+            <div class="aside-item">
+              <div class="aside-item-label">Durée estimée</div>
+              <div class="aside-item-val" id="aside-duration">—</div>
+            </div>
+            <div class="aside-item">
+              <div class="aside-item-label">Prix estimé</div>
+              <div class="aside-item-val" id="aside-price" style="font-size: 1.3rem; font-weight: 200; letter-spacing: -0.02em;">—</div>
+            </div>
+            <div class="aside-item">
+              <div class="aside-item-label">Satisfaction</div>
+              <div class="aside-item-val" style="color: #16a34a;">✓ Paiement si résolu</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sécurité -->
+        <div style="margin-top: 16px; padding: 16px 20px; background: rgba(45,107,255,0.05); border: 1px solid rgba(45,107,255,0.15); border-radius: var(--r-sm);">
+          <div style="font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px;">🔒 Sécurité</div>
+          <div style="font-size: 0.78rem; font-weight: 300; color: var(--sub); line-height: 1.7;">
+            Connexion chiffrée AES-256<br>
+            Aucune donnée stockée après l'intervention<br>
+            Accès révocable à tout moment<br>
+            Conformité RGPD garantie
+          </div>
+        </div>
+      </aside>
+    </div><!-- /form-layout -->
+  </div><!-- /wrap -->
+
+  <!-- Footer minimal -->
+  <footer class="footer" style="margin-top: 80px;">
+    <div class="footer-inner">
+      <span class="footer-logo">Bene<strong>IT</strong></span>
+      <nav class="footer-links" aria-label="Liens légaux">
+        <a href="legal.html#mentions">Mentions légales</a>
+        <a href="legal.html#confidentialite">Confidentialité</a>
+      </nav>
+      <span class="footer-copy">&copy; 2026 BeneIT</span>
+    </div>
+  </footer>
+
+  <!-- ═══════════════ SCRIPTS ═══════════════ -->
+  <script>
+    // ─── Services data ────────────────────────────────────
+    const SERVICES = {
+      'optimisation-pc': {
+        name: 'Optimisation PC',
+        emoji: '🚀',
+        basePrice: 35,
+        baseTime: 30,
+        baseName: 'Nettoyage de base + optimisation système',
+        description: 'Notre IA va analyser votre disque, supprimer les fichiers temporaires, désinstaller les logiciels inutiles et optimiser le registre Windows.',
+        options: [
+          { id: 'disque-plein', name: 'Disque dur saturé (>80%)', price: 10, time: 15 },
+          { id: 'demarrage-lent', name: 'Démarrage lent (>3 min)', price: 5, time: 10 },
+          { id: 'apps-plantent', name: 'Applications qui plantent', price: 10, time: 20 },
+        ],
+        specificQuestions: `
+          <div class="q-block">
+            <label class="q-label">Symptômes observés (cochez tout ce qui s'applique)</label>
+            <div class="check-group">
+              <label class="check-item"><input type="checkbox" name="symptomes" value="lent-demarrage"><span>PC lent au démarrage (>3 min)</span></label>
+              <label class="check-item"><input type="checkbox" name="symptomes" value="apps-plantent"><span>Applications qui se ferment inopinément</span></label>
+              <label class="check-item"><input type="checkbox" name="symptomes" value="disque-plein"><span>Disque presque plein (moins de 10 Go libres)</span></label>
+              <label class="check-item"><input type="checkbox" name="symptomes" value="surchauffe"><span>PC qui chauffe / ventilateur très bruyant</span></label>
+            </div>
+          </div>
+          <div class="q-block">
+            <label class="q-label" for="q-espace-libre">Espace libre sur votre disque C: (si connu)</label>
+            <input class="f-input" type="text" id="q-espace-libre" name="espace-libre" placeholder="Ex : 5 Go libres sur 128 Go">
+          </div>
+          <div class="q-block">
+            <label class="q-label">Avez-vous déjà effectué un nettoyage de disque ?</label>
+            <div class="radio-group">
+              <label class="radio-pill"><input type="radio" name="nettoyage-prec" value="oui"><span class="radio-pill-lbl">Oui</span></label>
+              <label class="radio-pill"><input type="radio" name="nettoyage-prec" value="non"><span class="radio-pill-lbl">Non</span></label>
+            </div>
+          </div>`
+      },
+      'suppression-virus': {
+        name: 'Suppression de virus',
+        emoji: '🛡️',
+        basePrice: 50,
+        baseTime: 45,
+        baseName: 'Scan complet + nettoyage des menaces',
+        description: 'Notre IA déploie plusieurs moteurs antivirus pour détecter et supprimer tous les malwares, puis renforce la protection de votre système.',
+        options: [
+          { id: 'pop-ups', name: 'Pop-ups / adware envahissants', price: 5, time: 10 },
+          { id: 'ransomware', name: 'Ransomware (fichiers chiffrés)', price: 30, time: 45 },
+          { id: 'navigateur', name: 'Navigateur détourné / pirate', price: 10, time: 15 },
+        ],
+        specificQuestions: `
+          <div class="q-block">
+            <label class="q-label">Symptômes observés</label>
+            <div class="check-group">
+              <label class="check-item"><input type="checkbox" name="symptomes" value="pop-ups"><span>Pop-ups intempestifs / publicités envahissantes</span></label>
+              <label class="check-item"><input type="checkbox" name="symptomes" value="ralentissement"><span>Ralentissements soudains inexpliqués</span></label>
+              <label class="check-item"><input type="checkbox" name="symptomes" value="fichiers-chiffres"><span>Fichiers inaccessibles ou renommés (.locked, .enc...)</span></label>
+              <label class="check-item"><input type="checkbox" name="symptomes" value="navigateur-pirate"><span>Page d'accueil du navigateur modifiée</span></label>
+              <label class="check-item"><input type="checkbox" name="symptomes" value="antivirus-bloque"><span>Antivirus désactivé ou qui ne se lance plus</span></label>
+            </div>
+          </div>
+          <div class="q-block">
+            <label class="q-label" for="q-antivirus">Quel antivirus est installé sur votre PC ?</label>
+            <input class="f-input" type="text" id="q-antivirus" name="antivirus" placeholder="Ex : Windows Defender, Avast, Norton...">
+          </div>`
+      },
+      'sauvegarde': {
+        name: 'Sauvegarde des données',
+        emoji: '☁️',
+        basePrice: 30,
+        baseTime: 20,
+        baseName: 'Configuration sauvegarde automatique',
+        description: 'Notre IA configure une solution de sauvegarde automatique adaptée à vos besoins, que ce soit dans le cloud ou sur un support local.',
+        options: [
+          { id: 'cloud', name: 'Configuration cloud (OneDrive/Drive)', price: 5, time: 10 },
+          { id: 'chiffrement', name: 'Chiffrement des sauvegardes', price: 10, time: 15 },
+          { id: 'grande-data', name: 'Volume de données >50 Go', price: 5, time: 10 },
+        ],
+        specificQuestions: `
+          <div class="q-block">
+            <label class="q-label">Type de données à sauvegarder</label>
+            <div class="check-group">
+              <label class="check-item"><input type="checkbox" name="data-type" value="photos"><span>Photos et vidéos</span></label>
+              <label class="check-item"><input type="checkbox" name="data-type" value="docs"><span>Documents (Word, Excel, PDF)</span></label>
+              <label class="check-item"><input type="checkbox" name="data-type" value="emails"><span>Emails et contacts</span></label>
+              <label class="check-item"><input type="checkbox" name="data-type" value="db"><span>Bases de données / fichiers métier</span></label>
+            </div>
+          </div>
+          <div class="q-block">
+            <label class="q-label">Volume total estimé à sauvegarder</label>
+            <div class="radio-group">
+              <label class="radio-pill"><input type="radio" name="volume" value="<10go"><span class="radio-pill-lbl">Moins de 10 Go</span></label>
+              <label class="radio-pill"><input type="radio" name="volume" value="10-50go"><span class="radio-pill-lbl">10 à 50 Go</span></label>
+              <label class="radio-pill"><input type="radio" name="volume" value="50-100go"><span class="radio-pill-lbl">50 à 100 Go</span></label>
+              <label class="radio-pill"><input type="radio" name="volume" value=">100go"><span class="radio-pill-lbl">Plus de 100 Go</span></label>
+            </div>
+          </div>
+          <div class="q-block">
+            <label class="q-label">Type de sauvegarde souhaité</label>
+            <div class="radio-group">
+              <label class="radio-pill"><input type="radio" name="type-sauvegarde" value="cloud"><span class="radio-pill-lbl">Cloud uniquement</span></label>
+              <label class="radio-pill"><input type="radio" name="type-sauvegarde" value="local"><span class="radio-pill-lbl">Disque dur local</span></label>
+              <label class="radio-pill"><input type="radio" name="type-sauvegarde" value="les-deux"><span class="radio-pill-lbl">Les deux (recommandé)</span></label>
+            </div>
+          </div>`
+      },
+      'microsoft365': {
+        name: 'Support Microsoft 365',
+        emoji: '📧',
+        basePrice: 30,
+        baseTime: 20,
+        baseName: 'Diagnostic et dépannage Microsoft 365',
+        description: 'Notre IA diagnostique et résout les problèmes liés à la suite Microsoft 365 : installation, synchronisation, licences, configuration avancée.',
+        options: [
+          { id: 'migration', name: 'Migration emails / données', price: 20, time: 30 },
+          { id: 'teams-config', name: 'Configuration Teams avancée', price: 10, time: 15 },
+          { id: 'licence', name: 'Problème de licence / activation', price: 5, time: 10 },
+        ],
+        specificQuestions: `
+          <div class="q-block">
+            <label class="q-label">Quel(s) logiciel(s) posent problème ?</label>
+            <div class="check-group">
+              <label class="check-item"><input type="checkbox" name="m365-app" value="word"><span>Word</span></label>
+              <label class="check-item"><input type="checkbox" name="m365-app" value="excel"><span>Excel</span></label>
+              <label class="check-item"><input type="checkbox" name="m365-app" value="outlook"><span>Outlook</span></label>
+              <label class="check-item"><input type="checkbox" name="m365-app" value="teams"><span>Teams</span></label>
+              <label class="check-item"><input type="checkbox" name="m365-app" value="onedrive"><span>OneDrive</span></label>
+            </div>
+          </div>
+          <div class="q-block">
+            <label class="q-label">Type de problème</label>
+            <div class="radio-group">
+              <label class="radio-pill"><input type="radio" name="m365-problem" value="installation"><span class="radio-pill-lbl">Installation</span></label>
+              <label class="radio-pill"><input type="radio" name="m365-problem" value="sync"><span class="radio-pill-lbl">Synchronisation</span></label>
+              <label class="radio-pill"><input type="radio" name="m365-problem" value="erreur"><span class="radio-pill-lbl">Erreur au lancement</span></label>
+              <label class="radio-pill"><input type="radio" name="m365-problem" value="licence"><span class="radio-pill-lbl">Problème de licence</span></label>
+            </div>
+          </div>
+          <div class="q-block">
+            <label class="q-label">Type de compte Microsoft</label>
+            <div class="radio-group">
+              <label class="radio-pill"><input type="radio" name="m365-type" value="perso"><span class="radio-pill-lbl">Compte personnel</span></label>
+              <label class="radio-pill"><input type="radio" name="m365-type" value="pro"><span class="radio-pill-lbl">Compte professionnel</span></label>
+            </div>
+          </div>`
+      },
+      'wifi-reseau': {
+        name: 'Configuration Wi-Fi / Réseau',
+        emoji: '📶',
+        basePrice: 40,
+        baseTime: 30,
+        baseName: 'Diagnostic réseau complet',
+        description: 'Notre IA analyse la configuration de votre réseau, identifie les goulots d\'étranglement et optimise les paramètres de votre box et routeur.',
+        options: [
+          { id: 'securisation', name: 'Sécurisation réseau (VPN/pare-feu)', price: 15, time: 20 },
+          { id: 'coupures', name: 'Coupures fréquentes (>5/jour)', price: 10, time: 15 },
+          { id: 'repeteur', name: 'Configuration répéteur / mesh', price: 5, time: 10 },
+        ],
+        specificQuestions: `
+          <div class="q-block">
+            <label class="q-label" for="q-isp">Votre fournisseur d'accès internet (FAI)</label>
+            <input class="f-input" type="text" id="q-isp" name="fai" placeholder="Ex : Orange, Free, SFR, Bouygues...">
+          </div>
+          <div class="q-block">
+            <label class="q-label">Appareils concernés par le problème</label>
+            <div class="check-group">
+              <label class="check-item"><input type="checkbox" name="appareils" value="pc"><span>PC / ordinateur portable</span></label>
+              <label class="check-item"><input type="checkbox" name="appareils" value="smartphone"><span>Smartphone</span></label>
+              <label class="check-item"><input type="checkbox" name="appareils" value="tablette"><span>Tablette</span></label>
+              <label class="check-item"><input type="checkbox" name="appareils" value="tv"><span>TV connectée / console de jeux</span></label>
+              <label class="check-item"><input type="checkbox" name="appareils" value="imprimante"><span>Imprimante réseau</span></label>
+            </div>
+          </div>
+          <div class="q-block">
+            <label class="q-label">Avez-vous redémarré votre box / routeur récemment ?</label>
+            <div class="radio-group">
+              <label class="radio-pill"><input type="radio" name="reboot-box" value="oui"><span class="radio-pill-lbl">Oui</span></label>
+              <label class="radio-pill"><input type="radio" name="reboot-box" value="non"><span class="radio-pill-lbl">Non</span></label>
+            </div>
+          </div>`
+      },
+      'diagnostic': {
+        name: 'Diagnostic complet',
+        emoji: '🔍',
+        basePrice: 20,
+        baseTime: 20,
+        baseName: 'Analyse approfondie du système',
+        description: 'Notre IA effectue un diagnostic complet de votre système et vous fournit un rapport détaillé avec des recommandations personnalisées.',
+        options: [],
+        specificQuestions: `
+          <div class="q-block">
+            <label class="q-label">Type de diagnostic souhaité</label>
+            <div class="radio-group">
+              <label class="radio-pill"><input type="radio" name="diag-type" value="cible"><span class="radio-pill-lbl">Ciblé (problème précis)</span></label>
+              <label class="radio-pill"><input type="radio" name="diag-type" value="complet"><span class="radio-pill-lbl">Complet (tout le système)</span></label>
+            </div>
+          </div>
+          <div class="q-block">
+            <label class="q-label" for="q-anomalies">Comportements anormaux récemment observés</label>
+            <textarea class="f-textarea" id="q-anomalies" name="anomalies" placeholder="Décrivez tout comportement inhabituel..."></textarea>
+          </div>`
+      }
+    };
+
+    // ─── State ────────────────────────────────────────────
+    const state = {
+      currentStep: 1,
+      selectedService: null,
+      selectedOptions: new Set(),
+    };
+
+    // ─── Step navigation ──────────────────────────────────
+    function goToStep(step) {
+      // Validate step 1 requires service selection
+      if (step > 1 && !state.selectedService) {
+        alert('Veuillez sélectionner un service avant de continuer.');
+        return;
+      }
+
+      // Hide current panel
+      document.getElementById(`panel-${state.currentStep}`).classList.remove('active');
+
+      // Update stepper
+      const prevItem = document.getElementById(`step-item-${state.currentStep}`);
+      if (prevItem) {
+        prevItem.classList.remove('active');
+        if (step > state.currentStep) prevItem.classList.add('completed');
+        else prevItem.classList.remove('completed');
+      }
+
+      state.currentStep = step;
+
+      // Show new panel
+      document.getElementById(`panel-${step}`).classList.add('active');
+
+      // Update stepper active
+      for (let i = 1; i <= 5; i++) {
+        const item = document.getElementById(`step-item-${i}`);
+        if (!item) continue;
+        item.classList.toggle('active', i === step);
+        if (i < step) item.classList.add('completed');
+      }
+
+      // Update aside
+      updateAside();
+
+      // If step 5, generate quote
+      if (step === 5) generateQuote();
+
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ─── Service selection ────────────────────────────────
+    function initServiceSelection() {
+      const inputs = document.querySelectorAll('input[name="service"]');
+      inputs.forEach(input => {
+        input.addEventListener('change', () => {
+          state.selectedService = input.value;
+          renderServiceQuestions(input.value);
+          updateAside();
+
+          // Show description box
+          const svc = SERVICES[input.value];
+          const box = document.getElementById('service-desc-box');
+          if (box && svc) {
+            box.innerHTML = `<strong>${svc.emoji} ${svc.name}</strong> — ${svc.description}`;
+            box.style.display = 'block';
+          }
+        });
+      });
+    }
+
+    function renderServiceQuestions(serviceKey) {
+      const svc = SERVICES[serviceKey];
+      const container = document.getElementById('dynamic-service-questions');
+      if (container && svc) {
+        container.innerHTML = svc.specificQuestions;
+      }
+    }
+
+    // ─── Aside update ─────────────────────────────────────
+    function updateAside() {
+      const stepLabels = ['Service', 'Problème', 'Préparation', 'Créneau', 'Devis'];
+      document.getElementById('aside-step').textContent = `Étape ${state.currentStep} sur 5 — ${stepLabels[state.currentStep - 1]}`;
+
+      if (state.selectedService) {
+        const svc = SERVICES[state.selectedService];
+        document.getElementById('aside-service').textContent = `${svc.emoji} ${svc.name}`;
+        document.getElementById('aside-duration').textContent = `${svc.baseTime}–${svc.baseTime + 30} min`;
+        document.getElementById('aside-price').textContent = `dès ${svc.basePrice} €`;
+      }
+    }
+
+    // ─── Generate quote (step 5) ──────────────────────────
+    function generateQuote() {
+      if (!state.selectedService) return;
+      const svc = SERVICES[state.selectedService];
+
+      let totalPrice = svc.basePrice;
+      let totalTime = svc.baseTime;
+      const rows = [{ name: svc.baseName, price: svc.basePrice, time: svc.baseTime }];
+
+      // Add base option prices (simplified — in real app, would use form data)
+      // For demo, we use the first option as "detected"
+      if (svc.options.length > 0) {
+        const opt = svc.options[0];
+        totalPrice += opt.price;
+        totalTime += opt.time;
+        if (opt.price > 0) rows.push({ name: opt.name, price: opt.price, time: opt.time });
+      }
+
+      // Get description from form
+      const descEl = document.getElementById('q-description');
+      const desc = descEl ? descEl.value : '';
+      const prenom = document.getElementById('q-contact-prenom')?.value || 'Client';
+      const email = document.getElementById('q-contact-email')?.value || '';
+      const creneau = document.querySelector('input[name="creneau"]:checked')?.value || '';
+      const urgence = document.querySelector('input[name="urgence"]:checked')?.value || '';
+
+      // Update quote display
+      document.getElementById('quote-service-name').textContent = `${svc.emoji} ${svc.name}`;
+      document.getElementById('quote-total-price').textContent = `${totalPrice} €`;
+      document.getElementById('quote-total-time').textContent = `⏱ ${totalTime} min estimées`;
+
+      const tableEl = document.getElementById('quote-breakdown-table');
+      if (tableEl) {
+        tableEl.innerHTML = rows.map(r => `
+          <div class="quote-row">
+            <span class="quote-row-name">${r.name}</span>
+            <span class="quote-row-time">${r.time} min</span>
+            <span class="quote-row-price">${r.price} €</span>
+          </div>
+        `).join('');
+      }
+
+      // Recap
+      const recapEl = document.getElementById('quote-recap');
+      if (recapEl) {
+        const items = [
+          { icon: '🛠️', label: 'Service', val: `${svc.emoji} ${svc.name}` },
+          { icon: '📝', label: 'Problème', val: desc || 'Non renseigné' },
+          { icon: '📅', label: 'Intervention', val: urgence === 'immediate' ? '⚡ Immédiate (dans 15 min)' : (creneau ? `Créneau : ${creneau}` : 'À définir') },
+          { icon: '📧', label: 'Email', val: email || 'Non renseigné' },
+        ];
+        recapEl.innerHTML = items.map(it => `
+          <div class="quote-recap-item">
+            <span class="quote-recap-icon">${it.icon}</span>
+            <span><span class="quote-recap-label">${it.label} :</span> ${it.val}</span>
+          </div>
+        `).join('');
+      }
+
+      // Why box
+      const whyEl = document.getElementById('quote-why-box');
+      if (whyEl) {
+        whyEl.innerHTML = `💡 <strong>Pourquoi ${totalPrice} € ?</strong> Notre IA a analysé votre demande et estimé ${rows.length} action${rows.length > 1 ? 's' : ''} pour résoudre votre problème "${desc ? desc.substring(0, 60) + '...' : 'votre problème'}" avec une durée totale de ${totalTime} minutes. <strong>Vous ne payez que si votre problème est résolu.</strong>`;
+      }
+    }
+
+    // ─── Payment ──────────────────────────────────────────
+    function handlePayment(mode) {
+      const email = document.getElementById('q-contact-email')?.value;
+      if (!email) {
+        alert('Veuillez renseigner votre email à l\'étape 3 avant de procéder au paiement.');
+        return;
+      }
+      if (mode === 'now') {
+        alert('Redirection vers Stripe (à connecter avec votre clé API Stripe). Merci pour votre confiance !');
+        // Real: window.location.href = 'https://checkout.stripe.com/...';
+      } else {
+        alert(`Parfait ! Un lien de paiement sécurisé vous sera envoyé à ${email} dès que l'intervention sera terminée et que vous aurez confirmé votre satisfaction.`);
+      }
+    }
+
+    // ─── Urgence toggle ───────────────────────────────────
+    document.addEventListener('DOMContentLoaded', () => {
+      initServiceSelection();
+
+      // Nav scroll
+      const nav = document.getElementById('main-nav');
+      window.addEventListener('scroll', () => {
+        nav.classList.toggle('scrolled', window.scrollY > 20);
+      }, { passive: true });
+
+      // Burger
+      const burger = document.getElementById('burger');
+      burger.addEventListener('click', () => {
+        const isOpen = document.getElementById('mob-nav')?.classList.toggle('open');
+        burger.classList.toggle('open', isOpen);
+        burger.setAttribute('aria-expanded', isOpen);
+      });
+
+      // Show calendar on urgence selection
+      const urgenceInputs = document.querySelectorAll('input[name="urgence"]');
+      urgenceInputs.forEach(input => {
+        input.addEventListener('change', () => {
+          const calSection = document.getElementById('calendar-section');
+          if (calSection) {
+            calSection.style.display = (input.value === '24h' || input.value === 'semaine') ? 'grid' : 'none';
+          }
+        });
+      });
+
+      // Pre-select service from URL param
+      const urlParams = new URLSearchParams(window.location.search);
+      const svcParam = urlParams.get('service');
+      if (svcParam && SERVICES[svcParam]) {
+        const radio = document.querySelector(`input[name="service"][value="${svcParam}"]`);
+        if (radio) {
+          radio.checked = true;
+          radio.dispatchEvent(new Event('change'));
+        }
+      }
+    });
+  </script>
+
+</body>
+
+</html>
