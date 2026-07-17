@@ -5,34 +5,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BeneIT — Assistance informatique 100% à distance, 24h/24 et 7j/7</title>
-  <meta name="description"
-    content="BeneIT est un service d'assistance informatique 100% à distance, disponible 24h/24 et 7j/7. Diagnostic, dépannage, optimisation, prévention — sans déplacement, sans rendez-vous. Rien ne se fait sans votre accord.">
-  <meta name="keywords"
-    content="assistance informatique à distance, dépannage PC à distance, optimisation PC, suppression virus, Microsoft 365, BeneIT">
+  <meta name="description" content="BeneIT : assistance informatique 100% à distance, 24h/24 et 7j/7. Diagnostic, dépannage, optimisation, prévention — sans déplacement. Rien ne se fait sans votre accord. Remboursé si non résolu.">
+  <meta name="keywords" content="assistance informatique à distance, dépannage PC, optimisation PC, suppression virus, Microsoft 365, BeneIT">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://beneit.fr/">
   <meta property="og:title" content="BeneIT — Assistance informatique 24h/24, 100% à distance">
-  <meta property="og:description"
-    content="Diagnostic, dépannage et prévention à distance. Disponible à toute heure. Rien ne se fait sans votre accord.">
+  <meta property="og:description" content="Diagnostic, dépannage et prévention à distance. Disponible à toute heure. Rien ne se fait sans votre accord.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://beneit.fr/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:wght@300;400;500;600&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Service",
+  "@type": "LocalBusiness",
   "name": "BeneIT",
-  "description": "Service d'assistance informatique 100% à distance, disponible 24h/24 et 7j/7. Diagnostic, dépannage, prévention — sans déplacement.",
+  "description": "Service d'assistance informatique 100% à distance, disponible 24h/24 et 7j/7.",
   "url": "https://beneit.fr",
   "email": "support@beneit.fr",
-  "availableChannel": { "@type": "ServiceChannel", "serviceUrl": "https://beneit.fr/service-form.html" },
-  "hoursAvailable": { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "00:00", "closes": "23:59" }
+  "priceRange": "20€ - 80€",
+  "availableLanguage": "French",
+  "serviceArea": {"@type": "Country", "name": "France"},
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+    "opens": "00:00", "closes": "23:59"
+  }
 }
   </script>
 </head>
@@ -40,32 +41,37 @@
 <body>
 
   <!-- ═══ NAV ═══ -->
-  <nav class="nav" id="main-nav">
+  <nav class="nav" id="main-nav" role="navigation" aria-label="Navigation principale">
     <div class="nav-inner">
-      <a href="index.html" class="nav-logo">Bene<strong>IT</strong></a>
-      <ul class="nav-links">
-        <li><a href="#processus" id="nav-processus">Comment ça marche</a></li>
-        <li><a href="#services" id="nav-services">Services</a></li>
-        <li><a href="#outils" id="nav-outils">Outils</a></li>
-        <li><a href="#faq" id="nav-faq">FAQ</a></li>
+      <a href="index.html" class="nav-logo" aria-label="BeneIT — Accueil">Bene<strong>IT</strong></a>
+      <ul class="nav-links" role="list">
+        <li><a href="#processus">Comment ça marche</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#engagements">Engagements</a></li>
+        <li><a href="#outils">Outils</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#fondateur">À propos</a></li>
       </ul>
       <a href="service-form.html" class="nav-cta" id="nav-cta">Décrire mon problème</a>
-      <button class="nav-burger" id="burger" aria-label="Menu" aria-expanded="false">
+      <button class="nav-burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mob-nav">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
-  <div class="nav-mobile" id="mob-nav" role="navigation">
+  <div class="nav-mobile" id="mob-nav" role="navigation" aria-label="Menu mobile">
     <a href="#processus" class="mob-link">Comment ça marche</a>
     <a href="#services" class="mob-link">Services</a>
+    <a href="#engagements" class="mob-link">Engagements</a>
     <a href="#outils" class="mob-link">Outils</a>
     <a href="#faq" class="mob-link">FAQ</a>
+    <a href="#fondateur" class="mob-link">À propos</a>
     <a href="service-form.html" class="nav-mobile-cta mob-link">Décrire mon problème</a>
   </div>
 
+
   <!-- ═══ HERO ═══ -->
-  <section class="hero hero-dark" id="accueil">
+  <section class="hero" id="accueil">
     <div class="hero-bg" aria-hidden="true">
       <div class="hero-orb hero-orb-1"></div>
       <div class="hero-orb hero-orb-2"></div>
@@ -74,254 +80,266 @@
 
     <div class="wrap">
       <div class="hero-inner">
-
         <div class="hero-content">
-          <div class="hero-badge-ai">
-            <span class="hero-ai-dot"></span>
-            Service 100% à distance · 24h/24 · 7j/7
+
+          <!-- Category pills — MDX-inspired -->
+          <div class="hero-pills" role="list" aria-label="Domaines d'intervention">
+            <span class="hero-pill hero-pill-active" role="listitem">Dépannage PC</span>
+            <span class="hero-pill" role="listitem">Sécurité</span>
+            <span class="hero-pill" role="listitem">Microsoft 365</span>
+            <span class="hero-pill" role="listitem">Réseau</span>
+            <span class="hero-pill" role="listitem">Sauvegarde</span>
+            <span class="hero-pill" role="listitem">Prévention</span>
+          </div>
+
+          <div class="hero-badge-ai" aria-label="Service disponible maintenant">
+            <span class="hero-ai-dot" aria-hidden="true"></span>
+            Disponible maintenant · 24h/24 · 7j/7
           </div>
 
           <h1>
-            <span class="dt-target" id="dt-line1" data-text="Votre informatique,"></span><br>
-            <em><span class="dt-target" id="dt-line2" data-text="protégée en permanence." data-delay="600"></span></em>
+            <span class="dt-target" id="dt-line1" data-text="Votre ordinateur,"></span><br>
+            <em><span class="dt-target" id="dt-line2" data-text="entre de bonnes mains." data-delay="500"></span></em>
           </h1>
 
-          <p class="hero-sub">Un service d'assistance qui diagnostique, résout et prévient vos problèmes logiciels — à distance, à toute heure, sans déplacement et sans rendez-vous.</p>
+          <p class="hero-sub">
+            Un service d'assistance informatique qui diagnostique, résout et prévient vos problèmes logiciels — à distance, à toute heure, sans déplacement. Rien ne se fait sans votre accord.
+          </p>
 
           <div class="hero-btns">
             <a href="service-form.html" class="btn btn-primary btn-lg" id="hero-cta-primary">Décrire mon problème</a>
             <a href="#processus" class="btn btn-secondary btn-lg" id="hero-cta-secondary">Comment ça marche</a>
           </div>
 
-          <div class="hero-stats">
-            <div class="hero-stat">
-              <span class="hero-stat-num">24h/24</span>
+          <div class="hero-stats" role="list" aria-label="Chiffres clés">
+            <div class="hero-stat" role="listitem">
+              <span class="hero-stat-num font-mono">24h/24</span>
               <span class="hero-stat-label">7j/7</span>
             </div>
-            <div class="hero-stat-sep"></div>
-            <div class="hero-stat">
-              <span class="hero-stat-num">100%</span>
+            <div class="hero-stat-sep" aria-hidden="true"></div>
+            <div class="hero-stat" role="listitem">
+              <span class="hero-stat-num font-mono">100%</span>
               <span class="hero-stat-label">À distance</span>
             </div>
-            <div class="hero-stat-sep"></div>
-            <div class="hero-stat">
-              <span class="hero-stat-num">0 €</span>
+            <div class="hero-stat-sep" aria-hidden="true"></div>
+            <div class="hero-stat" role="listitem">
+              <span class="hero-stat-num font-mono">0 €</span>
               <span class="hero-stat-label">Si non résolu</span>
             </div>
           </div>
         </div>
 
+        <!-- Moniteur de Confiance -->
         <div class="hero-visual-wrap">
-          <div class="hero-visual-frame">
-            <img src="hero-visual.png" alt="" role="presentation" width="680" height="510" loading="eager" decoding="async">
-            <div class="hero-visual-badge">
-              <div>
-                <div class="hero-visual-badge-text">Diagnostic en cours</div>
-                <div class="hero-visual-badge-sub">Lecture seule — aucune modification</div>
+          <div class="monitor-trust" role="img" aria-label="Diagnostic en cours — lecture seule, aucune modification">
+            <div class="monitor-header">
+              <div class="monitor-live-indicator" aria-hidden="true">
+                <span class="monitor-live-dot"></span>
+                <span class="monitor-live-text">EN DIRECT</span>
               </div>
-              <div class="hero-visual-badge-dot" aria-hidden="true"></div>
+              <div class="monitor-readonly" aria-hidden="true">LECTURE SEULE · 0 MODIFICATION</div>
+            </div>
+            <div class="monitor-row">
+              <div class="monitor-row-label">Espace disque analysé</div>
+              <div class="monitor-gauge-track" aria-hidden="true"><div class="monitor-gauge-fill" id="gauge-fill"></div></div>
+              <div class="monitor-gauge-meta" aria-hidden="true"><span>74 Go / 256 Go</span><span>74%</span></div>
+            </div>
+            <div class="monitor-row">
+              <div class="monitor-row-label">Activité système</div>
+              <div class="monitor-pulse-wrap" aria-hidden="true">
+                <svg class="monitor-pulse-svg" viewBox="0 0 560 44" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                  <polyline class="monitor-pulse-line" points="0,22 35,22 48,6 58,38 68,22 103,22 116,6 126,38 136,22 171,22 184,6 194,38 204,22 239,22 252,6 262,38 272,22 307,22 320,6 330,38 340,22 375,22 388,6 398,38 408,22 443,22 456,6 466,38 476,22 511,22 524,6 534,38 544,22 560,22"/>
+                </svg>
+              </div>
+            </div>
+            <div class="monitor-checks" aria-live="polite">
+              <div class="monitor-check" id="mcheck-1">
+                <div class="monitor-check-icon" aria-hidden="true">
+                  <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false"><path class="check-path" d="M4 10.5L8 14.5L16 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <span class="monitor-check-label">Antivirus Windows Defender</span>
+                <span class="monitor-check-status">vérifié</span>
+              </div>
+              <div class="monitor-check" id="mcheck-2">
+                <div class="monitor-check-icon" aria-hidden="true">
+                  <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false"><path class="check-path" d="M4 10.5L8 14.5L16 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <span class="monitor-check-label">Journaux système</span>
+                <span class="monitor-check-status">lus</span>
+              </div>
+              <div class="monitor-check" id="mcheck-3">
+                <div class="monitor-check-icon" aria-hidden="true">
+                  <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false"><path class="check-path" d="M4 10.5L8 14.5L16 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <span class="monitor-check-label">Aucune modification effectuée</span>
+                <span class="monitor-check-status">confirmée</span>
+              </div>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ═══ COMMENT ÇA MARCHE ═══ -->
+
+  <!-- ═══ STATS BAR (MDX-inspired) ═══ -->
+  <div class="stats-bar" role="region" aria-label="Chiffres clés du service">
+    <div class="stats-bar-inner">
+      <div class="stat-col">
+        <div class="stat-col-num font-mono" id="stat-1" data-target="15">0</div>
+        <div class="stat-col-label">Minutes<br>pour se connecter</div>
+      </div>
+      <div class="stat-col">
+        <div class="stat-col-num font-mono">0 €</div>
+        <div class="stat-col-label">Si le problème<br>n'est pas résolu</div>
+      </div>
+      <div class="stat-col">
+        <div class="stat-col-num font-mono">100%</div>
+        <div class="stat-col-label">Visible en temps réel<br>sur votre écran</div>
+      </div>
+      <div class="stat-col">
+        <div class="stat-col-num font-mono">7j/7</div>
+        <div class="stat-col-label">24h/24<br>Disponibilité totale</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══ PROCESSUS ═══ -->
   <section class="section section-process" id="processus">
     <div class="wrap">
-
-      <div class="sec-header reveal" style="text-align:center; max-width: 560px; margin-inline: auto; margin-bottom: 72px;">
+      <div class="sec-header center reveal">
         <p class="eyebrow">Processus</p>
-        <h2 class="t-h2">En 5 étapes simples,<br><em>rien ne se fait sans vous</em></h2>
+        <h2 class="t-h2" style="margin-top:10px;">En 5 étapes simples,<br><em>rien ne se fait sans vous</em></h2>
       </div>
-
       <div class="steps-grid">
-
         <div class="step-item reveal reveal-d1">
           <div class="step-num">01</div>
-          <div class="step-body">
-            <div class="step-title">Vous décrivez votre besoin</div>
-            <p class="step-desc">Notre assistant pose quelques questions simples pour cerner votre situation — type de problème, appareil, urgence. Pas de jargon. Quelques minutes suffisent.</p>
-          </div>
+          <div class="step-title">Vous décrivez votre besoin</div>
+          <p class="step-desc">Notre formulaire pose quelques questions simples pour cerner votre situation. Pas de jargon. Quelques minutes suffisent.</p>
         </div>
-
         <div class="step-item reveal reveal-d2">
           <div class="step-num">02</div>
-          <div class="step-body">
-            <div class="step-title">Diagnostic à distance — lecture seule</div>
-            <p class="step-desc">Un programme léger et sécurisé analyse votre machine : espace disque, antivirus, journaux d'erreurs. <strong>Il lit uniquement — il ne modifie rien.</strong></p>
-            <span class="step-badge step-badge-blue">Aucune modification à cette étape</span>
-          </div>
+          <div class="step-title">Diagnostic à distance — lecture seule</div>
+          <p class="step-desc">Un programme léger et sécurisé analyse votre machine : espace disque, antivirus, journaux d'erreurs. <strong>Il lit uniquement — il ne modifie rien.</strong></p>
+          <span class="step-badge step-badge-blue">Aucune modification à cette étape</span>
         </div>
-
         <div class="step-item reveal reveal-d3">
           <div class="step-num">03</div>
-          <div class="step-body">
-            <div class="step-title">Vous recevez un devis clair</div>
-            <p class="step-desc">Ce qui a été identifié, ce qui sera fait, dans quel ordre, et le tarif exact. Tout en langage simple — pas de surprise, pas de frais cachés.</p>
-          </div>
+          <div class="step-title">Vous recevez un devis clair</div>
+          <p class="step-desc">Ce qui a été identifié, ce qui sera fait, dans quel ordre, et le tarif exact. Tout en langage simple — pas de surprise.</p>
         </div>
-
         <div class="step-item reveal reveal-d1">
           <div class="step-num">04</div>
-          <div class="step-body">
-            <div class="step-title">Vous validez — l'intervention commence</div>
-            <p class="step-desc">L'intervention démarre uniquement après votre accord et votre paiement. Un point de restauration système est automatiquement créé avant la première action.</p>
-            <span class="step-badge step-badge-green">Rien ne se fait sans votre accord</span>
-          </div>
+          <div class="step-title">Vous validez — l'intervention commence</div>
+          <p class="step-desc">L'intervention démarre uniquement après votre accord et votre paiement. Un point de restauration est créé avant la première action.</p>
+          <span class="step-badge step-badge-green">Rien ne se fait sans votre accord</span>
         </div>
-
         <div class="step-item reveal reveal-d2">
           <div class="step-num">05</div>
-          <div class="step-body">
-            <div class="step-title">Rapport complet, déconnexion automatique</div>
-            <p class="step-desc">Vous recevez un rapport PDF — ce qui a été trouvé, ce qui a été fait, les recommandations. La connexion se ferme automatiquement. Aucun accès résiduel.</p>
-            <span class="step-badge step-badge-blue">Historique complet disponible</span>
-          </div>
+          <div class="step-title">Rapport complet, déconnexion automatique</div>
+          <p class="step-desc">Vous recevez un rapport complet. La connexion se ferme automatiquement. Aucun accès résiduel.</p>
+          <span class="step-badge step-badge-blue">Historique complet disponible</span>
         </div>
-
       </div>
-
     </div>
   </section>
 
+
+  <!-- ═══ FEATURES GRID (MDX-inspired) ═══ -->
+  <section class="section section-features" id="confiance">
+    <div class="wrap">
+      <div class="sec-header center reveal">
+        <p class="eyebrow">Pourquoi BeneIT</p>
+        <h2 class="t-h2" style="margin-top:10px;">Conçu pour votre<br><em>tranquillité d'esprit</em></h2>
+      </div>
+      <div class="features-grid reveal">
+
+        <div class="feature-cell">
+          <div class="feature-cell-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="feature-cell-title">Connexion chiffrée</div>
+          <div class="feature-cell-desc">Chiffrement AES-256 de bout en bout. Vous voyez chaque action en temps réel. Déconnexion automatique à la fin.</div>
+        </div>
+
+        <div class="feature-cell">
+          <div class="feature-cell-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <div class="feature-cell-title">Disponible à toute heure</div>
+          <div class="feature-cell-desc">24h/24, 7j/7. Pas de plage horaire, pas de rendez-vous obligatoire. Vous demandez, on répond.</div>
+        </div>
+
+        <div class="feature-cell">
+          <div class="feature-cell-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 12l2 2 4-4"/><path d="M21 12c0-4.97-4.03-9-9-9S3 7.03 3 12s4.03 9 9 9 9-4.03 9-9z"/></svg>
+          </div>
+          <div class="feature-cell-title">Satisfait ou remboursé</div>
+          <div class="feature-cell-desc">Si votre problème n'est pas résolu, vous ne payez rien. Pas de discussion, pas de délai — remboursement immédiat.</div>
+        </div>
+
+        <div class="feature-cell">
+          <div class="feature-cell-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div class="feature-cell-title">Devis transparent</div>
+          <div class="feature-cell-desc">Vous recevez le détail complet de l'intervention et son coût avant de payer quoi que ce soit.</div>
+        </div>
+
+        <div class="feature-cell">
+          <div class="feature-cell-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div class="feature-cell-title">Rapport complet</div>
+          <div class="feature-cell-desc">Chaque action est tracée. Vous recevez un rapport détaillé à la fin de l'intervention — ce qui a été fait, pourquoi.</div>
+        </div>
+
+        <div class="feature-cell">
+          <div class="feature-cell-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-5H1"/></svg>
+          </div>
+          <div class="feature-cell-title">Point de restauration</div>
+          <div class="feature-cell-desc">Avant chaque intervention, un point de restauration système est créé automatiquement. Retour en arrière possible à tout moment.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
   <!-- ═══ SERVICES ═══ -->
-  <section class="section section-dark" id="services">
+  <section class="section section-services" id="services">
     <div class="wrap">
 
-      <!-- Dépannage -->
       <div class="services-block">
         <div class="services-block-header reveal">
           <div>
-            <p class="eyebrow" style="color: var(--violet-lt);">Dépannage</p>
-            <h2 class="t-h2" style="color: #fff;">Votre problème, résolu.<br><em style="color: rgba(255,255,255,0.3);">Sans déplacement.</em></h2>
+            <p class="eyebrow">Dépannage</p>
+            <h2 class="t-h2" style="margin-top:8px;">Votre problème, résolu.<br><em>Sans déplacement.</em></h2>
           </div>
           <span class="svc-cat-pill svc-cat-pill-reactive">À distance</span>
         </div>
-
-        <div class="services-ai-grid">
-
-          <a href="service-form.html?service=optimisation-pc" class="service-ai-card reveal reveal-d1" id="card-optimisation">
-            <div class="service-ai-card-inner">
-              <div class="service-ai-title">Optimisation PC</div>
-              <div class="service-ai-desc">Votre ordinateur rame ou démarre lentement. On nettoie, libère l'espace et supprime ce qui ralentit. Résultat visible immédiatement.</div>
-              <div class="service-ai-examples">
-                <span class="service-ai-tag">PC lent</span>
-                <span class="service-ai-tag">Disque saturé</span>
-                <span class="service-ai-tag">Démarrage long</span>
-              </div>
-              <div class="service-ai-meta">
-                <span class="service-ai-duration">30–60 min</span>
-                <span class="service-ai-price">dès 45 €</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="service-form.html?service=suppression-virus" class="service-ai-card reveal reveal-d2" id="card-virus">
-            <div class="service-ai-card-inner">
-              <div class="service-ai-title">Suppression de virus</div>
-              <div class="service-ai-desc">Pop-ups, lenteurs inexpliquées, antivirus désactivé — votre machine est peut-être infectée. On détecte et on élimine sans toucher à vos fichiers personnels.</div>
-              <div class="service-ai-examples">
-                <span class="service-ai-tag">Pop-ups</span>
-                <span class="service-ai-tag">Ransomware</span>
-                <span class="service-ai-tag">Navigateur détourné</span>
-              </div>
-              <div class="service-ai-meta">
-                <span class="service-ai-duration">45–90 min</span>
-                <span class="service-ai-price">dès 55 €</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="service-form.html?service=sauvegarde" class="service-ai-card reveal reveal-d3" id="card-sauvegarde">
-            <div class="service-ai-card-inner">
-              <div class="service-ai-title">Sauvegarde des données</div>
-              <div class="service-ai-desc">On configure une sauvegarde automatique de vos photos, documents et fichiers importants — cloud ou disque externe. Fini le risque de tout perdre.</div>
-              <div class="service-ai-examples">
-                <span class="service-ai-tag">Photos &amp; vidéos</span>
-                <span class="service-ai-tag">OneDrive</span>
-                <span class="service-ai-tag">Chiffrement</span>
-              </div>
-              <div class="service-ai-meta">
-                <span class="service-ai-duration">20–40 min</span>
-                <span class="service-ai-price">dès 40 €</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="service-form.html?service=microsoft365" class="service-ai-card reveal reveal-d1" id="card-m365">
-            <div class="service-ai-card-inner">
-              <div class="service-ai-title">Support Microsoft 365</div>
-              <div class="service-ai-desc">Outlook bloqué, Teams qui plante, OneDrive qui ne synchronise plus — on règle tout à distance sans que vous ayez à intervenir.</div>
-              <div class="service-ai-examples">
-                <span class="service-ai-tag">Outlook</span>
-                <span class="service-ai-tag">Teams</span>
-                <span class="service-ai-tag">OneDrive</span>
-              </div>
-              <div class="service-ai-meta">
-                <span class="service-ai-duration">20–60 min</span>
-                <span class="service-ai-price">dès 40 €</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="service-form.html?service=wifi-reseau" class="service-ai-card reveal reveal-d2" id="card-wifi">
-            <div class="service-ai-card-inner">
-              <div class="service-ai-title">Configuration réseau</div>
-              <div class="service-ai-desc">Internet lent, coupures fréquentes, réseau mal configuré — on diagnostique et on optimise votre connexion, box et partage entre appareils inclus.</div>
-              <div class="service-ai-examples">
-                <span class="service-ai-tag">Wi-Fi lent</span>
-                <span class="service-ai-tag">Coupures</span>
-                <span class="service-ai-tag">Sécurisation</span>
-              </div>
-              <div class="service-ai-meta">
-                <span class="service-ai-duration">30–60 min</span>
-                <span class="service-ai-price">dès 45 €</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="service-form.html?service=diagnostic" class="service-ai-card reveal reveal-d3" id="card-diagnostic">
-            <div class="service-ai-card-inner">
-              <div class="service-ai-title">Diagnostic système</div>
-              <div class="service-ai-desc">Quelque chose cloche mais vous ne savez pas quoi ? On analyse votre machine et vous fournit un rapport complet. Déduit si vous choisissez une intervention.</div>
-              <div class="service-ai-examples">
-                <span class="service-ai-tag">Problème inconnu</span>
-                <span class="service-ai-tag">Audit système</span>
-                <span class="service-ai-tag">Rapport PDF</span>
-              </div>
-              <div class="service-ai-meta">
-                <span class="service-ai-duration">20–30 min</span>
-                <span class="service-ai-price">25 €</span>
-              </div>
-            </div>
-          </a>
-
-        </div>
+        <div class="services-ai-grid" id="services-grid"></div>
       </div>
 
-      <!-- Prévention -->
       <div class="services-block services-block-second">
         <div class="services-block-header reveal">
           <div>
-            <p class="eyebrow" style="color: #4ADE80;">Prévention</p>
-            <h2 class="t-h2" style="color: #fff;">On prévient la panne<br><em style="color: rgba(255,255,255,0.3);">plutôt que de la subir.</em></h2>
+            <p class="eyebrow eyebrow-green">Prévention</p>
+            <h2 class="t-h2" style="margin-top:8px;">On prévient la panne<br><em>plutôt que de la subir.</em></h2>
           </div>
           <span class="svc-cat-pill svc-cat-pill-proactive">À la carte</span>
         </div>
-        <p class="services-block-note reveal">Ces services se commandent ponctuellement, comme un dépannage — aucun abonnement, aucun engagement.</p>
-
+        <p class="services-block-note reveal">Ces services se commandent ponctuellement — aucun abonnement, aucun engagement.</p>
         <div class="services-proactive-grid">
-
           <a href="service-form.html?service=bilan-sante" class="service-proactive-card reveal reveal-d1" id="card-bilan">
             <div class="service-proactive-inner">
               <div class="service-proactive-header">
                 <div class="service-proactive-title">Bilan santé PC</div>
                 <div class="service-proactive-price-badge">55 €</div>
               </div>
-              <div class="service-proactive-desc">Nettoyage, optimisation du démarrage, mise à jour des logiciels, vérification de l'antivirus. Vous repartez avec un rapport clair sur l'état de votre machine.</div>
+              <div class="service-proactive-desc">Nettoyage, optimisation du démarrage, mise à jour des logiciels, vérification de l'antivirus. Rapport complet inclus.</div>
               <ul class="service-proactive-list">
                 <li>Nettoyage complet et optimisation</li>
                 <li>Mises à jour système et logiciels</li>
@@ -329,37 +347,35 @@
               </ul>
               <div class="service-proactive-footer">
                 <span class="service-proactive-duration">45–60 min</span>
-                <span class="service-proactive-cta">Réserver →</span>
+                <span class="service-proactive-cta">Réserver</span>
               </div>
             </div>
           </a>
-
           <a href="service-form.html?service=verification-sauvegarde" class="service-proactive-card reveal reveal-d2" id="card-verif-save">
             <div class="service-proactive-inner">
               <div class="service-proactive-header">
                 <div class="service-proactive-title">Vérification sauvegarde</div>
                 <div class="service-proactive-price-badge">35 €</div>
               </div>
-              <div class="service-proactive-desc">Beaucoup de sauvegardes configurées ne fonctionnent plus depuis des mois. On teste une vraie restauration pour s'assurer que vos données sont réellement protégées.</div>
+              <div class="service-proactive-desc">On teste une vraie restauration pour s'assurer que vos données sont réellement protégées.</div>
               <ul class="service-proactive-list">
                 <li>Test de restauration réel</li>
                 <li>Vérification de la complétude des données</li>
-                <li>Rapport avec date de la dernière sauvegarde valide</li>
+                <li>Rapport avec état de la sauvegarde</li>
               </ul>
               <div class="service-proactive-footer">
                 <span class="service-proactive-duration">20–30 min</span>
-                <span class="service-proactive-cta">Réserver →</span>
+                <span class="service-proactive-cta">Réserver</span>
               </div>
             </div>
           </a>
-
           <a href="service-form.html?service=audit-securite" class="service-proactive-card reveal reveal-d3" id="card-audit">
             <div class="service-proactive-inner">
               <div class="service-proactive-header">
                 <div class="service-proactive-title">Audit de sécurité</div>
                 <div class="service-proactive-price-badge">45 €</div>
               </div>
-              <div class="service-proactive-desc">On identifie les logiciels présentant des failles connues, vérifie le pare-feu et les permissions. Vous êtes prévenu avant qu'un pirate n'en profite.</div>
+              <div class="service-proactive-desc">On identifie les logiciels vulnérables, vérifie le pare-feu et les permissions. Vous êtes prévenu avant qu'un problème n'en profite.</div>
               <ul class="service-proactive-list">
                 <li>Détection des logiciels vulnérables</li>
                 <li>Vérification pare-feu et permissions</li>
@@ -367,312 +383,258 @@
               </ul>
               <div class="service-proactive-footer">
                 <span class="service-proactive-duration">30–45 min</span>
-                <span class="service-proactive-cta">Réserver →</span>
+                <span class="service-proactive-cta">Réserver</span>
               </div>
             </div>
           </a>
-
         </div>
       </div>
 
     </div>
   </section>
 
-  <!-- ═══ OUTILS ═══ -->
-  <section class="section section-tools" id="outils">
-    <div class="wrap">
-
-      <div class="sec-header reveal" style="text-align:center; max-width: 480px; margin-inline: auto; margin-bottom: 56px;">
-        <p class="eyebrow">Technologies</p>
-        <h2 class="t-h2">Tout ce que vous utilisez,<br><em>on le maîtrise</em></h2>
-      </div>
-
-      <div class="tools-grid reveal">
-
-        <div class="tool-item" title="Windows 11">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Windows_logo_-_2012.svg/88px-Windows_logo_-_2012.svg.png" alt="Windows 11" loading="lazy" width="40" height="40">
-          <span>Windows 11</span>
-        </div>
-
-        <div class="tool-item" title="Windows 10">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Windows_logo_-_2012.svg/88px-Windows_logo_-_2012.svg.png" alt="Windows 10" loading="lazy" width="40" height="40">
-          <span>Windows 10</span>
-        </div>
-
-        <div class="tool-item" title="Microsoft 365">
-          <img src="https://img.icons8.com/color/96/microsoft-365-2019.png" alt="Microsoft 365" loading="lazy" width="40" height="40">
-          <span>Microsoft 365</span>
-        </div>
-
-        <div class="tool-item" title="Microsoft Outlook">
-          <img src="https://img.icons8.com/color/96/microsoft-outlook-2019.png" alt="Outlook" loading="lazy" width="40" height="40">
-          <span>Outlook</span>
-        </div>
-
-        <div class="tool-item" title="Microsoft Teams">
-          <img src="https://img.icons8.com/color/96/microsoft-teams.png" alt="Teams" loading="lazy" width="40" height="40">
-          <span>Teams</span>
-        </div>
-
-        <div class="tool-item" title="OneDrive">
-          <img src="https://img.icons8.com/color/96/onedrive.png" alt="OneDrive" loading="lazy" width="40" height="40">
-          <span>OneDrive</span>
-        </div>
-
-        <div class="tool-item" title="Microsoft Word">
-          <img src="https://img.icons8.com/color/96/microsoft-word-2019.png" alt="Word" loading="lazy" width="40" height="40">
-          <span>Word</span>
-        </div>
-
-        <div class="tool-item" title="Microsoft Excel">
-          <img src="https://img.icons8.com/color/96/microsoft-excel-2019.png" alt="Excel" loading="lazy" width="40" height="40">
-          <span>Excel</span>
-        </div>
-
-        <div class="tool-item" title="PowerShell">
-          <img src="https://img.icons8.com/color/96/powershell.png" alt="PowerShell" loading="lazy" width="40" height="40">
-          <span>PowerShell</span>
-        </div>
-
-        <div class="tool-item" title="Microsoft Azure">
-          <img src="https://img.icons8.com/color/96/azure-1.png" alt="Azure" loading="lazy" width="40" height="40">
-          <span>Azure</span>
-        </div>
-
-        <div class="tool-item" title="Windows Server">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Windows_logo_-_2012.svg/88px-Windows_logo_-_2012.svg.png" alt="Windows Server" loading="lazy" width="40" height="40">
-          <span>Windows Server</span>
-        </div>
-
-        <div class="tool-item" title="Google Drive">
-          <img src="https://img.icons8.com/color/96/google-drive.png" alt="Google Drive" loading="lazy" width="40" height="40">
-          <span>Google Drive</span>
-        </div>
-
-        <div class="tool-item" title="Google Chrome">
-          <img src="https://img.icons8.com/color/96/chrome.png" alt="Chrome" loading="lazy" width="40" height="40">
-          <span>Chrome</span>
-        </div>
-
-        <div class="tool-item" title="Firefox">
-          <img src="https://img.icons8.com/color/96/firefox.png" alt="Firefox" loading="lazy" width="40" height="40">
-          <span>Firefox</span>
-        </div>
-
-        <div class="tool-item" title="AnyDesk">
-          <img src="https://img.icons8.com/color/96/anydesk.png" alt="AnyDesk" loading="lazy" width="40" height="40">
-          <span>AnyDesk</span>
-        </div>
-
-        <div class="tool-item" title="Stripe">
-          <img src="https://img.icons8.com/color/96/stripe.png" alt="Stripe" loading="lazy" width="40" height="40">
-          <span>Stripe</span>
-        </div>
-
-      </div>
-    </div>
-  </section>
 
   <!-- ═══ ENGAGEMENTS ═══ -->
-  <section class="section section-dark section-engagements" id="engagements">
+  <section class="section section-engagements" id="engagements">
     <div class="wrap">
-
-      <div class="sec-header reveal" style="text-align:center; max-width: 540px; margin-inline: auto; margin-bottom: 64px;">
-        <p class="eyebrow" style="color: var(--violet-lt);">Nos engagements</p>
-        <h2 class="t-h2" style="color: #fff;">Ce qu'on vous promet,<br><em style="color: rgba(255,255,255,0.3);">et comment on le tient</em></h2>
+      <div class="sec-header center reveal" style="margin-bottom:56px;">
+        <p class="eyebrow eyebrow-white">Nos engagements</p>
+        <h2 class="t-h2 t-h2-dark" style="margin-top:10px;">Ce qu'on vous promet,<br><em>et comment on le tient</em></h2>
       </div>
-
       <div class="eng-grid">
-
         <div class="eng-item reveal reveal-d1">
           <div class="eng-num">01</div>
           <div class="eng-title">Rien sans votre accord</div>
-          <div class="eng-desc">Le diagnostic ne modifie rien. L'intervention ne commence qu'après votre validation du devis et votre paiement. Toute action non prévue nécessite une nouvelle validation.</div>
+          <div class="eng-desc">Le diagnostic ne modifie rien. L'intervention ne commence qu'après votre validation et votre paiement.</div>
         </div>
-
         <div class="eng-item reveal reveal-d2">
           <div class="eng-num">02</div>
           <div class="eng-title">Réversibilité totale</div>
-          <div class="eng-desc">Avant chaque intervention, un point de restauration système est créé automatiquement. Si quelque chose ne se passe pas comme prévu, on revient en arrière — complètement.</div>
+          <div class="eng-desc">Avant chaque intervention, un point de restauration système est créé. Si quelque chose ne va pas, on revient en arrière.</div>
         </div>
-
         <div class="eng-item reveal reveal-d3">
           <div class="eng-num">03</div>
           <div class="eng-title">Traçabilité complète</div>
-          <div class="eng-desc">Chaque action est enregistrée et vous est communiquée dans le rapport final. Vous savez exactement ce qui a été fait, dans quel ordre, et pourquoi.</div>
+          <div class="eng-desc">Chaque action est enregistrée. Vous recevez le rapport détaillé à la fin — ce qui a été fait, dans quel ordre, pourquoi.</div>
         </div>
-
         <div class="eng-item reveal reveal-d1">
           <div class="eng-num">04</div>
           <div class="eng-title">Connexion sécurisée</div>
-          <div class="eng-desc">Les connexions à distance sont chiffrées. L'accès à votre machine se ferme automatiquement à la fin de la mission. Aucun accès résiduel, aucune donnée conservée.</div>
+          <div class="eng-desc">Chiffrement de bout en bout. Accès à votre machine fermé automatiquement. Aucune donnée conservée après l'intervention.</div>
         </div>
-
         <div class="eng-item reveal reveal-d2">
           <div class="eng-num">05</div>
-          <div class="eng-title">Satisfait ou remboursé</div>
-          <div class="eng-desc">Si votre problème n'est pas résolu, vous ne payez pas. Si l'intervention ne donne pas le résultat attendu, vous êtes intégralement remboursé.</div>
+          <div class="eng-title eng-title-green">Satisfait ou remboursé</div>
+          <div class="eng-desc">Problème non résolu = rien à payer. Sans délai, sans discussion. C'est notre engagement le plus important.</div>
         </div>
-
         <div class="eng-item reveal reveal-d3">
           <div class="eng-num">06</div>
           <div class="eng-title">Disponible en permanence</div>
-          <div class="eng-desc">Le service est accessible 24 heures sur 24, 7 jours sur 7. Pas de rendez-vous à planifier, pas d'horaires d'ouverture à respecter. Vous décrivez, on s'occupe du reste.</div>
+          <div class="eng-desc">24h/24, 7j/7. Pas de plage horaire imposée. Vous choisissez le moment qui vous convient.</div>
         </div>
-
       </div>
-
     </div>
   </section>
+
+
+  <!-- ═══ OUTILS ═══ -->
+  <section class="section-tools" id="outils">
+    <div class="wrap">
+      <div class="tools-header reveal">
+        <p class="eyebrow">Technologies</p>
+        <h2 class="t-h2" style="margin-top:10px; margin-bottom:8px;">Tout ce que vous utilisez,<br><em>on le maîtrise</em></h2>
+      </div>
+      <div class="tools-readout reveal">
+        <div class="tools-readout-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 12l2 2 4-4"/><path d="M21 12c0-4.97-4.03-9-9-9S3 7.03 3 12s4.03 9 9 9 9-4.03 9-9z"/></svg>
+        </div>
+        <div class="tools-readout-text">
+          <div class="tools-readout-label">Compatibilité vérifiée</div>
+          <div class="tools-readout-value">15 outils et environnements maîtrisés</div>
+        </div>
+        <div class="tools-readout-dot" aria-hidden="true"></div>
+      </div>
+    </div>
+    <div class="marquee-container" aria-label="Outils maîtrisés" role="list">
+      <div class="marquee-track" id="marquee-track" aria-hidden="true">
+        <div class="tool-item" title="Windows 11"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Windows_logo_-_2012.svg/88px-Windows_logo_-_2012.svg.png" alt="Windows 11" loading="lazy" width="36" height="36"><span>Windows 11</span></div>
+        <div class="tool-item" title="Microsoft 365"><img src="https://img.icons8.com/color/96/microsoft-365-2019.png" alt="Microsoft 365" loading="lazy" width="36" height="36"><span>Microsoft 365</span></div>
+        <div class="tool-item" title="Outlook"><img src="https://img.icons8.com/color/96/microsoft-outlook-2019.png" alt="Outlook" loading="lazy" width="36" height="36"><span>Outlook</span></div>
+        <div class="tool-item" title="Teams"><img src="https://img.icons8.com/color/96/microsoft-teams.png" alt="Teams" loading="lazy" width="36" height="36"><span>Teams</span></div>
+        <div class="tool-item" title="OneDrive"><img src="https://img.icons8.com/color/96/onedrive.png" alt="OneDrive" loading="lazy" width="36" height="36"><span>OneDrive</span></div>
+        <div class="tool-item" title="Word"><img src="https://img.icons8.com/color/96/microsoft-word-2019.png" alt="Word" loading="lazy" width="36" height="36"><span>Word</span></div>
+        <div class="tool-item" title="Excel"><img src="https://img.icons8.com/color/96/microsoft-excel-2019.png" alt="Excel" loading="lazy" width="36" height="36"><span>Excel</span></div>
+        <div class="tool-item" title="PowerShell"><img src="https://img.icons8.com/color/96/powershell.png" alt="PowerShell" loading="lazy" width="36" height="36"><span>PowerShell</span></div>
+        <div class="tool-item" title="Azure"><img src="https://img.icons8.com/color/96/azure-1.png" alt="Azure" loading="lazy" width="36" height="36"><span>Azure</span></div>
+        <div class="tool-item" title="Google Drive"><img src="https://img.icons8.com/color/96/google-drive.png" alt="Google Drive" loading="lazy" width="36" height="36"><span>Google Drive</span></div>
+        <div class="tool-item" title="Chrome"><img src="https://img.icons8.com/color/96/chrome.png" alt="Chrome" loading="lazy" width="36" height="36"><span>Chrome</span></div>
+        <div class="tool-item" title="Firefox"><img src="https://img.icons8.com/color/96/firefox.png" alt="Firefox" loading="lazy" width="36" height="36"><span>Firefox</span></div>
+        <div class="tool-item" title="AnyDesk"><img src="https://img.icons8.com/color/96/anydesk.png" alt="AnyDesk" loading="lazy" width="36" height="36"><span>AnyDesk</span></div>
+        <div class="tool-item" title="Stripe"><img src="https://img.icons8.com/color/96/stripe.png" alt="Stripe" loading="lazy" width="36" height="36"><span>Stripe</span></div>
+        <div class="tool-item" title="Windows 10"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Windows_logo_-_2012.svg/88px-Windows_logo_-_2012.svg.png" alt="Windows 10" loading="lazy" width="36" height="36"><span>Windows 10</span></div>
+        <!-- Duplicate for seamless loop -->
+        <div class="tool-item" aria-hidden="true" title="Windows 11"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Windows_logo_-_2012.svg/88px-Windows_logo_-_2012.svg.png" alt="" loading="lazy" width="36" height="36"><span>Windows 11</span></div>
+        <div class="tool-item" aria-hidden="true" title="Microsoft 365"><img src="https://img.icons8.com/color/96/microsoft-365-2019.png" alt="" loading="lazy" width="36" height="36"><span>Microsoft 365</span></div>
+        <div class="tool-item" aria-hidden="true" title="Outlook"><img src="https://img.icons8.com/color/96/microsoft-outlook-2019.png" alt="" loading="lazy" width="36" height="36"><span>Outlook</span></div>
+        <div class="tool-item" aria-hidden="true" title="Teams"><img src="https://img.icons8.com/color/96/microsoft-teams.png" alt="" loading="lazy" width="36" height="36"><span>Teams</span></div>
+        <div class="tool-item" aria-hidden="true" title="OneDrive"><img src="https://img.icons8.com/color/96/onedrive.png" alt="" loading="lazy" width="36" height="36"><span>OneDrive</span></div>
+        <div class="tool-item" aria-hidden="true" title="Word"><img src="https://img.icons8.com/color/96/microsoft-word-2019.png" alt="" loading="lazy" width="36" height="36"><span>Word</span></div>
+        <div class="tool-item" aria-hidden="true" title="Excel"><img src="https://img.icons8.com/color/96/microsoft-excel-2019.png" alt="" loading="lazy" width="36" height="36"><span>Excel</span></div>
+        <div class="tool-item" aria-hidden="true" title="PowerShell"><img src="https://img.icons8.com/color/96/powershell.png" alt="" loading="lazy" width="36" height="36"><span>PowerShell</span></div>
+        <div class="tool-item" aria-hidden="true" title="Azure"><img src="https://img.icons8.com/color/96/azure-1.png" alt="" loading="lazy" width="36" height="36"><span>Azure</span></div>
+        <div class="tool-item" aria-hidden="true" title="Google Drive"><img src="https://img.icons8.com/color/96/google-drive.png" alt="" loading="lazy" width="36" height="36"><span>Google Drive</span></div>
+        <div class="tool-item" aria-hidden="true" title="Chrome"><img src="https://img.icons8.com/color/96/chrome.png" alt="" loading="lazy" width="36" height="36"><span>Chrome</span></div>
+        <div class="tool-item" aria-hidden="true" title="Firefox"><img src="https://img.icons8.com/color/96/firefox.png" alt="" loading="lazy" width="36" height="36"><span>Firefox</span></div>
+        <div class="tool-item" aria-hidden="true" title="AnyDesk"><img src="https://img.icons8.com/color/96/anydesk.png" alt="" loading="lazy" width="36" height="36"><span>AnyDesk</span></div>
+        <div class="tool-item" aria-hidden="true" title="Stripe"><img src="https://img.icons8.com/color/96/stripe.png" alt="" loading="lazy" width="36" height="36"><span>Stripe</span></div>
+        <div class="tool-item" aria-hidden="true" title="Windows 10"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Windows_logo_-_2012.svg/88px-Windows_logo_-_2012.svg.png" alt="" loading="lazy" width="36" height="36"><span>Windows 10</span></div>
+      </div>
+    </div>
+  </section>
+
 
   <!-- ═══ FAQ ═══ -->
-  <section class="section" id="faq">
+  <section class="section section-faq" id="faq">
     <div class="wrap">
-
-      <div class="sec-header reveal" style="text-align:center; max-width: 480px; margin-inline: auto; margin-bottom: 56px;">
+      <div class="sec-header center reveal" style="margin-bottom:48px;">
         <p class="eyebrow">FAQ</p>
-        <h2 class="t-h2">Questions fréquentes</h2>
+        <h2 class="t-h2" style="margin-top:10px;">Questions fréquentes</h2>
       </div>
-
-      <div class="faq-list reveal" style="max-width: 720px; margin-inline: auto;">
-
+      <div class="faq-list reveal">
         <details class="faq-item" id="faq-1">
           <summary>
+            <span class="faq-num">01</span>
             <span class="faq-q">Est-ce que quelque chose peut être fait sur mon PC sans mon accord ?</span>
-            <span class="faq-icon" aria-hidden="true"></span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg>
           </summary>
-          <div class="faq-a">Non, jamais. Le diagnostic est en lecture seule — il ne modifie rien. L'intervention ne commence que lorsque vous avez validé le devis et effectué le paiement. Si en cours d'intervention une action non prévue devient nécessaire, elle vous est soumise pour validation avant d'être exécutée.</div>
+          <div class="faq-a">Non, jamais. Le diagnostic est en lecture seule — il ne modifie rien. L'intervention ne commence que lorsque vous avez validé le devis et effectué le paiement. Si une action non prévue devient nécessaire, elle vous est soumise avant d'être exécutée.</div>
         </details>
-
         <details class="faq-item" id="faq-2">
           <summary>
+            <span class="faq-num">02</span>
             <span class="faq-q">Que se passe-t-il si le problème ne peut pas être résolu à distance ?</span>
-            <span class="faq-icon" aria-hidden="true"></span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg>
           </summary>
-          <div class="faq-a">Si le diagnostic indique que la solution nécessite une intervention physique (panne matérielle, composant défaillant), vous en êtes informé avant tout paiement — vous ne payez rien. Si le problème sort de ce que le service peut traiter à distance, vous recevez un compte-rendu complet avec les recommandations pour la suite.</div>
+          <div class="faq-a">Si le diagnostic indique que la solution nécessite une intervention physique, vous en êtes informé avant tout paiement — vous ne payez rien. Vous recevez un compte-rendu complet avec les recommandations pour la suite.</div>
         </details>
-
         <details class="faq-item" id="faq-3">
           <summary>
+            <span class="faq-num">03</span>
             <span class="faq-q">Comment fonctionne la connexion à mon ordinateur ? Est-ce sécurisé ?</span>
-            <span class="faq-icon" aria-hidden="true"></span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg>
           </summary>
-          <div class="faq-a">La connexion se fait via un outil de prise en main à distance sécurisé et chiffré. Vous autorisez la connexion d'un clic, vous pouvez voir en temps réel ce qui se passe, et vous pouvez la couper à tout moment. La connexion se ferme automatiquement à la fin de l'intervention. Aucun accès n'est conservé.</div>
+          <div class="faq-a">La connexion se fait via AnyDesk — un outil de prise en main sécurisé et chiffré. Vous voyez en temps réel ce qui se passe, et vous pouvez couper la connexion à tout moment. Elle se ferme automatiquement à la fin de l'intervention.</div>
         </details>
-
         <details class="faq-item" id="faq-4">
           <summary>
+            <span class="faq-num">04</span>
             <span class="faq-q">Quelle est la différence entre un dépannage et un service préventif ?</span>
-            <span class="faq-icon" aria-hidden="true"></span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg>
           </summary>
-          <div class="faq-a">Un dépannage, c'est quand quelque chose ne fonctionne plus et qu'on le répare. Un service préventif, c'est quand tout fonctionne encore — mais on vérifie que ça va durer. Le Bilan santé PC optimise avant les problèmes. La Vérification sauvegarde confirme que vos données sont vraiment protégées. L'Audit sécurité identifie les failles avant qu'elles soient exploitées. Aucun de ces services n'est un abonnement.</div>
+          <div class="faq-a">Un dépannage, c'est quand quelque chose ne fonctionne plus — on le répare. Un service préventif, c'est quand tout fonctionne encore — on vérifie que ça va durer. Aucun de ces services n'est un abonnement.</div>
         </details>
-
         <details class="faq-item" id="faq-5">
           <summary>
+            <span class="faq-num">05</span>
             <span class="faq-q">Le même problème peut-il réapparaître après l'intervention ?</span>
-            <span class="faq-icon" aria-hidden="true"></span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg>
           </summary>
-          <div class="faq-a">Si le même problème revient dans les 7 jours suivant l'intervention, une vérification gratuite est effectuée pour identifier la cause et corriger ce qui n'a pas fonctionné comme prévu. Vous recevez également des recommandations dans le rapport final pour éviter que la situation se reproduise.</div>
+          <div class="faq-a">Si le même problème revient dans les 7 jours suivant l'intervention, une vérification gratuite est effectuée pour identifier la cause.</div>
         </details>
-
         <details class="faq-item" id="faq-6">
           <summary>
+            <span class="faq-num">06</span>
             <span class="faq-q">Quels moyens de paiement acceptez-vous ?</span>
-            <span class="faq-icon" aria-hidden="true"></span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg>
           </summary>
-          <div class="faq-a">Nous acceptons les cartes bancaires via Stripe (Visa, Mastercard, American Express). Un lien de paiement sécurisé vous est envoyé après validation du devis. Vous ne payez qu'à ce moment-là — jamais avant de voir et d'accepter ce qui sera fait.</div>
+          <div class="faq-a">Cartes bancaires via Stripe (Visa, Mastercard, American Express). Un lien de paiement sécurisé vous est envoyé après validation du devis. Vous ne payez qu'à ce moment-là.</div>
         </details>
-
       </div>
     </div>
   </section>
 
-  <!-- ═══ CTA ═══ -->
-  <section class="cta-band" id="contact">
-    <div class="cta-band-inner">
-      <div class="wrap">
-        <div class="reveal" style="text-align: center; max-width: 560px; margin-inline: auto;">
-          <h2 class="t-h2">Une question ? Un problème ?</h2>
-          <p class="t-body">Décrivez votre situation — diagnostic rapide, devis transparent, intervention disponible à toute heure.</p>
-          <div class="cta-btns" style="margin-top: 44px;">
-            <a href="service-form.html" class="btn btn-inverse btn-lg" id="cta-start">Décrire mon problème</a>
-            <button type="button" class="btn-cta-glass btn-lg" id="cta-contact" onclick="openContactModal()">Poser une question</button>
-          </div>
+
+  <!-- ═══ FONDATEUR ═══ -->
+  <section class="section section-founder" id="fondateur">
+    <div class="wrap">
+      <div class="founder-card reveal">
+        <div class="founder-avatar" aria-hidden="true">
+          <div class="founder-avatar-placeholder">Photo à<br>venir</div>
+        </div>
+        <blockquote class="founder-quote">
+          "J'ai monté BeneIT parce que j'en avais assez de voir des proches payer trop cher pour des interventions opaques. La règle ici est simple : on ne fait rien sans vous l'expliquer, et on ne vous facture rien si votre problème n'est pas résolu."
+        </blockquote>
+        <div class="founder-sig">
+          <div class="founder-name">[Prénom du fondateur]</div>
+          <div class="founder-role">Fondateur, BeneIT</div>
+        </div>
+        <div class="founder-placeholder-notice" role="note">
+          Section à compléter avec votre vraie photo et citation avant mise en ligne.
         </div>
       </div>
     </div>
   </section>
 
+
+  <!-- ═══ CTA FINALE ═══ -->
+  <section class="cta-band" id="contact">
+    <div class="wrap">
+      <div class="reveal" style="text-align:center; max-width:540px; margin-inline:auto;">
+        <h2 class="t-h2 t-h2-dark">Une question ?<br><em>Un problème ?</em></h2>
+        <p class="t-body">Décrivez votre situation — diagnostic rapide, devis transparent, intervention disponible à toute heure.</p>
+        <div class="cta-btns">
+          <a href="service-form.html" class="btn btn-primary btn-lg" id="cta-start">Décrire mon problème</a>
+          <button type="button" class="btn-cta-glass btn-lg" id="cta-contact" onclick="openContactModal()">Poser une question</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
   <!-- ═══ FOOTER ═══ -->
-  <footer class="footer">
+  <footer class="footer" role="contentinfo">
     <div class="footer-inner">
-      <span class="footer-logo">Bene<strong>IT</strong></span>
-      <nav class="footer-links" aria-label="Liens légaux">
-        <button type="button" class="footer-link-btn" onclick="openContactModal()">Contact</button>
-        <a href="legal.html#mentions">Mentions légales</a>
-        <a href="legal.html#confidentialite">Politique de confidentialité</a>
-      </nav>
-      <span class="footer-copy">&copy; 2026 BeneIT</span>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo-link">Bene<strong>IT</strong></a>
+          <p class="footer-tagline">Assistance informatique 100% à distance — disponible 24h/24, 7j/7.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <nav class="footer-col-links" aria-label="Services">
+            <a href="service-form.html?service=optimisation-pc">Optimisation PC</a>
+            <a href="service-form.html?service=suppression-virus">Suppression de virus</a>
+            <a href="service-form.html?service=microsoft365">Support Microsoft 365</a>
+            <a href="service-form.html?service=diagnostic">Diagnostic système</a>
+          </nav>
+        </div>
+        <div class="footer-col">
+          <h4>Entreprise</h4>
+          <nav class="footer-col-links" aria-label="Entreprise">
+            <a href="#processus">Comment ça marche</a>
+            <a href="#engagements">Nos engagements</a>
+            <a href="#faq">FAQ</a>
+            <button type="button" onclick="openContactModal()">Contact</button>
+          </nav>
+        </div>
+        <div class="footer-col">
+          <h4>Légal</h4>
+          <nav class="footer-col-links" aria-label="Légal">
+            <a href="legal.html#mentions">Mentions légales</a>
+            <a href="legal.html#confidentialite">Confidentialité</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">&copy; 2026 BeneIT. Tous droits réservés.</span>
+        <nav class="footer-legal" aria-label="Liens légaux">
+          <a href="legal.html#mentions">Mentions légales</a>
+          <a href="legal.html#confidentialite">Confidentialité</a>
+        </nav>
+      </div>
     </div>
   </footer>
 
-  <!-- ═══ SCRIPTS ═══ -->
-  <script>
-    // ─── DecryptedText ─────────────────────────────────
-    (function () {
-      const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%';
-      function animateDecrypt(el, delay) {
-        const text = el.dataset.text || '';
-        el.textContent = text.split('').map(c => c === ' ' ? ' ' : CHARS[Math.floor(Math.random() * CHARS.length)]).join('');
-        setTimeout(() => {
-          const revealed = new Set();
-          const iv = setInterval(() => {
-            const next = revealed.size;
-            if (next >= text.length) { clearInterval(iv); el.textContent = text; return; }
-            revealed.add(next);
-            el.textContent = text.split('').map((c, i) => c === ' ' ? ' ' : revealed.has(i) ? c : CHARS[Math.floor(Math.random() * CHARS.length)]).join('');
-          }, 36);
-        }, delay || 0);
-      }
-      window.addEventListener('DOMContentLoaded', () => {
-        document.querySelectorAll('.dt-target').forEach(el => animateDecrypt(el, parseInt(el.dataset.delay) || 200));
-      });
-    })();
-
-    // ─── Nav scroll ─────────────────────────────────────
-    const mainNav = document.getElementById('main-nav');
-    window.addEventListener('scroll', () => mainNav.classList.toggle('scrolled', window.scrollY > 20), { passive: true });
-
-    // ─── Burger ─────────────────────────────────────────
-    const burger = document.getElementById('burger');
-    const mobNav = document.getElementById('mob-nav');
-    burger.addEventListener('click', () => {
-      const open = mobNav.classList.toggle('open');
-      burger.classList.toggle('open', open);
-      burger.setAttribute('aria-expanded', open);
-    });
-    document.querySelectorAll('.mob-link').forEach(l => l.addEventListener('click', () => {
-      mobNav.classList.remove('open'); burger.classList.remove('open'); burger.setAttribute('aria-expanded', false);
-    }));
-
-    // ─── Scroll reveal ───────────────────────────────────
-    const ro = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
-    }, { threshold: 0.06, rootMargin: '0px 0px -24px 0px' });
-    document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
-
-    // ─── Service card glow ────────────────────────────────
-    document.querySelectorAll('.service-ai-card').forEach(card => {
-      card.addEventListener('mousemove', (e) => {
-        const r = card.getBoundingClientRect();
-        card.style.setProperty('--card-glow-x', `${((e.clientX - r.left) / r.width) * 100}%`);
-        card.style.setProperty('--card-glow-y', `${((e.clientY - r.top) / r.height) * 100}%`);
-        card.style.setProperty('--card-glow-intensity', '1');
-      });
-      card.addEventListener('mouseleave', () => card.style.setProperty('--card-glow-intensity', '0'));
-    });
-  </script>
 
   <!-- ═══ MODAL CONTACT ═══ -->
   <div id="contact-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
@@ -682,40 +644,193 @@
           <p class="eyebrow" style="margin-bottom:6px;">Contact</p>
           <h2 class="modal-title" id="modal-title">Envoyez-nous un message</h2>
         </div>
-        <button class="modal-close" onclick="closeContactModal()" aria-label="Fermer">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path d="M2 2l12 12M14 2L2 14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-          </svg>
+        <button class="modal-close" id="modal-close-btn" onclick="closeContactModal()" aria-label="Fermer">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" focusable="false"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
         </button>
       </div>
+      <!-- Remplacez YOUR_FORM_ID par votre ID Formspree -->
       <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
-        <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off">
+        <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
         <div class="modal-form-body">
           <div class="f-row">
             <div class="f-group">
-              <label class="f-label" for="m-nom">Nom <sup>*</sup></label>
+              <label class="f-label" for="m-nom">Nom <sup aria-hidden="true">*</sup></label>
               <input class="f-input" type="text" id="m-nom" name="nom" placeholder="Votre nom" required autocomplete="family-name">
             </div>
             <div class="f-group">
-              <label class="f-label" for="m-email">Email <sup>*</sup></label>
+              <label class="f-label" for="m-email">Email <sup aria-hidden="true">*</sup></label>
               <input class="f-input" type="email" id="m-email" name="email" placeholder="vous@exemple.fr" required autocomplete="email">
             </div>
           </div>
           <div class="f-group">
-            <label class="f-label" for="m-message">Message <sup>*</sup></label>
-            <textarea class="f-textarea" id="m-message" name="message" placeholder="Décrivez votre question ou votre problème..." required></textarea>
+            <label class="f-label" for="m-message">Message <sup aria-hidden="true">*</sup></label>
+            <textarea class="f-textarea" id="m-message" name="message" placeholder="Décrivez votre question..." required></textarea>
           </div>
-          <div id="modal-error" style="display:none; color:#ef4444; font-size:.82rem;"></div>
+          <div id="modal-error" role="alert" style="display:none; color:#ef4444; font-size:.82rem; margin-bottom:12px;"></div>
           <button type="submit" class="btn btn-primary" id="modal-submit" style="width:100%;">Envoyer le message</button>
-          <div class="f-success" id="modal-success" role="alert">
-            <strong>Message envoyé.</strong> Vous recevrez une réponse dans la journée.
-          </div>
+          <div class="f-success" id="modal-success" role="alert"><strong>Message envoyé.</strong> Réponse dans la journée.</div>
         </div>
       </form>
     </div>
   </div>
 
+
+  <!-- ═══ SCRIPTS ═══ -->
+  <script src="prices.js"></script>
   <script>
+    'use strict';
+
+    const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // ─── DecryptedText hero ────────────────────────────────────
+    (function () {
+      const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      function animateDecrypt(el, delay) {
+        const text = el.dataset.text || '';
+        if (REDUCED) { el.textContent = text; return; }
+        el.textContent = text.split('').map(c => c === ' ' ? ' ' : CHARS[Math.floor(Math.random() * CHARS.length)]).join('');
+        setTimeout(() => {
+          let revealed = 0;
+          const iv = setInterval(() => {
+            if (revealed >= text.length) { clearInterval(iv); el.textContent = text; return; }
+            revealed++;
+            el.textContent = text.split('').map((c, i) => c === ' ' ? ' ' : i < revealed ? c : CHARS[Math.floor(Math.random() * CHARS.length)]).join('');
+          }, 32);
+        }, delay || 0);
+      }
+      window.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.dt-target').forEach(el => animateDecrypt(el, parseInt(el.dataset.delay) || 150));
+      });
+    })();
+
+    // ─── Monitor checks ────────────────────────────────────────
+    (function () {
+      const checks = document.querySelectorAll('.monitor-check');
+      if (REDUCED) { checks.forEach(el => el.classList.add('ready')); return; }
+      checks.forEach((el, i) => setTimeout(() => el.classList.add('ready'), 2500 + i * 650));
+    })();
+
+    // ─── Nav scroll ────────────────────────────────────────────
+    const mainNav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      mainNav.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    // ─── Burger ────────────────────────────────────────────────
+    const burger = document.getElementById('burger');
+    const mobNav = document.getElementById('mob-nav');
+    burger.addEventListener('click', () => {
+      const open = mobNav.classList.toggle('open');
+      burger.classList.toggle('open', open);
+      burger.setAttribute('aria-expanded', open);
+      burger.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+    });
+    document.querySelectorAll('.mob-link').forEach(l => l.addEventListener('click', () => {
+      mobNav.classList.remove('open');
+      burger.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+    }));
+    document.addEventListener('click', e => {
+      if (!mobNav.contains(e.target) && !burger.contains(e.target)) {
+        mobNav.classList.remove('open');
+        burger.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // ─── Scroll reveal ─────────────────────────────────────────
+    if (!REDUCED) {
+      const ro = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
+      }, { threshold: 0.06, rootMargin: '0px 0px -20px 0px' });
+      document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+    } else {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+    }
+
+    // ─── Services grid ─────────────────────────────────────────
+    (function renderServices() {
+      const grid = document.getElementById('services-grid');
+      if (!grid || typeof window.BENEIT_SERVICES === 'undefined') return;
+      const services = window.BENEIT_SERVICES;
+      const delays = ['reveal-d1','reveal-d2','reveal-d3'];
+      let i = 0;
+      for (const [key, svc] of Object.entries(services)) {
+        const card = document.createElement('a');
+        card.href = `service-form.html?service=${key}`;
+        card.className = `service-ai-card reveal ${delays[i % 3]}`;
+        card.id = `card-${key}`;
+        card.innerHTML = `
+          <div class="service-ai-card-inner">
+            <div class="service-ai-title">${svc.name}</div>
+            <div class="service-ai-desc">${svc.description}</div>
+            <div class="service-ai-examples">${svc.tags.map(t => `<span class="service-ai-tag">${t}</span>`).join('')}</div>
+            <div class="service-ai-meta">
+              <span class="service-ai-duration">${svc.duration}</span>
+              <span class="service-ai-price">dès ${svc.basePrice} €</span>
+            </div>
+          </div>`;
+        grid.appendChild(card);
+        if (!REDUCED) {
+          const ro2 = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro2.unobserve(e.target); } });
+          }, { threshold: 0.06 });
+          ro2.observe(card);
+        } else { card.classList.add('visible'); }
+        i++;
+      }
+    })();
+
+    // ─── Tilt 3D sur les service cards (MDX-inspired) ──────────
+    (function initCardTilt() {
+      if (REDUCED) return;
+      document.addEventListener('mousemove', e => {
+        const card = e.target.closest('.service-ai-card');
+        if (!card) return;
+        const r = card.getBoundingClientRect();
+        const cx = e.clientX - r.left;
+        const cy = e.clientY - r.top;
+        const xPct = (cx / r.width - 0.5) * 2;   // -1 à 1
+        const yPct = (cy / r.height - 0.5) * 2;  // -1 à 1
+        const tiltX = yPct * -6;   // max 6deg
+        const tiltY = xPct * 6;
+
+        card.style.transform = `perspective(800px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateZ(4px)`;
+        card.style.setProperty('--card-glow-x', `${(cx / r.width) * 100}%`);
+        card.style.setProperty('--card-glow-y', `${(cy / r.height) * 100}%`);
+        card.style.setProperty('--card-glow-intensity', '1');
+      }, { passive: true });
+
+      document.addEventListener('mouseleave', e => {
+        const card = e.target.closest('.service-ai-card');
+        if (!card) return;
+        card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+        card.style.setProperty('--card-glow-intensity', '0');
+      }, true);
+    })();
+
+    // ─── Counter animation pour stats bar ──────────────────────
+    (function initCounters() {
+      if (REDUCED) return;
+      const el = document.getElementById('stat-1');
+      if (!el) return;
+      const target = parseInt(el.dataset.target) || 15;
+      const ro = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (!e.isIntersecting) return;
+          ro.unobserve(e.target);
+          let current = 0;
+          const iv = setInterval(() => {
+            current++;
+            el.textContent = current + ' min';
+            if (current >= target) { clearInterval(iv); el.textContent = target + ' min'; }
+          }, 60);
+        });
+      }, { threshold: 0.5 });
+      ro.observe(el);
+    })();
+
+    // ─── Modal contact ─────────────────────────────────────────
     const modal = document.getElementById('contact-modal');
     function openContactModal() {
       modal.hidden = false;
@@ -726,23 +841,30 @@
     function closeContactModal() {
       modal.classList.remove('open');
       document.body.style.overflow = '';
-      setTimeout(() => { modal.hidden = true; }, 280);
+      setTimeout(() => { modal.hidden = true; }, 300);
     }
     modal.addEventListener('click', e => { if (e.target === modal) closeContactModal(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.hidden) closeContactModal(); });
+    modal.addEventListener('keydown', e => {
+      if (e.key !== 'Tab') return;
+      const focusable = [...modal.querySelectorAll('button, input, textarea, a[href]')];
+      const first = focusable[0]; const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+
     document.getElementById('contact-form').addEventListener('submit', async function (e) {
       e.preventDefault();
       const btn = document.getElementById('modal-submit');
       const err = document.getElementById('modal-error');
       const suc = document.getElementById('modal-success');
       err.style.display = 'none';
-      btn.disabled = true;
-      btn.textContent = 'Envoi en cours…';
+      btn.disabled = true; btn.textContent = 'Envoi en cours…';
       try {
         const res = await fetch(this.action, { method: 'POST', body: new FormData(this), headers: { 'Accept': 'application/json' } });
         if (res.ok) { this.reset(); suc.style.display = 'block'; btn.style.display = 'none'; }
-        else { err.textContent = 'Une erreur est survenue. Veuillez réessayer.'; err.style.display = 'block'; btn.disabled = false; btn.textContent = 'Envoyer le message'; }
-      } catch { err.textContent = 'Erreur réseau. Vérifiez votre connexion.'; err.style.display = 'block'; btn.disabled = false; btn.textContent = 'Envoyer le message'; }
+        else { err.textContent = 'Erreur. Veuillez réessayer.'; err.style.display = 'block'; btn.disabled = false; btn.textContent = 'Envoyer le message'; }
+      } catch { err.textContent = 'Erreur réseau.'; err.style.display = 'block'; btn.disabled = false; btn.textContent = 'Envoyer le message'; }
     });
   </script>
 
