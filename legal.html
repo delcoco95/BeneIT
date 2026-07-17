@@ -1,184 +1,271 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mentions légales — BeneIT</title>
-<meta name="description" content="Mentions légales et politique de confidentialité du site BeneIT.">
-<meta name="robots" content="noindex, follow">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mentions légales &amp; Confidentialité — BeneIT</title>
+  <meta name="description" content="Mentions légales et politique de confidentialité du service BeneIT — assistance informatique à distance.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Styles locaux — légal */
+    .page-head {
+      padding-top: calc(64px + 64px);
+      padding-bottom: 48px;
+      background: var(--off);
+      border-bottom: 1px solid var(--border);
+    }
+    .page-head .eyebrow { margin-bottom: 10px; }
+    .page-head h1 { font-size: clamp(1.6rem, 3vw, 2.4rem); }
+
+    .legal-nav {
+      display: flex; gap: 8px; flex-wrap: wrap; margin-top: 24px;
+    }
+    .legal-nav a {
+      font-size: .8rem; font-weight: 500;
+      color: var(--sub); padding: 7px 16px;
+      border: 1px solid var(--border); border-radius: var(--r-pill);
+      background: var(--white); transition: all var(--t-fast);
+    }
+    .legal-nav a:hover, .legal-nav a.active {
+      background: var(--violet-dim); border-color: rgba(123,108,246,0.3);
+      color: var(--violet);
+    }
+
+    .legal-body {
+      max-width: 700px;
+      margin: 64px auto 80px;
+      font-size: .95rem;
+      font-weight: 300;
+      color: var(--sub);
+      line-height: 1.8;
+    }
+    .legal-body h2 {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 1.1rem; font-weight: 500;
+      color: var(--ink); letter-spacing: -.01em;
+      margin-top: 40px; margin-bottom: 10px;
+    }
+    .legal-body h2:first-child { margin-top: 0; }
+    .legal-body p { margin-bottom: 14px; }
+    .legal-body ul {
+      list-style: none; padding: 0; margin: 0 0 14px 0;
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .legal-body ul li { padding-left: 16px; position: relative; }
+    .legal-body ul li::before {
+      content: '';
+      position: absolute; left: 0; top: 9px;
+      width: 5px; height: 5px;
+      border-radius: 50%; background: var(--violet);
+    }
+    .legal-body a { color: var(--violet); text-decoration: underline; text-underline-offset: 3px; }
+    .legal-body a:hover { color: var(--violet-lt); }
+    .legal-section-break {
+      margin-top: 64px;
+      padding-top: 48px;
+      border-top: 1px solid var(--border);
+    }
+    .legal-section-break > h1 {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      font-weight: 200; letter-spacing: -.03em;
+      color: var(--ink); margin-bottom: 32px;
+    }
+  </style>
 </head>
 <body>
 
-<!-- ═══════════════ NAV ═══════════════ -->
-<nav class="nav">
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo">Bene<strong>IT</strong></a>
-    <ul class="nav-links">
-      <li><a href="index.html#services">Services</a></li>
-      <li><a href="index.html#tarifs">Tarifs</a></li>
-      <li><a href="index.html#expertise">Expertise</a></li>
-      <li><a href="index.html#faq">FAQ</a></li>
-    </ul>
-    <a href="rendez-vous.html" class="nav-cta">Prendre rendez-vous</a>
-    <button class="nav-burger" id="burger" aria-label="Menu" aria-expanded="false">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+  <!-- ═══ NAV ═══ -->
+  <nav class="nav" id="main-nav" role="navigation" aria-label="Navigation principale">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="BeneIT — Accueil">Bene<strong>IT</strong></a>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html#processus">Comment ça marche</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#engagements">Engagements</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+      </ul>
+      <a href="service-form.html" class="nav-cta">Décrire mon problème</a>
+      <button class="nav-burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mob-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav-mobile" id="mob-nav" role="navigation" aria-label="Menu mobile">
+    <a href="index.html#processus" class="mob-link">Comment ça marche</a>
+    <a href="index.html#services" class="mob-link">Services</a>
+    <a href="index.html#engagements" class="mob-link">Engagements</a>
+    <a href="index.html#faq" class="mob-link">FAQ</a>
+    <a href="service-form.html" class="nav-mobile-cta mob-link">Décrire mon problème</a>
   </div>
-</nav>
 
-<!-- Mobile nav -->
-<div class="nav-mobile" id="mob-nav" role="navigation">
-  <a href="index.html#services" class="mob-link">Services</a>
-  <a href="index.html#tarifs" class="mob-link">Tarifs</a>
-  <a href="index.html#expertise" class="mob-link">Expertise</a>
-  <a href="index.html#faq" class="mob-link">FAQ</a>
-  <a href="rendez-vous.html" class="nav-mobile-cta mob-link">Prendre rendez-vous</a>
-</div>
+  <!-- ═══ PAGE HEAD ═══ -->
+  <header class="page-head">
+    <div class="wrap">
+      <p class="eyebrow">Informations légales</p>
+      <h1 class="t-h2">Mentions légales &amp;<br><em>Confidentialité</em></h1>
+      <nav class="legal-nav" aria-label="Sections légales">
+        <a href="#mentions" id="nav-mentions">Mentions légales</a>
+        <a href="#confidentialite" id="nav-confidentialite">Politique de confidentialité</a>
+      </nav>
+    </div>
+  </header>
 
-<!-- ═══════════════ HEADER ═══════════════ -->
-<header class="page-head">
-  <div class="wrap">
-    <p class="eyebrow">Informations légales</p>
-    <h1 class="t-h2" style="margin-top:14px;">Mentions légales</h1>
-  </div>
-</header>
+  <!-- ═══ CONTENU ═══ -->
+  <main>
+    <div class="wrap">
+      <div class="legal-body">
 
-<!-- ═══════════════ CONTENU LÉGAL ═══════════════ -->
-<main>
-  <div class="wrap">
+        <!-- ── Mentions légales ── -->
+        <div id="mentions">
+          <h2>Éditeur du site</h2>
+          <p>
+            Le présent site est édité par :<br>
+            <strong>BeneIT</strong><br>
+            Activité d'assistance informatique exercée à titre individuel.<br>
+            Email : <a href="mailto:support@beneit.fr">support@beneit.fr</a>
+          </p>
 
-    <!-- Mentions légales -->
-    <div class="legal-body" id="mentions">
+          <h2>Hébergement</h2>
+          <p>
+            Le site est hébergé par <strong>GitHub Pages</strong> (GitHub, Inc. — 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis). Les conditions d'hébergement sont disponibles sur <a href="https://pages.github.com/" target="_blank" rel="noopener">pages.github.com</a>.
+          </p>
 
-      <h2>Éditeur du site</h2>
-      <p>
-        Le présent site est édité par :<br>
-        <strong>BeneIT</strong><br>
-        Activité d'assistance informatique exercée à titre individuel.<br>
-        Email : <a href="mailto:contact@beneit.fr" style="color:var(--navy);">contact@beneit.fr</a>
-      </p>
+          <h2>Propriété intellectuelle</h2>
+          <p>
+            L'ensemble des contenus présents sur ce site (textes, structure, design) est la propriété exclusive de BeneIT. Toute reproduction, représentation ou diffusion, en tout ou partie, est interdite sans autorisation préalable écrite.
+          </p>
 
-      <h2>Hébergement</h2>
-      <p>
-        Le site est hébergé par un prestataire tiers. Les coordonnées de l'hébergeur sont disponibles sur demande à l'adresse email ci-dessus.
-      </p>
+          <h2>Limitation de responsabilité</h2>
+          <p>
+            BeneIT s'efforce d'assurer l'exactitude et la mise à jour des informations publiées sur ce site. Toutefois, BeneIT ne peut garantir l'exactitude, la précision ou l'exhaustivité des informations mises à disposition et ne saurait être tenu responsable des erreurs ou omissions.
+          </p>
 
-      <h2>Propriété intellectuelle</h2>
-      <p>
-        L'ensemble des contenus présents sur ce site (textes, structure, design) est la propriété exclusive de BeneIT. Toute reproduction, représentation ou diffusion, en tout ou partie, est interdite sans autorisation préalable.
-      </p>
+          <h2>Droit applicable</h2>
+          <p>
+            Le présent site est soumis au droit français. En cas de litige, les tribunaux français seront seuls compétents.
+          </p>
+        </div>
 
-      <h2>Limitation de responsabilité</h2>
-      <p>
-        BeneIT s'efforce d'assurer l'exactitude et la mise à jour des informations publiées sur ce site. Toutefois, BeneIT ne peut garantir l'exactitude, la précision ou l'exhaustivité des informations mises à disposition.
-      </p>
+        <!-- ── Politique de confidentialité ── -->
+        <div class="legal-section-break" id="confidentialite">
+          <h1>Politique de confidentialité</h1>
 
-      <h2>Droit applicable</h2>
-      <p>
-        Le présent site est soumis au droit français. En cas de litige, les tribunaux français seront seuls compétents.
-      </p>
+          <h2>Données collectées</h2>
+          <p>Dans le cadre de la demande de service, BeneIT collecte les informations suivantes :</p>
+          <ul>
+            <li>Prénom</li>
+            <li>Adresse email</li>
+            <li>Description du problème informatique</li>
+            <li>Système d'exploitation et informations techniques nécessaires au diagnostic</li>
+          </ul>
+          <p>
+            <strong>Aucune donnée bancaire</strong> n'est collectée ni stockée par BeneIT. Les paiements sont traités directement par Stripe, certifié PCI-DSS.
+          </p>
 
-      <!-- Politique de confidentialité -->
-      <div class="legal-section-break" id="confidentialite">
-        <h1>Politique de confidentialité</h1>
+          <h2>Finalité du traitement</h2>
+          <p>Les données collectées sont utilisées exclusivement pour :</p>
+          <ul>
+            <li>Confirmer et organiser les interventions</li>
+            <li>Vous contacter dans le cadre du suivi de votre demande</li>
+            <li>Établir et transmettre le devis et le rapport d'intervention</li>
+          </ul>
 
-        <h2>Données collectées</h2>
-        <p>
-          Dans le cadre de la prise de rendez-vous, BeneIT collecte les informations suivantes :
-        </p>
-        <ul>
-          <li>Nom et prénom</li>
-          <li>Adresse email</li>
-          <li>Numéro de téléphone</li>
-          <li>Adresse postale</li>
-          <li>Description du problème informatique</li>
-        </ul>
+          <h2>Conservation des données</h2>
+          <p>
+            Les données sont conservées pour la durée nécessaire à la gestion de la relation client, et au maximum 3 ans à compter du dernier contact, conformément aux obligations légales françaises.
+          </p>
 
-        <h2>Finalité du traitement</h2>
-        <p>
-          Les données collectées sont utilisées exclusivement pour :
-        </p>
-        <ul>
-          <li>Confirmer et organiser les interventions</li>
-          <li>Vous contacter dans le cadre du suivi de votre demande</li>
-        </ul>
+          <h2>Partage des données</h2>
+          <p>
+            Aucune donnée personnelle n'est transmise, vendue ou louée à des tiers. Les données transitent uniquement par :
+          </p>
+          <ul>
+            <li><strong>Formspree</strong> — pour l'acheminement des formulaires de contact</li>
+            <li><strong>Stripe</strong> — pour le traitement sécurisé des paiements</li>
+            <li><strong>AnyDesk / TeamViewer</strong> — outil de connexion à distance utilisé uniquement pendant la durée de l'intervention</li>
+          </ul>
 
-        <h2>Conservation des données</h2>
-        <p>
-          Les données sont conservées pour la durée nécessaire à la gestion de la relation client, et au maximum 3 ans à compter du dernier contact.
-        </p>
+          <h2>Sécurité des données</h2>
+          <p>
+            La connexion à distance est chiffrée de bout en bout (AES-256). Aucune donnée de votre machine n'est stockée après la déconnexion. Vous conservez un accès complet à vos données à tout moment et pouvez couper la connexion à tout instant.
+          </p>
 
-        <h2>Partage des données</h2>
-        <p>
-          Aucune donnée personnelle n'est transmise, vendue ou louée à des tiers. Les données peuvent être transmises au prestataire de formulaire (Formspree) dans le strict cadre de l'acheminement de vos demandes.
-        </p>
+          <h2>Vos droits (RGPD)</h2>
+          <p>Conformément au Règlement Général sur la Protection des Données, vous disposez des droits suivants :</p>
+          <ul>
+            <li>Droit d'accès à vos données</li>
+            <li>Droit de rectification</li>
+            <li>Droit à l'effacement (« droit à l'oubli »)</li>
+            <li>Droit d'opposition au traitement</li>
+            <li>Droit à la portabilité des données</li>
+          </ul>
+          <p>Pour exercer ces droits, contactez-nous à : <a href="mailto:support@beneit.fr">support@beneit.fr</a></p>
 
-        <h2>Vos droits</h2>
-        <p>
-          Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez des droits suivants :
-        </p>
-        <ul>
-          <li>Droit d'accès à vos données</li>
-          <li>Droit de rectification</li>
-          <li>Droit à l'effacement</li>
-          <li>Droit d'opposition au traitement</li>
-        </ul>
-        <p>
-          Pour exercer ces droits, contactez-nous à : <a href="mailto:contact@beneit.fr" style="color:var(--navy);">contact@beneit.fr</a>
-        </p>
+          <h2>Cookies</h2>
+          <p>
+            Ce site n'utilise aucun cookie de traçage ou de profilage publicitaire. Le seul stockage local utilisé est <code>sessionStorage</code>, limité à la session en cours, pour sauvegarder temporairement votre avancement dans le formulaire de demande. Ces données sont supprimées dès la fermeture de l'onglet.
+          </p>
 
-        <h2>Cookies</h2>
-        <p>
-          Ce site n'utilise aucun cookie de traçage ou de profilage publicitaire. Aucune donnée de navigation n'est collectée à des fins analytiques ou commerciales.
-        </p>
+          <h2>Contact — Délégué à la protection des données</h2>
+          <p>
+            Pour toute question relative à vos données personnelles :<br>
+            <a href="mailto:support@beneit.fr">support@beneit.fr</a>
+          </p>
 
-        <h2>Contact</h2>
-        <p>
-          Pour toute question relative à vos données personnelles :<br>
-          <a href="mailto:contact@beneit.fr" style="color:var(--navy);">contact@beneit.fr</a>
-        </p>
+          <p style="margin-top:32px; font-size:.82rem; color:var(--muted);">
+            Dernière mise à jour : juillet 2026
+          </p>
+        </div>
+
       </div>
     </div>
+  </main>
 
-  </div>
-</main>
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-bottom">
+        <a href="index.html" class="footer-logo-link">Bene<strong style="color:var(--accent-lt);">IT</strong></a>
+        <nav class="footer-legal" aria-label="Liens légaux">
+          <a href="#mentions">Mentions légales</a>
+          <a href="#confidentialite">Confidentialité</a>
+        </nav>
+        <span class="footer-copy">&copy; 2026 BeneIT</span>
+      </div>
+    </div>
+  </footer>
 
-<!-- ═══════════════ FOOTER ═══════════════ -->
-<footer class="footer">
-  <div class="footer-inner">
-    <span class="footer-logo">Bene<strong>IT</strong></span>
-    <nav class="footer-links" aria-label="Liens légaux">
-      <a href="mailto:contact@beneit.fr" id="footer-contact">Contact</a>
-      <a href="legal.html#mentions" id="footer-mentions">Mentions légales</a>
-      <a href="legal.html#confidentialite" id="footer-confidentialite">Politique de confidentialité</a>
-    </nav>
-    <span class="footer-copy">&copy; 2026 BeneIT</span>
-  </div>
-</footer>
+  <script>
+    'use strict';
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20), { passive: true });
 
-<script>
-  const burger = document.getElementById('burger');
-  const mobNav = document.getElementById('mob-nav');
-  const mobLinks = document.querySelectorAll('.mob-link');
-
-  burger.addEventListener('click', () => {
-    const isOpen = mobNav.classList.toggle('open');
-    burger.classList.toggle('open', isOpen);
-    burger.setAttribute('aria-expanded', isOpen);
-  });
-
-  mobLinks.forEach(link => {
-    link.addEventListener('click', () => {
+    const burger = document.getElementById('burger');
+    const mobNav = document.getElementById('mob-nav');
+    burger.addEventListener('click', () => {
+      const open = mobNav.classList.toggle('open');
+      burger.classList.toggle('open', open);
+      burger.setAttribute('aria-expanded', open);
+    });
+    document.querySelectorAll('.mob-link').forEach(l => l.addEventListener('click', () => {
       mobNav.classList.remove('open');
       burger.classList.remove('open');
       burger.setAttribute('aria-expanded', 'false');
-    });
-  });
-</script>
+    }));
+
+    // Active pill en fonction du hash
+    function setActivePill() {
+      const hash = window.location.hash || '#mentions';
+      document.querySelectorAll('.legal-nav a').forEach(a => a.classList.toggle('active', a.getAttribute('href') === hash));
+    }
+    window.addEventListener('hashchange', setActivePill);
+    setActivePill();
+  </script>
 </body>
 </html>
