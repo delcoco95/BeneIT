@@ -1,0 +1,163 @@
+[
+  {
+    "id": "ce6cf359-f600-4969-a852-588534574e9b",
+    "profile": "particulier",
+    "answers": [
+      {
+        "id": "maj",
+        "optionIndex": 0
+      },
+      {
+        "id": "av",
+        "optionIndex": 1
+      },
+      {
+        "id": "mdp",
+        "optionIndex": 2
+      },
+      {
+        "id": "sauv",
+        "optionIndex": 0
+      },
+      {
+        "id": "lent",
+        "optionIndex": 1
+      },
+      {
+        "id": "phish",
+        "optionIndex": 0
+      },
+      {
+        "id": "acc3",
+        "optionIndex": 2
+      }
+    ],
+    "freeText": null,
+    "report": {
+      "score": 57,
+      "categories": {
+        "securite": {
+          "label": "Sécurité",
+          "status": "bad",
+          "statusLabel": "PRIORITAIRE",
+          "tips": [
+            "Vérifiez dans «Sécurité Windows» que la protection en temps réel est active — c'est gratuit et déjà intégré à Windows.",
+            "Si un seul site est piraté, tous vos comptes avec ce mot de passe deviennent vulnérables. Un gestionnaire de mots de passe résout ce problème en une fois."
+          ]
+        },
+        "sauvegarde": {
+          "label": "Sauvegarde",
+          "status": "good",
+          "statusLabel": "BIEN",
+          "tips": [
+            "Vos données sont protégées, c'est le plus important."
+          ]
+        },
+        "acces": {
+          "label": "Comptes & accès",
+          "status": "bad",
+          "statusLabel": "PRIORITAIRE",
+          "tips": [
+            "Des applications oubliées, parfois anciennes, peuvent garder un accès à vos données sans que vous vous en souveniez. Ça se vérifie en quelques minutes."
+          ]
+        },
+        "performance": {
+          "label": "Performance & maintenance",
+          "status": "warn",
+          "statusLabel": "À SURVEILLER",
+          "tips": [
+            "Souvent lié à un disque presque plein ou trop de logiciels lancés au démarrage — un nettoyage ciblé suffit généralement."
+          ]
+        }
+      },
+      "summary": "Plusieurs points méritent une attention rapide."
+    },
+    "ai": {
+      "available": false,
+      "commentaire": "",
+      "actionsSupplementaires": []
+    },
+    "paid": false,
+    "createdAt": "2026-08-13T18:19:42.271Z"
+  },
+  {
+    "id": "d45cadfd-4887-4d8d-ac2b-94df243d4b06",
+    "profile": "particulier",
+    "answers": [
+      {
+        "id": "maj",
+        "optionIndex": 0
+      },
+      {
+        "id": "av",
+        "optionIndex": 0
+      },
+      {
+        "id": "mdp",
+        "optionIndex": 1
+      },
+      {
+        "id": "sauv",
+        "optionIndex": 1
+      },
+      {
+        "id": "lent",
+        "optionIndex": 1
+      },
+      {
+        "id": "phish",
+        "optionIndex": 0
+      },
+      {
+        "id": "acc3",
+        "optionIndex": 1
+      }
+    ],
+    "freeText": "Mon pc est trop lent",
+    "report": {
+      "score": 71,
+      "categories": {
+        "securite": {
+          "label": "Sécurité",
+          "status": "warn",
+          "statusLabel": "À SURVEILLER",
+          "tips": [
+            "Priorisez au moins l'email et la banque avec des mots de passe uniques — c'est par l'email qu'on peut réinitialiser tout le reste."
+          ]
+        },
+        "sauvegarde": {
+          "label": "Sauvegarde",
+          "status": "warn",
+          "statusLabel": "À SURVEILLER",
+          "tips": [
+            "Une sauvegarde manuelle occasionnelle laisse une fenêtre de perte possible. Une sauvegarde automatique règle ça définitivement."
+          ]
+        },
+        "acces": {
+          "label": "Comptes & accès",
+          "status": "warn",
+          "statusLabel": "À SURVEILLER",
+          "tips": [
+            "Un tour dans les paramètres de sécurité de votre compte permet de voir — et retirer — les accès inutiles ou oubliés."
+          ]
+        },
+        "performance": {
+          "label": "Performance & maintenance",
+          "status": "warn",
+          "statusLabel": "À SURVEILLER",
+          "tips": [
+            "Souvent lié à un disque presque plein ou trop de logiciels lancés au démarrage — un nettoyage ciblé suffit généralement."
+          ]
+        }
+      },
+      "summary": "Rien d'alarmant, mais quelques points méritent d'être vérifiés."
+    },
+    "ai": {
+      "available": false,
+      "commentaire": "",
+      "actionsSupplementaires": []
+    },
+    "paid": false,
+    "createdAt": "2026-08-14T16:44:22.459Z"
+  }
+]

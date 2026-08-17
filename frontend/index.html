@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BeneIT — Agent de diagnostic (prototype)</title>
+<title>BeneIT — Diagnostic informatique gratuit</title>
+<meta name="description" content="Évaluez la sécurité et la performance de votre équipement informatique en moins de 3 minutes. Gratuit, sans inscription.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
@@ -14,7 +15,7 @@
 
   <div class="topbar">
     <div class="logo">bene<strong>IT</strong></div>
-    <div class="proto-tag">Prototype — agent de diagnostic</div>
+    <div class="proto-tag">Agent de diagnostic</div>
   </div>
 
   <!-- INTRO -->
@@ -23,8 +24,8 @@
     <h1>Un bilan clair, en <em>moins de 3 minutes</em>.</h1>
     <p>Répondez à quelques questions simples. Vous recevez une évaluation personnalisée : ce qui va bien, ce qui mérite votre attention, et ce qu'on peut faire. Aucune installation, aucun accès à votre ordinateur — juste vos réponses.</p>
     <div class="path-picker">
-      <button class="path-btn" data-path="particulier">Je suis un particulier<span>PC personnel, photos, comptes en ligne</span></button>
-      <button class="path-btn" data-path="pme">Je suis une TPE / PME<span>Microsoft 365, comptes d'équipe, sauvegardes</span></button>
+      <button class="path-btn" data-path="particulier" id="btn-particulier">Je suis un particulier<span>PC personnel, photos, comptes en ligne</span></button>
+      <button class="path-btn" data-path="pme" id="btn-pme">Je suis une TPE / PME<span>Microsoft 365, comptes d'équipe, sauvegardes</span></button>
     </div>
   </div>
 
@@ -50,9 +51,9 @@
         </div>
         <div id="reportRows"></div>
         <div class="report-cta" id="reportCta">
-          <button class="cta-btn" id="ctaBtn">Découvrir le Bilan Découverte →</button>
-          <div class="cta-note">Évaluation basée sur vos réponses, pas sur un accès réel à votre machine. Dans la version finale du site, ce bouton enverrait ces réponses vers le formulaire de contact, pré-rempli.</div>
-          <div class="cta-confirm" id="ctaConfirm">→ Dans la version finale, vous arriveriez ici sur un formulaire pré-rempli avec le résumé de votre bilan.</div>
+          <button class="cta-btn" id="ctaBtn">Obtenir le rapport détaillé (PDF) →</button>
+          <div class="cta-note">Rapport complet avec recommandations personnalisées, détail question par question.</div>
+          <div class="cta-confirm" id="ctaConfirm"></div>
         </div>
       </div>
 
@@ -61,6 +62,13 @@
 
 </div>
 
-<script src="js/script.js"></script>
+<!-- Honeypot field — invisible, only bots fill it -->
+<input type="text" name="website" id="hp-website" style="position:absolute;left:-9999px;top:-9999px;opacity:0;height:0;width:0;" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+<p class="rgpd-note" style="max-width:800px;margin:0 auto;padding:20px 20px 40px;font-size:.7rem;color:rgba(245,244,250,.35);line-height:1.6;text-align:center;">
+  Vos réponses et votre éventuel texte libre sont transmis à notre serveur pour calculer votre score et, si vous le souhaitez, générer un commentaire personnalisé via intelligence artificielle (Groq). Ces données sont conservées le temps nécessaire à la fourniture du service et ne sont jamais partagées avec des tiers. Vous pouvez demander leur suppression à tout moment en nous contactant.
+</p>
+
+<script src="js/wizard.js"></script>
 </body>
 </html>

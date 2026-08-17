@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BeneIT — Confirmation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="wrap">
+  <div class="topbar">
+    <div class="logo">bene<strong>IT</strong></div>
+  </div>
+
+  <div class="hero">
+    <span class="eyebrow"><span class="eyebrow-dot"></span>Paiement confirmé</span>
+    <h1>Merci pour votre <em>confiance</em>.</h1>
+    <p id="message">Votre rapport détaillé est en cours de préparation…</p>
+
+    <div style="margin-top:32px;" id="downloadArea"></div>
+
+    <div style="margin-top:24px;">
+      <a href="/" style="color:var(--accent-lt); font-size:.85rem; text-decoration:none;">← Retour à l'accueil</a>
+    </div>
+  </div>
+</div>
+
+<script>
+(async function() {
+  const params = new URLSearchParams(window.location.search);
+  const auditId = params.get('audit');
+  const message = document.getElementById('message');
+  const area = document.getElementById('downloadArea');
+
+  if (!auditId) {
+    message.textContent = 'Identifiant d\'audit manquant.';
+    return;
+  }
+
+  // Wait a moment for the webhook to process
+  await new Promise(r => setTimeout(r, 2000));
+
+  // Try to download the report
+  try {
+    const res = await fetch('/api/report/' + encodeURIComponent(auditId));
+
+    if (res.ok) {
+      message.textContent = 'Votre rapport est prêt ! Cliquez ci-dessous pour le télécharger.';
+
+      const btn = document.createElement('a');
+      btn.href = '/api/report/' + encodeURIComponent(auditId);
+      btn.className = 'cta-btn';
+      btn.textContent = 'Télécharger le rapport PDF →';
+      btn.style.display = 'inline-flex';
+      btn.style.textDecoration = 'none';
+      area.appendChild(btn);
+    } else {
+      const err = await res.json().catch(() => ({}));
+      if (res.status === 403) {
+        message.textContent = 'Le paiement est en cours de traitement. Rafraîchissez cette page dans quelques instants.';
+      } else {
+        message.textContent = err.error || 'Le rapport n\'est pas encore disponible. Réessayez dans un instant.';
+      }
+
+      const retryBtn = document.createElement('button');
+      retryBtn.className = 'restart-btn';
+      retryBtn.textContent = '↻ Rafraîchir';
+      retryBtn.style.marginTop = '16px';
+      retryBtn.addEventListener('click', () => window.location.reload());
+      area.appendChild(retryBtn);
+    }
+  } catch {
+    message.textContent = 'Impossible de contacter le serveur. Réessayez dans un instant.';
+  }
+})();
+</script>
+</body>
+</html>

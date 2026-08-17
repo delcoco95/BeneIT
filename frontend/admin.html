@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BeneIT — Administration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .admin-login{max-width:400px; margin:0 auto; text-align:center;}
+  .admin-input{
+    width:100%; font-family:'JetBrains Mono',monospace; font-size:.85rem; color:var(--ink);
+    background:rgba(255,255,255,.04); border:1px solid var(--card-border); border-radius:var(--r-sm);
+    padding:12px 16px; margin:16px 0;
+  }
+  .admin-input:focus{outline:none; border-color:var(--accent-lt);}
+  .admin-error{color:var(--red); font-size:.8rem; margin-top:8px;}
+
+  .stats-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:12px; margin-bottom:24px;}
+  .stat-card{
+    background:var(--card); border:1px solid var(--card-border); border-radius:var(--r-sm);
+    padding:16px; text-align:center;
+  }
+  .stat-value{font-family:'Bricolage Grotesque',sans-serif; font-size:1.6rem; font-weight:400; color:var(--accent-lt);}
+  .stat-label{font-size:.72rem; color:var(--muted); margin-top:4px;}
+
+  .audit-table{width:100%; border-collapse:collapse; font-size:.82rem;}
+  .audit-table th{
+    font-family:'JetBrains Mono',monospace; font-size:.68rem; letter-spacing:.06em;
+    text-transform:uppercase; color:var(--muted); text-align:left; padding:10px 8px;
+    border-bottom:1px solid var(--card-border);
+  }
+  .audit-table td{padding:10px 8px; border-bottom:1px solid rgba(255,255,255,.05);}
+  .audit-table tr:hover td{background:rgba(255,255,255,.03);}
+  .del-btn{
+    font-family:inherit; font-size:.72rem; color:var(--red); background:var(--red-dim);
+    border:1px solid rgba(248,113,113,.25); border-radius:var(--r-sm); padding:4px 10px;
+    cursor:pointer; transition:background .2s;
+  }
+  .del-btn:hover{background:rgba(248,113,113,.25);}
+  .badge{font-family:'JetBrains Mono',monospace; font-size:.62rem; padding:3px 8px; border-radius:var(--r-pill);}
+  .badge.paid{color:var(--green); background:var(--green-dim);}
+  .badge.unpaid{color:var(--muted); background:var(--grey-dim);}
+  .badge.ai{color:var(--accent-lt); background:var(--violet-dim);}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="topbar">
+    <div class="logo">bene<strong>IT</strong></div>
+    <div class="proto-tag">Administration</div>
+  </div>
+
+  <!-- Login -->
+  <div id="loginSection" class="admin-login">
+    <h1 style="font-family:'Bricolage Grotesque',sans-serif; font-weight:300; font-size:1.5rem; margin-bottom:8px;">Administration</h1>
+    <p style="font-size:.85rem; color:var(--sub);">Entrez le token admin pour accéder au tableau de bord.</p>
+    <input type="password" id="tokenInput" class="admin-input" placeholder="Token admin">
+    <button class="cta-btn" id="loginBtn" style="width:100%;">Connexion →</button>
+    <div class="admin-error" id="loginError"></div>
+  </div>
+
+  <!-- Dashboard -->
+  <div id="dashboard" style="display:none;">
+    <div class="stats-grid" id="statsGrid"></div>
+    <div class="panel">
+      <div class="report-head">
+        <div class="report-title">Audits récents</div>
+        <button class="restart-btn" id="refreshBtn">↻ Rafraîchir</button>
+      </div>
+      <table class="audit-table">
+        <thead>
+          <tr><th>Date</th><th>Profil</th><th>Score</th><th>Statut</th><th>IA</th><th></th></tr>
+        </thead>
+        <tbody id="auditsList"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+let adminToken = '';
+
+document.getElementById('loginBtn').addEventListener('click', login);
+document.getElementById('tokenInput').addEventListener('keydown', e => { if (e.key === 'Enter') login(); });
+document.getElementById('refreshBtn').addEventListener('click', loadDashboard);
+
+async function login() {
+  const token = document.getElementById('tokenInput').value.trim();
+  if (!token) return;
+
+  try {
+    const res = await fetch('/api/admin/stats', {
+      headers: { 'Authorization': 'Bearer ' + token }
+    });
+
+    if (res.ok) {
+      adminToken = token;
+      document.getElementById('loginSection').style.display = 'none';
+      document.getElementById('dashboard').style.display = 'block';
+      loadDashboard();
+    } else {
+      document.getElementById('loginError').textContent = 'Token invalide.';
+    }
+  } catch {
+    document.getElementById('loginError').textContent = 'Impossible de contacter le serveur.';
+  }
+}
+
+async function loadDashboard() {
+  try {
+    const headers = { 'Authorization': 'Bearer ' + adminToken };
+
+    const [statsRes, auditsRes] = await Promise.all([
+      fetch('/api/admin/stats', { headers }),
+      fetch('/api/admin/audits', { headers })
+    ]);
+
+    if (statsRes.ok) {
+      const stats = await statsRes.json();
+      const grid = document.getElementById('statsGrid');
+      grid.innerHTML = '';
+      const items = [
+        { value: stats.total, label: 'Total audits' },
+        { value: stats.today, label: "Aujourd'hui" },
+        { value: stats.paid, label: 'Rapports payés' },
+        { value: stats.withAi, label: 'Avec IA' },
+        { value: stats.avgScore + '/100', label: 'Score moyen' },
+      ];
+      for (const item of items) {
+        const card = document.createElement('div');
+        card.className = 'stat-card';
+        const val = document.createElement('div');
+        val.className = 'stat-value';
+        val.textContent = item.value;
+        const lbl = document.createElement('div');
+        lbl.className = 'stat-label';
+        lbl.textContent = item.label;
+        card.appendChild(val);
+        card.appendChild(lbl);
+        grid.appendChild(card);
+      }
+    }
+
+    if (auditsRes.ok) {
+      const { audits } = await auditsRes.json();
+      const tbody = document.getElementById('auditsList');
+      tbody.innerHTML = '';
+
+      for (const a of audits) {
+        const tr = document.createElement('tr');
+
+        const tdDate = document.createElement('td');
+        tdDate.textContent = new Date(a.createdAt).toLocaleString('fr-FR', { day:'2-digit', month:'2-digit', hour:'2-digit', minute:'2-digit' });
+
+        const tdProfile = document.createElement('td');
+        tdProfile.textContent = a.profile === 'particulier' ? 'Particulier' : 'PME';
+
+        const tdScore = document.createElement('td');
+        tdScore.textContent = a.score !== undefined ? a.score + '/100' : '—';
+
+        const tdPaid = document.createElement('td');
+        const badge = document.createElement('span');
+        badge.className = 'badge ' + (a.paid ? 'paid' : 'unpaid');
+        badge.textContent = a.paid ? 'PAYÉ' : 'GRATUIT';
+        tdPaid.appendChild(badge);
+
+        const tdAi = document.createElement('td');
+        if (a.hasAi) {
+          const aiBadge = document.createElement('span');
+          aiBadge.className = 'badge ai';
+          aiBadge.textContent = 'IA';
+          tdAi.appendChild(aiBadge);
+        }
+
+        const tdActions = document.createElement('td');
+        const delBtn = document.createElement('button');
+        delBtn.className = 'del-btn';
+        delBtn.textContent = 'Supprimer';
+        delBtn.addEventListener('click', async () => {
+          if (!confirm('Supprimer cet audit ?')) return;
+          await fetch('/api/admin/audits/' + a.id, {
+            method: 'DELETE',
+            headers: { 'Authorization': 'Bearer ' + adminToken }
+          });
+          loadDashboard();
+        });
+        tdActions.appendChild(delBtn);
+
+        tr.appendChild(tdDate);
+        tr.appendChild(tdProfile);
+        tr.appendChild(tdScore);
+        tr.appendChild(tdPaid);
+        tr.appendChild(tdAi);
+        tr.appendChild(tdActions);
+        tbody.appendChild(tr);
+      }
+    }
+  } catch (err) {
+    console.error('Erreur chargement dashboard:', err);
+  }
+}
+</script>
+</body>
+</html>
