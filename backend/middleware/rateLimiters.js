@@ -62,10 +62,36 @@ const adminLimiter = rateLimit({
   keyGenerator: (req) => req.ip,
 });
 
+// ─── Sentinelle signup (POST /api/sites) — anti brute-force ────
+
+const sitesLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000, // 1 hour
+  max: 10,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: 'Trop de tentatives, réessayez plus tard.' },
+  keyGenerator: (req) => req.ip,
+});
+
+// ─── Cron endpoints — protected by a shared secret, not by caller
+// identity (GitHub Actions / cron-job.org egress IPs vary), so this
+// limiter is only a loose defense against brute-forcing the secret.
+
+const cronLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: 'Trop de tentatives.' },
+  keyGenerator: (req) => req.ip,
+});
+
 module.exports = {
   auditLimiter,
   aiLimiterPerHour,
   aiLimiterPerDay,
   checkoutLimiter,
   adminLimiter,
+  sitesLimiter,
+  cronLimiter,
 };

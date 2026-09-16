@@ -43,6 +43,23 @@
   .badge.paid{color:var(--green); background:var(--green-dim);}
   .badge.unpaid{color:var(--muted); background:var(--grey-dim);}
   .badge.ai{color:var(--accent-lt); background:var(--violet-dim);}
+  .badge.active{color:var(--green); background:var(--green-dim);}
+  .badge.paused, .badge.canceled, .badge.pending_payment{color:var(--muted); background:var(--grey-dim);}
+  .badge.up{color:var(--green); background:var(--green-dim);}
+  .badge.down{color:var(--red); background:var(--red-dim);}
+
+  .admin-tabs{display:flex; gap:8px; margin-bottom:20px;}
+  .admin-tab{
+    font-family:inherit; font-size:.82rem; color:var(--sub); background:var(--card);
+    border:1px solid var(--card-border); border-radius:var(--r-pill); padding:8px 16px; cursor:pointer;
+  }
+  .admin-tab.active{color:var(--ink); border-color:var(--accent-lt); background:var(--violet-dim);}
+  .check-btn{
+    font-family:inherit; font-size:.72rem; color:var(--accent-lt); background:var(--violet-dim);
+    border:1px solid rgba(123,108,246,.25); border-radius:var(--r-sm); padding:4px 10px;
+    cursor:pointer; transition:background .2s;
+  }
+  .check-btn:hover{background:rgba(123,108,246,.25);}
 </style>
 </head>
 <body>
@@ -65,7 +82,13 @@
   <!-- Dashboard -->
   <div id="dashboard" style="display:none;">
     <div class="stats-grid" id="statsGrid"></div>
-    <div class="panel">
+
+    <div class="admin-tabs">
+      <button class="admin-tab active" id="tabAudits">Audits</button>
+      <button class="admin-tab" id="tabSites">Sentinelle</button>
+    </div>
+
+    <div class="panel" id="auditsPanel">
       <div class="report-head">
         <div class="report-title">Audits récents</div>
         <button class="restart-btn" id="refreshBtn">↻ Rafraîchir</button>
@@ -77,6 +100,19 @@
         <tbody id="auditsList"></tbody>
       </table>
     </div>
+
+    <div class="panel" id="sitesPanel" style="display:none;">
+      <div class="report-head">
+        <div class="report-title">Sites surveillés</div>
+        <button class="restart-btn" id="refreshSitesBtn">↻ Rafraîchir</button>
+      </div>
+      <table class="audit-table">
+        <thead>
+          <tr><th>Site</th><th>Email</th><th>Abonnement</th><th>Dernier check</th><th>SSL (j)</th><th>Vu le</th><th></th></tr>
+        </thead>
+        <tbody id="sitesList"></tbody>
+      </table>
+    </div>
   </div>
 </div>
 
@@ -86,6 +122,18 @@ let adminToken = '';
 document.getElementById('loginBtn').addEventListener('click', login);
 document.getElementById('tokenInput').addEventListener('keydown', e => { if (e.key === 'Enter') login(); });
 document.getElementById('refreshBtn').addEventListener('click', loadDashboard);
+document.getElementById('refreshSitesBtn').addEventListener('click', loadSites);
+document.getElementById('tabAudits').addEventListener('click', () => switchTab('audits'));
+document.getElementById('tabSites').addEventListener('click', () => switchTab('sites'));
+
+function switchTab(tab) {
+  const isAudits = tab === 'audits';
+  document.getElementById('tabAudits').classList.toggle('active', isAudits);
+  document.getElementById('tabSites').classList.toggle('active', !isAudits);
+  document.getElementById('auditsPanel').style.display = isAudits ? 'block' : 'none';
+  document.getElementById('sitesPanel').style.display = isAudits ? 'none' : 'block';
+  if (!isAudits) loadSites();
+}
 
 async function login() {
   const token = document.getElementById('tokenInput').value.trim();
@@ -200,6 +248,75 @@ async function loadDashboard() {
     }
   } catch (err) {
     console.error('Erreur chargement dashboard:', err);
+  }
+}
+
+async function loadSites() {
+  try {
+    const headers = { 'Authorization': 'Bearer ' + adminToken };
+    const res = await fetch('/api/admin/sites', { headers });
+    if (!res.ok) return;
+
+    const { sites } = await res.json();
+    const tbody = document.getElementById('sitesList');
+    tbody.innerHTML = '';
+
+    for (const s of sites) {
+      const tr = document.createElement('tr');
+
+      const tdSite = document.createElement('td');
+      tdSite.textContent = s.hostname;
+
+      const tdEmail = document.createElement('td');
+      tdEmail.textContent = s.email;
+
+      const tdStatus = document.createElement('td');
+      const statusBadge = document.createElement('span');
+      statusBadge.className = 'badge ' + s.status;
+      statusBadge.textContent = s.status;
+      tdStatus.appendChild(statusBadge);
+
+      const tdLastStatus = document.createElement('td');
+      if (s.last_status) {
+        const b = document.createElement('span');
+        b.className = 'badge ' + s.last_status;
+        b.textContent = s.last_status === 'up' ? 'EN LIGNE' : 'HORS LIGNE';
+        tdLastStatus.appendChild(b);
+      } else {
+        tdLastStatus.textContent = '—';
+      }
+
+      const tdSsl = document.createElement('td');
+      tdSsl.textContent = s.last_ssl_bucket === 'warn' ? '⚠ bientôt' : (s.last_ssl_bucket === 'ok' ? 'OK' : '—');
+
+      const tdChecked = document.createElement('td');
+      tdChecked.textContent = s.last_checked_at
+        ? new Date(s.last_checked_at).toLocaleString('fr-FR', { day:'2-digit', month:'2-digit', hour:'2-digit', minute:'2-digit' })
+        : 'jamais';
+
+      const tdActions = document.createElement('td');
+      const checkBtn = document.createElement('button');
+      checkBtn.className = 'check-btn';
+      checkBtn.textContent = 'Vérifier maintenant';
+      checkBtn.addEventListener('click', async () => {
+        checkBtn.disabled = true;
+        checkBtn.textContent = '…';
+        await fetch('/api/admin/sites/' + s.id + '/check', { method: 'POST', headers });
+        loadSites();
+      });
+      tdActions.appendChild(checkBtn);
+
+      tr.appendChild(tdSite);
+      tr.appendChild(tdEmail);
+      tr.appendChild(tdStatus);
+      tr.appendChild(tdLastStatus);
+      tr.appendChild(tdSsl);
+      tr.appendChild(tdChecked);
+      tr.appendChild(tdActions);
+      tbody.appendChild(tr);
+    }
+  } catch (err) {
+    console.error('Erreur chargement sites:', err);
   }
 }
 </script>

@@ -2,6 +2,9 @@ node_modules/
 .env
 backend/data/reports/*.pdf
 backend/data/ai-usage.json
+backend/data/sentinelle.db
+backend/data/sentinelle.db-wal
+backend/data/sentinelle.db-shm
 *.log
 .DS_Store
 Thumbs.db

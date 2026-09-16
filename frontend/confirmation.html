@@ -32,8 +32,14 @@
 (async function() {
   const params = new URLSearchParams(window.location.search);
   const auditId = params.get('audit');
+  const siteId = params.get('site');
   const message = document.getElementById('message');
   const area = document.getElementById('downloadArea');
+
+  if (siteId) {
+    message.textContent = 'Votre abonnement Sentinelle est activé. Les vérifications démarrent automatiquement dans les prochaines minutes — vous ne recevrez un email que si quelque chose nécessite votre attention.';
+    return;
+  }
 
   if (!auditId) {
     message.textContent = 'Identifiant d\'audit manquant.';

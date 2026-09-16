@@ -2,6 +2,8 @@
 
 const express = require('express');
 const { getAudits, getAuditById, deleteAudit } = require('../lib/db');
+const sentinelleDb = require('../lib/sentinelleDb');
+const { runCheckForSite } = require('../lib/monitor');
 const { requireAdmin } = require('../lib/auth');
 const { adminLimiter } = require('../middleware/rateLimiters');
 
@@ -70,6 +72,32 @@ router.get('/stats', (req, res) => {
   };
 
   res.json(stats);
+});
+
+/**
+ * GET /api/admin/sites — List all Sentinelle sites (sorted by date, most recent first).
+ */
+router.get('/sites', (req, res) => {
+  const sites = sentinelleDb.listAllSitesForAdmin();
+  res.json({ sites, total: sites.length });
+});
+
+/**
+ * POST /api/admin/sites/:id/check — Manually trigger a check for one site
+ * (useful for support/debugging without waiting for the next cron tick).
+ */
+router.post('/sites/:id/check', async (req, res) => {
+  const site = sentinelleDb.getSiteById(req.params.id);
+  if (!site) {
+    return res.status(404).json({ error: 'Site introuvable.' });
+  }
+  try {
+    const result = await runCheckForSite(site);
+    res.json({ success: true, result });
+  } catch (err) {
+    console.error('[admin] Erreur vérification manuelle :', err.message);
+    res.status(500).json({ error: 'Erreur lors de la vérification.' });
+  }
 });
 
 module.exports = router;

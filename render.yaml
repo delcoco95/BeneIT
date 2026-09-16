@@ -1,0 +1,61 @@
+services:
+  - type: web
+    name: beneit-audit
+    runtime: node
+    plan: starter
+    region: frankfurt
+    buildCommand: npm install
+    startCommand: npm start
+    disk:
+      name: beneit-data
+      mountPath: /opt/render/project/src/backend/data
+      sizeGB: 1
+    envVars:
+      # ── Non-sensible, valeurs par défaut ──────────────────────
+      - key: NODE_VERSION
+        value: 22.11.0
+      - key: PORT
+        value: 3000
+      - key: FRONTEND_URL
+        value: https://beneit-audit.onrender.com
+      - key: AI_PROVIDER
+        value: groq
+      - key: AI_MODEL
+        value: llama-3.3-70b-versatile
+      - key: AI_TIMEOUT_MS
+        value: 8000
+      - key: AI_DAILY_BUDGET
+        value: 300
+      - key: SMTP_PORT
+        value: 587
+      - key: SMTP_FROM
+        value: noreply@beneit.fr
+      - key: SSL_ALERT_DAYS
+        value: 14
+      - key: CRON_STALE_MINUTES
+        value: 45
+
+      # ── Sensible — Render vous les demandera à la création,
+      #    jamais stockées dans ce fichier ni dans Git ─────────
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: STRIPE_WEBHOOK_SECRET
+        sync: false
+      - key: STRIPE_PRICE_ID
+        sync: false
+      - key: SENTINELLE_STRIPE_PRICE_ID
+        sync: false
+      - key: ADMIN_TOKEN
+        sync: false
+      - key: CRON_SECRET
+        sync: false
+      - key: ADMIN_ALERT_EMAIL
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false
+      - key: SMTP_HOST
+        sync: false
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASS
+        sync: false

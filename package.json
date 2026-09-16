@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "description": "BeneIT — Agent de diagnostic informatique avec scoring, rapport PDF et intégration IA",
   "main": "backend/server.js",
+  "engines": {
+    "node": ">=22.5.0"
+  },
   "scripts": {
-    "start": "node backend/server.js",
-    "dev": "npx -y nodemon backend/server.js"
+    "start": "node --experimental-sqlite backend/server.js",
+    "dev": "npx -y nodemon --experimental-sqlite backend/server.js"
   },
   "keywords": ["audit", "diagnostic", "informatique", "securite"],
   "author": "BeneIT",
@@ -16,6 +19,7 @@
     "express": "^4.21.2",
     "express-rate-limit": "^7.5.0",
     "helmet": "^8.0.0",
+    "nodemailer": "^6.9.16",
     "openai": "^4.77.0",
     "pdfkit": "^0.16.0",
     "stripe": "^17.5.0",

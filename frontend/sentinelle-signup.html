@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sentinelle — Surveillance de votre site, par BeneIT</title>
+<meta name="description" content="Sentinelle surveille en continu la disponibilité de votre site et l'expiration de son certificat SSL, et vous alerte par email dès qu'un problème réel apparaît.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .sentinelle-form{max-width:460px; margin:0 auto;}
+  .sentinelle-field{margin-bottom:16px; text-align:left;}
+  .sentinelle-label{display:block; font-size:.78rem; color:var(--sub); margin-bottom:6px;}
+  .sentinelle-input{
+    width:100%; font-family:inherit; font-size:.92rem; color:var(--ink);
+    background:var(--card); border:1px solid var(--card-border); border-radius:var(--r-sm);
+    padding:13px 16px;
+  }
+  .sentinelle-input:focus{outline:none; border-color:var(--accent-lt);}
+  .sentinelle-error{color:var(--red); font-size:.8rem; margin-top:10px; display:none;}
+  .sentinelle-perks{list-style:none; margin:24px 0; padding:0; text-align:left; font-size:.85rem; color:var(--sub);}
+  .sentinelle-perks li{margin-bottom:8px; padding-left:20px; position:relative;}
+  .sentinelle-perks li::before{content:'✓'; position:absolute; left:0; color:var(--green);}
+  .sentinelle-price{font-family:'Bricolage Grotesque',sans-serif; font-size:1.1rem; color:var(--accent-lt); margin-top:4px;}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="topbar">
+    <a href="index.html" class="logo" style="text-decoration:none;">bene<strong>IT</strong></a>
+    <div class="proto-tag">Sentinelle</div>
+  </div>
+
+  <div class="hero">
+    <span class="eyebrow"><span class="eyebrow-dot"></span>Surveillance continue</span>
+    <h1>Votre site est <em>surveillé, ou il ne l'est pas</em>.</h1>
+    <p>Sentinelle vérifie automatiquement, toutes les 15 à 30 minutes, que votre site répond et que son certificat SSL n'expire pas bientôt. Vous êtes alerté par email uniquement quand quelque chose change vraiment — jamais de notification inutile.</p>
+  </div>
+
+  <div class="sentinelle-form panel">
+    <ul class="sentinelle-perks">
+      <li>Vérification de disponibilité toutes les 15-30 minutes</li>
+      <li>Alerte email si votre site tombe, et quand il revient</li>
+      <li>Alerte avant l'expiration de votre certificat SSL</li>
+      <li>Aucune installation sur votre site</li>
+    </ul>
+
+    <div class="sentinelle-field">
+      <label class="sentinelle-label" for="site-url">URL de votre site</label>
+      <input class="sentinelle-input" type="text" id="site-url" placeholder="https://votre-site.fr" autocomplete="url">
+    </div>
+    <div class="sentinelle-field">
+      <label class="sentinelle-label" for="site-email">Votre email (pour recevoir les alertes)</label>
+      <input class="sentinelle-input" type="email" id="site-email" placeholder="vous@exemple.fr" autocomplete="email">
+    </div>
+
+    <!-- Honeypot — invisible, only bots fill it -->
+    <input type="text" id="site-honeypot" style="position:absolute;left:-9999px;top:-9999px;opacity:0;height:0;width:0;" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+    <button class="cta-btn" id="signupBtn" style="width:100%;">S'abonner et activer la surveillance →</button>
+    <div class="sentinelle-price">9 €/mois — sans engagement</div>
+    <div class="sentinelle-error" id="signupError"></div>
+  </div>
+
+  <p class="rgpd-note" style="max-width:600px;margin:24px auto 40px;padding:0 20px;font-size:.7rem;color:rgba(245,244,250,.35);line-height:1.6;text-align:center;">
+    L'URL et l'email fournis sont utilisés uniquement pour surveiller votre site et vous envoyer des alertes. Aucune donnée de votre site n'est collectée au-delà de sa disponibilité et de son certificat SSL. Vous pouvez résilier à tout moment depuis le lien envoyé par email après votre inscription.
+  </p>
+
+</div>
+
+<script>
+document.getElementById('signupBtn').addEventListener('click', async () => {
+  const url = document.getElementById('site-url').value.trim();
+  const email = document.getElementById('site-email').value.trim();
+  const honeypot = document.getElementById('site-honeypot').value;
+  const errorEl = document.getElementById('signupError');
+  const btn = document.getElementById('signupBtn');
+
+  errorEl.style.display = 'none';
+
+  if (!url || !email) {
+    errorEl.textContent = 'Merci de renseigner l\'URL de votre site et votre email.';
+    errorEl.style.display = 'block';
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Redirection vers le paiement…';
+
+  try {
+    const res = await fetch('/api/sites', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ url, email, honeypot }),
+    });
+    const data = await res.json();
+
+    if (res.ok && data.url) {
+      window.location.href = data.url;
+      return;
+    }
+
+    errorEl.textContent = data.error || 'Une erreur est survenue, merci de réessayer.';
+    errorEl.style.display = 'block';
+  } catch {
+    errorEl.textContent = 'Impossible de contacter le serveur, merci de réessayer.';
+    errorEl.style.display = 'block';
+  }
+
+  btn.disabled = false;
+  btn.textContent = 'S\'abonner et activer la surveillance →';
+});
+</script>
+</body>
+</html>

@@ -54,6 +54,8 @@ app.use('/api/checkout', require('./routes/checkout'));
 app.use('/api/webhook',  require('./routes/webhook'));
 app.use('/api/report',   require('./routes/report'));
 app.use('/api/admin',    require('./routes/admin'));
+app.use('/api/sites',    require('./routes/sites'));
+app.use('/api/cron',     require('./routes/cron'));
 
 // ─── SPA fallback — serve index.html for unmatched routes ─────────
 
@@ -83,6 +85,8 @@ app.listen(PORT, () => {
     ['IA (Groq)', !!process.env.GROQ_API_KEY],
     ['Admin', !!process.env.ADMIN_TOKEN],
     ['SMTP', !!process.env.SMTP_HOST],
+    ['Sentinelle Stripe', !!process.env.SENTINELLE_STRIPE_PRICE_ID],
+    ['Sentinelle cron', !!process.env.CRON_SECRET],
   ];
   for (const [name, ok] of checks) {
     console.log(`  ${ok ? '✓' : '✗'}  ${name} ${ok ? 'configuré' : 'non configuré (fonctionnement dégradé)'}`);

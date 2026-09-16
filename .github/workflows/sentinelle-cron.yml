@@ -1,0 +1,19 @@
+name: Sentinelle — vérifications périodiques
+
+on:
+  schedule:
+    # Toutes les 15 minutes. GitHub peut retarder légèrement l'exécution
+    # sous charge — c'est pour ça qu'un deuxième garde-fou existe
+    # (voir /api/cron/health, appelé indépendamment par cron-job.org).
+    - cron: '*/15 * * * *'
+  workflow_dispatch: {}
+
+jobs:
+  run-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Déclencher les vérifications
+        run: |
+          curl --fail --silent --show-error \
+            -X POST "${{ secrets.SENTINELLE_APP_URL }}/api/cron/run-checks" \
+            -H "X-Cron-Secret: ${{ secrets.SENTINELLE_CRON_SECRET }}"
