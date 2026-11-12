@@ -29,7 +29,7 @@ services:
       - key: SMTP_PORT
         value: 587
       - key: SMTP_FROM
-        value: noreply@beneit.fr
+        value: noreply@nedjb.fr
       - key: SSL_ALERT_DAYS
         value: 14
       - key: CRON_STALE_MINUTES
