@@ -10,6 +10,10 @@ const path = require('path');
 const app = express();
 const PORT = parseInt(process.env.PORT, 10) || 3000;
 
+// Derriere le proxy de Render : sans ca, req.ip vaut l'IP du proxy et toutes les
+// limites de debit (par IP) sont partagees entre tous les visiteurs.
+app.set('trust proxy', 1);
+
 // ─── Security headers ─────────────────────────────────────────────
 
 app.use(helmet({
@@ -56,6 +60,12 @@ app.use('/api/report',   require('./routes/report'));
 app.use('/api/admin',    require('./routes/admin'));
 app.use('/api/sites',    require('./routes/sites'));
 app.use('/api/cron',     require('./routes/cron'));
+app.use('/api/lead',     require('./routes/lead'));
+
+// Pages sans extension : /diagnostic -> diagnostic.html, etc.
+for (const page of ['diagnostic', 'mentions-legales', 'confidentialite', 'cgv']) {
+  app.get(`/${page}`, (req, res) => res.sendFile(path.join(__dirname, '..', 'frontend', `${page}.html`)));
+}
 
 // ─── SPA fallback — serve index.html for unmatched routes ─────────
 
@@ -76,6 +86,17 @@ app.use((err, req, res, _next) => {
 
 // ─── Start ────────────────────────────────────────────────────────
 
+// Duree de conservation RGPD (voir confidentialite.html) : purge au demarrage puis chaque jour.
+const leadsDb = require('./lib/leadsDb');
+const { purgeExpiredAudits } = require('./lib/db');
+function purgeExpired() {
+  const leads = leadsDb.purgeExpiredLeads();
+  const audits = purgeExpiredAudits();
+  if (leads || audits) console.log(`[rgpd] Purge : ${leads} demande(s), ${audits} diagnostic(s) expirés.`);
+}
+purgeExpired();
+setInterval(purgeExpired, 24 * 3600 * 1000).unref();
+
 app.listen(PORT, () => {
   console.log(`\n  🟢  BeneIT Audit — Serveur démarré sur http://localhost:${PORT}\n`);
 
@@ -85,6 +106,7 @@ app.listen(PORT, () => {
     ['IA (Groq)', !!process.env.GROQ_API_KEY],
     ['Admin', !!process.env.ADMIN_TOKEN],
     ['SMTP', !!process.env.SMTP_HOST],
+    ['Alertes demandes (ADMIN_ALERT_EMAIL)', !!process.env.ADMIN_ALERT_EMAIL],
     ['Sentinelle Stripe', !!process.env.SENTINELLE_STRIPE_PRICE_ID],
     ['Sentinelle cron', !!process.env.CRON_SECRET],
   ];

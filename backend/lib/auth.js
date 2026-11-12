@@ -1,5 +1,14 @@
 'use strict';
 
+const crypto = require('crypto');
+
+// Comparaison en temps constant, sans fuite de longueur : on compare les SHA-256.
+function safeEqual(a, b) {
+  const ha = crypto.createHash('sha256').update(String(a)).digest();
+  const hb = crypto.createHash('sha256').update(String(b)).digest();
+  return crypto.timingSafeEqual(ha, hb);
+}
+
 /**
  * Middleware that checks for a valid admin token in the Authorization header.
  * Expects: Authorization: Bearer <ADMIN_TOKEN>
@@ -17,17 +26,7 @@ function requireAdmin(req, res, next) {
 
   const token = authHeader.slice(7);
 
-  // Constant-time comparison to prevent timing attacks
-  if (token.length !== adminToken.length) {
-    return res.status(403).json({ error: 'Token invalide.' });
-  }
-
-  let mismatch = 0;
-  for (let i = 0; i < token.length; i++) {
-    mismatch |= token.charCodeAt(i) ^ adminToken.charCodeAt(i);
-  }
-
-  if (mismatch !== 0) {
+  if (!safeEqual(token, adminToken)) {
     return res.status(403).json({ error: 'Token invalide.' });
   }
 
@@ -46,16 +45,7 @@ function requireCronSecret(req, res, next) {
 
   const provided = req.headers['x-cron-secret'] || '';
 
-  if (provided.length !== cronSecret.length) {
-    return res.status(403).json({ error: 'Secret invalide.' });
-  }
-
-  let mismatch = 0;
-  for (let i = 0; i < provided.length; i++) {
-    mismatch |= provided.charCodeAt(i) ^ cronSecret.charCodeAt(i);
-  }
-
-  if (mismatch !== 0) {
+  if (!safeEqual(provided, cronSecret)) {
     return res.status(403).json({ error: 'Secret invalide.' });
   }
 

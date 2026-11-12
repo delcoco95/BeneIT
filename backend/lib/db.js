@@ -3,8 +3,9 @@
 const fs = require('fs');
 const path = require('path');
 
-const DATA_FILE = path.join(__dirname, '..', 'data', 'audits.json');
-const REPORTS_DIR = path.join(__dirname, '..', 'data', 'reports');
+const DATA_DIR = process.env.BENEIT_DATA_DIR || path.join(__dirname, '..', 'data');
+const DATA_FILE = path.join(DATA_DIR, 'audits.json');
+const REPORTS_DIR = path.join(DATA_DIR, 'reports');
 
 // Ensure the reports directory exists
 if (!fs.existsSync(REPORTS_DIR)) {
@@ -16,11 +17,28 @@ if (!fs.existsSync(REPORTS_DIR)) {
  * @returns {Array} Array of audit objects
  */
 function getAudits() {
+  let raw;
   try {
-    const raw = fs.readFileSync(DATA_FILE, 'utf-8');
-    return JSON.parse(raw);
-  } catch {
-    return [];
+    raw = fs.readFileSync(DATA_FILE, 'utf-8');
+  } catch (err) {
+    if (err.code === 'ENOENT') return [];
+    throw err;
+  }
+  // JSON illisible : on leve l'erreur plutot que de risquer d'ecraser le fichier.
+  const parsed = JSON.parse(raw);
+  if (!Array.isArray(parsed)) throw new Error('audits.json invalide : tableau attendu.');
+  return parsed;
+}
+
+/** Ecriture atomique : fichier temporaire dans le meme dossier puis renommage. */
+function writeAudits(audits) {
+  const tmp = path.join(DATA_DIR, `audits.json.${process.pid}.${Date.now()}.tmp`);
+  try {
+    fs.writeFileSync(tmp, JSON.stringify(audits, null, 2), 'utf-8');
+    fs.renameSync(tmp, DATA_FILE);
+  } catch (err) {
+    try { fs.unlinkSync(tmp); } catch { /* deja absent */ }
+    throw err;
   }
 }
 
@@ -47,7 +65,7 @@ function saveAudit(audit) {
   } else {
     audits.push(audit);
   }
-  fs.writeFileSync(DATA_FILE, JSON.stringify(audits, null, 2), 'utf-8');
+  writeAudits(audits);
 }
 
 /**
@@ -61,7 +79,7 @@ function deleteAudit(id) {
   if (idx < 0) return false;
 
   audits.splice(idx, 1);
-  fs.writeFileSync(DATA_FILE, JSON.stringify(audits, null, 2), 'utf-8');
+  writeAudits(audits);
 
   // Remove associated PDF if it exists
   const pdfPath = path.join(REPORTS_DIR, `${id}.pdf`);
@@ -81,4 +99,33 @@ function getReportPath(id) {
   return path.join(REPORTS_DIR, `${id}.pdf`);
 }
 
-module.exports = { getAudits, getAuditById, saveAudit, deleteAudit, getReportPath };
+// Conservation (voir confidentialite.html) : 12 mois pour un diagnostic anonyme,
+// 3 ans s'il est rattache a une demande de contact.
+const DAY = 24 * 3600 * 1000;
+const RETENTION_ANONYMOUS = 365 * DAY;
+const RETENTION_WITH_LEAD = 3 * 365 * DAY;
+
+/**
+ * Supprime les diagnostics expires (et leur PDF). Retourne le nombre supprime.
+ * @param {Date} [now]
+ */
+function purgeExpiredAudits(now = new Date()) {
+  const audits = getAudits();
+  const keep = [];
+  let removed = 0;
+  for (const audit of audits) {
+    const age = now.getTime() - new Date(audit.createdAt).getTime();
+    const limit = audit.leadId || audit.paid ? RETENTION_WITH_LEAD : RETENTION_ANONYMOUS;
+    if (age > limit) {
+      removed++;
+      const pdfPath = getReportPath(audit.id);
+      if (fs.existsSync(pdfPath)) fs.unlinkSync(pdfPath);
+    } else {
+      keep.push(audit);
+    }
+  }
+  if (removed) writeAudits(keep);
+  return removed;
+}
+
+module.exports = { getAudits, getAuditById, saveAudit, deleteAudit, getReportPath, purgeExpiredAudits };

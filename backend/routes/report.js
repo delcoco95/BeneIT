@@ -7,8 +7,11 @@ const { getAuditById, getReportPath } = require('../lib/db');
 
 const router = express.Router();
 
+// Le rapport est genere par POST /api/lead (contre les coordonnees du visiteur)
+// ou par le webhook Stripe (ancien rapport payant).
+
 /**
- * GET /api/report/:id — Download the PDF report for a paid audit.
+ * GET /api/report/:id — Download the PDF report.
  */
 router.get('/:id', (req, res) => {
   const { id } = req.params;
@@ -23,8 +26,8 @@ router.get('/:id', (req, res) => {
     return res.status(404).json({ error: 'Audit introuvable.' });
   }
 
-  if (!audit.paid) {
-    return res.status(403).json({ error: 'Ce rapport n\'a pas encore été payé.' });
+  if (!audit.paid && !audit.leadId) {
+    return res.status(403).json({ error: 'Ce rapport n\'est pas encore disponible.' });
   }
 
   const pdfPath = getReportPath(id);
@@ -38,3 +41,4 @@ router.get('/:id', (req, res) => {
 });
 
 module.exports = router;
+

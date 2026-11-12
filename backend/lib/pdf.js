@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const questionsConfig = require('../../config/questions.json');
 
-const REPORTS_DIR = path.join(__dirname, '..', 'data', 'reports');
+const REPORTS_DIR = path.join(process.env.BENEIT_DATA_DIR || path.join(__dirname, '..', 'data'), 'reports');
 
 // Ensure reports directory exists
 if (!fs.existsSync(REPORTS_DIR)) {

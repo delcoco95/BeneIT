@@ -3,72 +3,255 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BeneIT — Diagnostic informatique gratuit</title>
-<meta name="description" content="Évaluez la sécurité et la performance de votre équipement informatique en moins de 3 minutes. Gratuit, sans inscription.">
+<title>BeneIT — Informatique sécurisée pour TPE/PME à Nice</title>
+<meta name="description" content="Prestataire informatique à Nice pour TPE/PME et particuliers : bilan de sécurité, contrat de maintenance, surveillance de site et dépannage. Diagnostic gratuit en 3 minutes.">
+<link rel="canonical" href="https://beneit.nedjb.fr/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="BeneIT — L'informatique de votre entreprise, sécurisée et suivie">
+<meta property="og:description" content="Bilan de sécurité, maintenance et dépannage informatique à Nice. Diagnostic gratuit en 3 minutes.">
+<meta property="og:url" content="https://beneit.nedjb.fr/">
+<meta property="og:locale" content="fr_FR">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/site.css">
 </head>
 <body>
+<a class="skip-link" href="#main">Aller au contenu</a>
 
 <div class="wrap">
 
-  <div class="topbar">
-    <div class="logo">bene<strong>IT</strong></div>
-    <a href="sentinelle-signup.html" class="proto-tag" style="text-decoration:none;">Sentinelle — surveillance de site →</a>
-  </div>
+  <nav class="site-nav" aria-label="Navigation principale">
+    <a href="/" class="logo" aria-current="page">bene<strong>IT</strong></a>
+    <ul class="nav-links">
+      <li class="opt"><a href="#offres">Offres</a></li>
+      <li class="opt"><a href="#particuliers">Particuliers</a></li>
+      <li class="opt"><a href="#faq">FAQ</a></li>
+      <li><a href="/diagnostic">Diagnostic</a></li>
+      <li><a href="#contact" class="nav-cta">Me contacter</a></li>
+    </ul>
+  </nav>
 
-  <!-- INTRO -->
-  <div id="intro" class="hero">
-    <span class="eyebrow"><span class="eyebrow-dot"></span>Agent de diagnostic</span>
-    <h1>Un bilan clair, en <em>moins de 3 minutes</em>.</h1>
-    <p>Répondez à quelques questions simples. Vous recevez une évaluation personnalisée : ce qui va bien, ce qui mérite votre attention, et ce qu'on peut faire. Aucune installation, aucun accès à votre ordinateur — juste vos réponses.</p>
-    <div class="path-picker">
-      <button class="path-btn" data-path="particulier" id="btn-particulier">Je suis un particulier<span>PC personnel, photos, comptes en ligne</span></button>
-      <button class="path-btn" data-path="pme" id="btn-pme">Je suis une TPE / PME<span>Microsoft 365, comptes d'équipe, sauvegardes</span></button>
-    </div>
-  </div>
+  <main id="main" tabindex="-1">
 
-  <!-- STAGE -->
-  <div id="stage" class="stage">
-    <div class="grid">
-
-      <!-- LEFT: agent -->
-      <div class="panel">
-        <div class="progress-row">
-          <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
-          <div class="progress-label" id="progressLabel">0/0</div>
-        </div>
-        <div class="transcript" id="transcript"></div>
-        <div id="activeArea"></div>
+    <section class="home-hero" aria-labelledby="hero-title">
+      <span class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>TPE / PME · Nice et à distance</span>
+      <h1 id="hero-title">L'informatique de votre entreprise, <em>sécurisée et suivie</em>.</h1>
+      <p class="lead">Comptes Microsoft 365, sauvegardes, postes, Wi-Fi : je fais le point, je corrige ce qui est risqué, puis je veille à ce que ça tienne. Un interlocuteur unique, des tarifs affichés, rien sans votre accord.</p>
+      <div class="hero-actions">
+        <a href="/diagnostic" class="btn btn-primary">Faire le diagnostic gratuit (3 min) →</a>
+        <a href="#contact" class="btn btn-ghost" data-need="bilan">Demander un Bilan Découverte</a>
       </div>
-
-      <!-- RIGHT: report -->
-      <div class="panel">
-        <div class="report-head">
-          <div class="report-title">Votre rapport</div>
-          <div class="live-badge"><span class="live-dot"></span>EN DIRECT</div>
-        </div>
-        <div id="reportRows"></div>
-        <div class="report-cta" id="reportCta">
-          <button class="cta-btn" id="ctaBtn">Obtenir le rapport détaillé (PDF) →</button>
-          <div class="cta-note">Rapport complet avec recommandations personnalisées, détail question par question.</div>
-          <div class="cta-confirm" id="ctaConfirm"></div>
-        </div>
+      <div class="trust-row">
+        <span>Devis avant toute intervention</span>
+        <span>Rapport écrit après chaque passage</span>
+        <span>Réponse sous 24 h ouvrées</span>
       </div>
+    </section>
 
-    </div>
-  </div>
+    <section class="section" id="offres" aria-labelledby="offres-title">
+      <div class="section-head">
+        <span class="kicker">Entreprises</span>
+        <h2 id="offres-title">Trois façons de travailler ensemble</h2>
+        <p>On commence par un état des lieux. Ensuite, vous choisissez : je corrige ponctuellement, ou je prends en charge le suivi au mois.</p>
+      </div>
+      <div class="offers">
+        <article class="offer">
+          <span class="offer-tag">Pour commencer</span>
+          <h3>Bilan Découverte</h3>
+          <p class="for">Une demi-journée sur site ou à distance</p>
+          <div class="price">290 € <small>forfait</small></div>
+          <ul>
+            <li>Comptes et accès : double authentification, mots de passe, départs de salariés</li>
+            <li>Sauvegardes : existent-elles, et une restauration fonctionne-t-elle vraiment ?</li>
+            <li>Postes, mises à jour, antivirus, Wi-Fi et box</li>
+            <li>Rapport écrit avec un plan d'action classé par priorité</li>
+          </ul>
+          <a href="#contact" class="btn btn-ghost" data-need="bilan">Demander un bilan</a>
+          <p class="fine">Déduit du premier mois si vous souscrivez un contrat Sérénité dans les 30 jours.</p>
+        </article>
 
+        <article class="offer featured">
+          <span class="offer-tag">Le plus complet</span>
+          <h3>Contrat Sérénité</h3>
+          <p class="for">Suivi mensuel de votre parc</p>
+          <div class="price">dès 29 € <small>/ poste / mois</small></div>
+          <ul>
+            <li>Mises à jour et état des postes surveillés</li>
+            <li>Sauvegardes vérifiées chaque mois, test de restauration</li>
+            <li>Gestion Microsoft 365 : arrivées, départs, droits</li>
+            <li>Assistance à distance prioritaire en heures ouvrées</li>
+            <li>Surveillance de votre site web incluse (Sentinelle)</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary" data-need="contrat">Demander un devis</a>
+          <p class="fine">Tarif selon le nombre de postes et les services utilisés, établi après le Bilan Découverte.</p>
+        </article>
+
+        <article class="offer">
+          <span class="offer-tag">Votre site web</span>
+          <h3>Sentinelle</h3>
+          <p class="for">Surveillance de disponibilité et de certificat</p>
+          <div class="price">9 € <small>/ mois / site</small></div>
+          <ul>
+            <li>Vérification de votre site toutes les 15 minutes</li>
+            <li>Alerte e-mail dès qu'il ne répond plus</li>
+            <li>Alerte avant l'expiration du certificat HTTPS</li>
+            <li>Sans engagement</li>
+          </ul>
+          <a href="/sentinelle-signup.html" class="btn btn-ghost">Surveiller mon site</a>
+        </article>
+      </div>
+      <p class="fine">TVA non applicable, article 293 B du CGI. Déplacements inclus dans Nice ; au-delà, sur devis.</p>
+    </section>
+
+    <section class="section" id="particuliers" aria-labelledby="part-title">
+      <div class="section-head">
+        <span class="kicker">Particuliers</span>
+        <h2 id="part-title">Un souci sur votre ordinateur ?</h2>
+        <p>Intervention à distance, en toute transparence : vous voyez tout ce qui se passe et vous pouvez couper la connexion à tout moment. À domicile sur devis.</p>
+      </div>
+      <div class="services">
+        <div class="service"><h3>Diagnostic système <span>dès 20 €</span></h3><p>On identifie la cause avant de toucher à quoi que ce soit.</p></div>
+        <div class="service"><h3>Optimisation PC <span>dès 35 €</span></h3><p>PC lent, disque saturé, démarrage interminable.</p></div>
+        <div class="service"><h3>Suppression de virus <span>dès 50 €</span></h3><p>Pop-ups, navigateur détourné, antivirus désactivé.</p></div>
+        <div class="service"><h3>Sauvegarde des données <span>dès 30 €</span></h3><p>Sauvegarde automatique de vos photos et documents, testée.</p></div>
+        <div class="service"><h3>Microsoft 365 <span>dès 30 €</span></h3><p>Boîte mail, OneDrive, Office, synchronisation.</p></div>
+        <div class="service"><h3>Wi-Fi et réseau <span>dès 40 €</span></h3><p>Coupures, lenteurs, box, imprimante réseau.</p></div>
+      </div>
+      <p class="fine">Prix de départ ; le tarif exact est confirmé par devis avant l'intervention. Vous ne payez qu'après validation.</p>
+    </section>
+
+    <section class="section" aria-labelledby="steps-title">
+      <div class="section-head">
+        <span class="kicker">Méthode</span>
+        <h2 id="steps-title">Comment ça se passe</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><h3>On fait le point</h3><p>Le diagnostic en ligne ou un appel de 15 minutes pour comprendre votre situation.</p></div>
+        <div class="step"><h3>Vous recevez un devis clair</h3><p>Ce qui sera fait, en combien de temps, pour quel prix. Rien ne commence sans votre accord.</p></div>
+        <div class="step"><h3>J'interviens, vous gardez une trace</h3><p>Un compte rendu écrit après chaque intervention : ce qui a été fait, ce qui reste à surveiller.</p></div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="who-title">
+      <div class="section-head">
+        <span class="kicker">Qui suis-je</span>
+        <h2 id="who-title">Un administrateur systèmes et réseaux, pas un centre d'appels</h2>
+        <p>Je suis Nedj, administrateur systèmes et réseaux basé à Nice. J'ai créé BeneIT pour apporter aux petites structures le niveau de sécurité et de suivi qu'on trouve dans les grandes entreprises, sans le jargon ni les contrats opaques. Mon parcours et mes projets : <a href="https://nedjb.fr/" style="color:var(--accent-lt);">nedjb.fr</a>.</p>
+      </div>
+    </section>
+
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <div class="section-head">
+        <span class="kicker">FAQ</span>
+        <h2 id="faq-title">Questions fréquentes</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>Est-ce que quelque chose peut être fait sur mes ordinateurs sans mon accord ?</summary>
+          <p>Non, jamais. Le diagnostic en ligne ne touche pas à vos machines : il ne repose que sur vos réponses. Une intervention ne commence qu'après validation du devis, et toute action imprévue vous est soumise avant d'être réalisée.</p>
+        </details>
+        <details>
+          <summary>Comment fonctionne l'intervention à distance ? Est-ce sécurisé ?</summary>
+          <p>La connexion passe par un outil de prise en main chiffré (AnyDesk). Vous voyez en temps réel ce qui se passe, vous pouvez couper la connexion à tout moment, et elle se ferme à la fin de l'intervention.</p>
+        </details>
+        <details>
+          <summary>Et si le problème ne peut pas être résolu à distance ?</summary>
+          <p>Vous en êtes informé avant tout paiement : vous ne payez rien pour la tentative. Je vous propose alors une intervention sur place ou une alternative, avec un devis.</p>
+        </details>
+        <details>
+          <summary>Que contient concrètement le Bilan Découverte ?</summary>
+          <p>Une demi-journée pour passer en revue les comptes et accès, les sauvegardes (avec un test de restauration), les postes et leurs mises à jour, le réseau et le Wi-Fi. Vous recevez ensuite un rapport écrit avec un plan d'action classé par priorité, que vous pouvez appliquer seul ou avec moi.</p>
+        </details>
+        <details>
+          <summary>Le contrat Sérénité m'engage-t-il sur une longue durée ?</summary>
+          <p>Non. Le contrat est mensuel ; les conditions de résiliation sont précisées dans le devis et les conditions générales de vente.</p>
+        </details>
+        <details>
+          <summary>Le même problème peut-il revenir après une intervention ?</summary>
+          <p>Si le même problème réapparaît dans les 7 jours, je fais une vérification gratuite pour en trouver la cause.</p>
+        </details>
+        <details>
+          <summary>Comment se passe le paiement ?</summary>
+          <p>Par carte bancaire via un lien de paiement sécurisé (Stripe) ou par virement, après validation du devis. Une facture vous est envoyée pour chaque prestation.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="section" id="contact" aria-labelledby="contact-title">
+      <div class="section-head">
+        <span class="kicker">Contact</span>
+        <h2 id="contact-title">Parlons de votre informatique</h2>
+        <p>Décrivez votre besoin en quelques lignes. Je vous réponds sous 24 h ouvrées, avec une proposition ou des questions précises.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-aside">
+          <div class="panel">
+            <h3>Pas encore sûr de votre besoin ?</h3>
+            <p>Le diagnostic en ligne vous donne un premier état des lieux en 3 minutes, avec un rapport PDF.</p>
+            <p style="margin-top:12px;"><a href="/diagnostic" class="btn btn-ghost">Lancer le diagnostic</a></p>
+          </div>
+          <div class="panel">
+            <h3>Zone d'intervention</h3>
+            <p>Nice et alentours sur site ; partout en France à distance.</p>
+          </div>
+        </div>
+
+        <form class="lead-form panel" data-lead-form data-source="contact" novalidate>
+          <div class="field full">
+            <label for="cf-need">Votre besoin</label>
+            <select id="cf-need" name="need" required>
+              <option value="bilan">Bilan Découverte (entreprise)</option>
+              <option value="contrat">Contrat Sérénité (entreprise)</option>
+              <option value="sentinelle">Sentinelle (surveillance de site)</option>
+              <option value="depannage">Dépannage (particulier ou entreprise)</option>
+              <option value="autre">Autre demande</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="cf-name">Nom</label>
+            <input id="cf-name" name="name" type="text" autocomplete="name" required minlength="2" maxlength="80">
+          </div>
+          <div class="field">
+            <label for="cf-company">Entreprise <span class="opt">(facultatif)</span></label>
+            <input id="cf-company" name="company" type="text" autocomplete="organization" maxlength="120">
+          </div>
+          <div class="field">
+            <label for="cf-email">E-mail</label>
+            <input id="cf-email" name="email" type="email" autocomplete="email" required maxlength="254">
+          </div>
+          <div class="field">
+            <label for="cf-phone">Téléphone <span class="opt">(facultatif)</span></label>
+            <input id="cf-phone" name="phone" type="tel" autocomplete="tel" maxlength="30">
+          </div>
+          <div class="field full">
+            <label for="cf-message">Votre message <span class="opt">(nombre de postes, problème rencontré…)</span></label>
+            <textarea id="cf-message" name="message" maxlength="1000"></textarea>
+          </div>
+          <label class="consent full">
+            <input type="checkbox" name="consent" required>
+            <span>J'accepte que BeneIT utilise ces informations pour répondre à ma demande. <a href="/confidentialite">Politique de confidentialité</a></span>
+          </label>
+          <div class="hp" aria-hidden="true"><label>Ne pas remplir <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+          <div class="full"><button type="submit" class="cta-btn">Envoyer ma demande →</button></div>
+          <div class="form-status full" role="status" tabindex="-1"></div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <span>© 2026 BeneIT — assistance informatique, Nice</span>
+    <nav aria-label="Informations légales">
+      <a href="/mentions-legales">Mentions légales</a>
+      <a href="/confidentialite">Confidentialité</a>
+      <a href="/cgv">CGV</a>
+    </nav>
+  </footer>
 </div>
 
-<!-- Honeypot field — invisible, only bots fill it -->
-<input type="text" name="website" id="hp-website" style="position:absolute;left:-9999px;top:-9999px;opacity:0;height:0;width:0;" tabindex="-1" autocomplete="off" aria-hidden="true">
-
-<p class="rgpd-note" style="max-width:800px;margin:0 auto;padding:20px 20px 40px;font-size:.7rem;color:rgba(245,244,250,.35);line-height:1.6;text-align:center;">
-  Vos réponses et votre éventuel texte libre sont transmis à notre serveur pour calculer votre score et, si vous le souhaitez, générer un commentaire personnalisé via intelligence artificielle (Groq). Ces données sont conservées le temps nécessaire à la fourniture du service et ne sont jamais partagées avec des tiers. Vous pouvez demander leur suppression à tout moment en nous contactant.
-</p>
-
-<script src="js/wizard.js"></script>
+<script src="js/lead-form.js"></script>
 </body>
 </html>
