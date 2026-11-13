@@ -9,7 +9,7 @@
   "scripts": {
     "start": "node --experimental-sqlite backend/server.js",
     "dev": "npx -y nodemon --experimental-sqlite backend/server.js",
-    "test": "node --test \"backend/tests/*.test.js\"",
+    "test": "node --experimental-sqlite --test \"backend/tests/*.test.js\"",
     "check:prod": "node scripts/check-prod.js"
   },
   "keywords": ["audit", "diagnostic", "informatique", "securite"],
