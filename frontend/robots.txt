@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /api/
+Disallow: /admin.html
+Disallow: /confirmation.html
+
+Sitemap: https://beneit.nedjb.fr/sitemap.xml

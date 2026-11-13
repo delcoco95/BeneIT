@@ -58,6 +58,7 @@ const adminLimiter = rateLimit({
   max: 10,
   standardHeaders: true,
   legacyHeaders: false,
+  skipSuccessfulRequests: true, // seules les tentatives échouées (token invalide) comptent
   message: { error: 'Trop de tentatives, réessayez plus tard.' },
   keyGenerator: (req) => req.ip,
 });
@@ -70,6 +71,17 @@ const sitesLimiter = rateLimit({
   standardHeaders: true,
   legacyHeaders: false,
   message: { error: 'Trop de tentatives, réessayez plus tard.' },
+  keyGenerator: (req) => req.ip,
+});
+
+// ─── Demandes de contact (POST /api/lead) — anti spam ──────────
+
+const leadLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000, // 1 hour
+  max: 8,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: 'Trop de demandes envoyées, réessayez plus tard.' },
   keyGenerator: (req) => req.ip,
 });
 
@@ -93,5 +105,6 @@ module.exports = {
   checkoutLimiter,
   adminLimiter,
   sitesLimiter,
+  leadLimiter,
   cronLimiter,
 };

@@ -22,6 +22,23 @@ async function loadQuestions() {
 
 loadQuestions();
 
+// ─── Accessibilite : annonces et gestion du focus ────────────────
+
+// Annonce courte et polie dans la region role="status" (#wizardStatus).
+function announce(message) {
+  const el = document.getElementById('wizardStatus');
+  if (!el) return;
+  el.textContent = '';
+  setTimeout(() => { el.textContent = message; }, 60);
+}
+
+// Les elements qui portaient le focus sont detruits a chaque etape : on le replace explicitement.
+function focusEl(el) {
+  if (!el) return;
+  if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '-1');
+  el.focus();
+}
+
 // ─── Path picker ──────────────────────────────────────────────────
 
 document.querySelectorAll('.path-btn').forEach(btn => {
@@ -50,7 +67,9 @@ function updateProgress() {
   // +1 for the free text step
   const total = state.questions.length + 1;
   const done = Math.min(state.index, total);
-  document.getElementById('progressFill').style.width = (done / total * 100) + '%';
+  const pct = Math.round(done / total * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressTrack')?.setAttribute('aria-valuenow', String(pct));
   document.getElementById('progressLabel').textContent = done + '/' + total;
 }
 
@@ -66,10 +85,15 @@ function renderTranscript() {
 
     const dot = document.createElement('div');
     dot.className = 't-dot ' + a.status;
+    dot.setAttribute('aria-hidden', 'true');
     dot.textContent = a.status === 'good' ? '✓' : (a.status === 'warn' ? '!' : '×');
 
     const text = document.createElement('div');
     text.className = 't-text';
+
+    const statusText = document.createElement('span');
+    statusText.className = 'sr-only';
+    statusText.textContent = (a.status === 'good' ? 'Bien' : (a.status === 'warn' ? 'À surveiller' : 'Prioritaire')) + ' : ';
 
     const q = document.createElement('span');
     q.className = 'q';
@@ -80,6 +104,7 @@ function renderTranscript() {
     ans.textContent = a.label;
 
     text.appendChild(q);
+    text.appendChild(statusText);
     text.appendChild(ans);
     line.appendChild(dot);
     line.appendChild(text);
@@ -106,11 +131,15 @@ function renderActive() {
     eyebrow.className = 'qcard-eyebrow';
     eyebrow.textContent = `Question ${state.index + 1} / ${state.questions.length}`;
 
-    const h3 = document.createElement('h3');
+    const h3 = document.createElement('h2');
+    h3.id = 'qTitle';
+    h3.setAttribute('tabindex', '-1');
     h3.textContent = q.text;
 
     const options = document.createElement('div');
     options.className = 'options';
+    options.setAttribute('role', 'group');
+    options.setAttribute('aria-labelledby', 'qTitle');
 
     q.options.forEach((o, i) => {
       const btn = document.createElement('button');
@@ -125,6 +154,9 @@ function renderActive() {
     qcard.appendChild(options);
     area.appendChild(qcard);
 
+    focusEl(h3);
+    announce(`Question ${state.index + 1} sur ${state.questions.length}`);
+
   } else if (state.index === state.questions.length) {
     // ── Show free text step
     renderFreeTextStep(area);
@@ -137,11 +169,13 @@ function renderActive() {
     for (let i = 0; i < 3; i++) {
       const dot = document.createElement('span');
       dot.className = 'think-dot';
+      dot.setAttribute('aria-hidden', 'true');
       thinking.appendChild(dot);
     }
     const label = document.createTextNode('\u00A0Analyse de vos réponses…');
     thinking.appendChild(label);
     area.appendChild(thinking);
+    focusEl(thinking);
 
     submitAudit();
   }
@@ -160,11 +194,14 @@ function renderFreeTextStep(area) {
   eyebrow.className = 'qcard-eyebrow';
   eyebrow.textContent = 'Étape facultative';
 
-  const h3 = document.createElement('h3');
+  const h3 = document.createElement('h2');
+  h3.id = 'freeTextTitle';
+  h3.setAttribute('tabindex', '-1');
   h3.textContent = 'Un problème en particulier ? Décrivez-le avec vos mots.';
 
   const sub = document.createElement('p');
   sub.className = 'freetext-sub';
+  sub.id = 'freeTextSub';
   sub.textContent = 'Ce champ est facultatif. Votre description permet de personnaliser le commentaire de votre bilan.';
 
   const textarea = document.createElement('textarea');
@@ -173,19 +210,28 @@ function renderFreeTextStep(area) {
   textarea.maxLength = MAX_CHARS;
   textarea.placeholder = 'Ex. : Mon PC est très lent depuis une mise à jour, et je reçois des emails suspects...';
   textarea.rows = 4;
+  textarea.setAttribute('aria-labelledby', 'freeTextTitle');
+  textarea.setAttribute('aria-describedby', 'freeTextSub freeTextCounter');
 
   const counter = document.createElement('div');
   counter.className = 'freetext-counter';
   counter.id = 'freeTextCounter';
   counter.textContent = `0 / ${MAX_CHARS}`;
 
+  // Annonce uniquement l'atteinte de la limite (le compteur lui-meme n'est pas "live").
+  const limitMsg = document.createElement('div');
+  limitMsg.className = 'sr-only';
+  limitMsg.setAttribute('role', 'status');
+
   textarea.addEventListener('input', () => {
     const len = textarea.value.length;
     counter.textContent = `${len} / ${MAX_CHARS}`;
     if (len >= MAX_CHARS) {
       counter.classList.add('at-limit');
+      limitMsg.textContent = `Limite de ${MAX_CHARS} caractères atteinte.`;
     } else {
       counter.classList.remove('at-limit');
+      limitMsg.textContent = '';
     }
   });
 
@@ -219,8 +265,12 @@ function renderFreeTextStep(area) {
   qcard.appendChild(sub);
   qcard.appendChild(textarea);
   qcard.appendChild(counter);
+  qcard.appendChild(limitMsg);
   qcard.appendChild(actions);
   area.appendChild(qcard);
+
+  focusEl(h3);
+  announce('Étape facultative : description libre');
 }
 
 // ─── Answer a question ────────────────────────────────────────────
@@ -331,11 +381,12 @@ function showSummary(data) {
   const box = document.createElement('div');
   box.className = 'summary-box';
 
-  const h3 = document.createElement('h3');
+  const h3 = document.createElement('h2');
+  h3.setAttribute('tabindex', '-1');
   h3.textContent = 'Votre bilan est prêt';
 
   const pSummary = document.createElement('p');
-  pSummary.textContent = data.summary + ' Le détail par catégorie est dans le rapport, à droite.';
+  pSummary.textContent = data.summary + ' Le détail par catégorie est dans votre rapport.';
 
   // Chips
   const good = state.answers.filter(a => a.status === 'good').length;
@@ -372,7 +423,7 @@ function showSummary(data) {
 
     const aiTitle = document.createElement('div');
     aiTitle.className = 'ai-insight-title';
-    aiTitle.textContent = '💡 Analyse personnalisée';
+    aiTitle.textContent = 'Analyse personnalisée';
 
     const aiComment = document.createElement('p');
     aiComment.className = 'ai-insight-comment';
@@ -400,50 +451,29 @@ function showSummary(data) {
   restartBtn.className = 'restart-btn';
   restartBtn.textContent = '↺ Recommencer avec un autre profil';
   restartBtn.addEventListener('click', () => {
+    document.getElementById('reportCta').classList.remove('show');
+    delete document.getElementById('reportForm').dataset.auditId;
     document.getElementById('stage').classList.remove('active');
     document.getElementById('intro').style.display = 'block';
     state = { path: null, questions: [], index: 0, answers: [], auditId: null };
+    focusEl(document.querySelector('.path-btn'));
   });
   box.appendChild(restartBtn);
 
   area.appendChild(box);
+  focusEl(h3);
 
-  // Show CTA for paid report
+  // Formulaire "recevoir le rapport" (gere par lead-form.js) : on lui rattache ce diagnostic.
+  const form = document.getElementById('reportForm');
+  form.dataset.auditId = state.auditId;
+  const submit = form.querySelector('[type="submit"]');
+  submit.disabled = false;
+  submit.textContent = 'Recevoir mon rapport PDF →';
+  const status = form.querySelector('.form-status');
+  status.className = 'form-status';
+  status.textContent = '';
   document.getElementById('reportCta').classList.add('show');
-
-  // CTA button handler
-  const ctaBtn = document.getElementById('ctaBtn');
-  ctaBtn.onclick = async () => {
-    if (!state.auditId) return;
-    ctaBtn.disabled = true;
-    ctaBtn.textContent = 'Redirection…';
-
-    try {
-      const res = await fetch('/api/checkout', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ auditId: state.auditId }),
-      });
-
-      if (!res.ok) {
-        const err = await res.json().catch(() => ({}));
-        const confirm = document.getElementById('ctaConfirm');
-        confirm.textContent = err.error || 'Erreur lors du paiement.';
-        confirm.classList.add('show');
-        ctaBtn.disabled = false;
-        ctaBtn.textContent = 'Obtenir le rapport détaillé (PDF) →';
-        return;
-      }
-
-      const data = await res.json();
-      if (data.url) {
-        window.location.href = data.url;
-      }
-    } catch {
-      ctaBtn.disabled = false;
-      ctaBtn.textContent = 'Obtenir le rapport détaillé (PDF) →';
-    }
-  };
+  announce('Bilan prêt. Le formulaire pour recevoir votre rapport PDF est disponible dans la section Votre rapport.');
 }
 
 function showSummaryError(message) {
@@ -453,8 +483,11 @@ function showSummaryError(message) {
   const box = document.createElement('div');
   box.className = 'summary-box';
 
-  const h3 = document.createElement('h3');
-  h3.textContent = 'Oups…';
+  box.setAttribute('role', 'alert');
+
+  const h3 = document.createElement('h2');
+  h3.setAttribute('tabindex', '-1');
+  h3.textContent = 'Une erreur est survenue';
 
   const p = document.createElement('p');
   p.textContent = message;
@@ -466,12 +499,14 @@ function showSummaryError(message) {
     document.getElementById('stage').classList.remove('active');
     document.getElementById('intro').style.display = 'block';
     state = { path: null, questions: [], index: 0, answers: [], auditId: null };
+    focusEl(document.querySelector('.path-btn'));
   });
 
   box.appendChild(h3);
   box.appendChild(p);
   box.appendChild(restartBtn);
   area.appendChild(box);
+  focusEl(h3);
 }
 
 // ─── Report panel (real-time) ─────────────────────────────────────

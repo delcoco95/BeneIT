@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagnostic informatique gratuit en 3 minutes pour TPE/PME — BeneIT</title>
+<meta name="description" content="Évaluez la sécurité, les sauvegardes et les accès de l'informatique de votre entreprise (TPE/PME) en moins de 3 minutes. Gratuit, sans installation, rapport PDF offert.">
+<link rel="canonical" href="https://beneit.nedjb.fr/diagnostic">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Diagnostic informatique gratuit — BeneIT">
+<meta property="og:description" content="Un bilan clair de votre sécurité informatique en 3 minutes, avec rapport PDF.">
+<meta property="og:url" content="https://beneit.nedjb.fr/diagnostic">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Aller au contenu</a>
+
+<div class="wrap">
+
+  <nav class="site-nav" aria-label="Navigation principale">
+    <a href="/" class="logo">bene<strong>IT</strong></a>
+    <ul class="nav-links">
+      <li class="opt"><a href="/#offres">Offres</a></li>
+      <li><a href="/diagnostic" aria-current="page">Diagnostic</a></li>
+      <li><a href="/#contact" class="nav-cta">Me contacter</a></li>
+    </ul>
+  </nav>
+
+  <main id="main" tabindex="-1">
+  <!-- INTRO -->
+  <div id="intro" class="hero">
+    <span class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>Diagnostic gratuit</span>
+    <h1>Un bilan clair, en <em>moins de 3 minutes</em>.</h1>
+    <p>Répondez à quelques questions simples. Vous obtenez une évaluation personnalisée : ce qui va bien, ce qui mérite votre attention, et ce qu'on peut faire. Aucune installation, aucun accès à votre ordinateur — juste vos réponses.</p>
+    <div class="path-picker">
+      <button class="path-btn" data-path="pme" id="btn-pme">Je suis une TPE / PME<span>Microsoft 365, comptes d'équipe, sauvegardes</span></button>
+    </div>
+  </div>
+
+  <!-- STAGE -->
+  <div id="stage" class="stage">
+    <h1 class="sr-only">Diagnostic informatique : questionnaire et rapport</h1>
+    <div class="grid">
+
+      <!-- Questions -->
+      <section class="panel" aria-label="Questionnaire">
+        <div class="progress-row">
+          <div class="progress-track" role="progressbar" aria-label="Avancement du questionnaire" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progressTrack"><div class="progress-fill" id="progressFill"></div></div>
+          <div class="progress-label" id="progressLabel">0/0</div>
+        </div>
+        <div class="transcript" id="transcript" role="region" aria-label="Vos réponses précédentes" tabindex="0"></div>
+        <div id="activeArea"></div>
+        <div id="wizardStatus" class="sr-only" role="status"></div>
+      </section>
+
+      <!-- Rapport -->
+      <section class="panel" aria-labelledby="reportTitle">
+        <div class="report-head">
+          <h2 class="report-title" id="reportTitle">Votre rapport</h2>
+          <div class="live-badge"><span class="live-dot" aria-hidden="true"></span>EN DIRECT</div>
+        </div>
+        <div id="reportRows"></div>
+        <div class="report-cta" id="reportCta">
+          <h3 id="reportCtaTitle" tabindex="-1">Recevez votre rapport détaillé (PDF)</h3>
+          <p class="cta-note">Le détail question par question et les actions recommandées, par ordre de priorité. Gratuit.</p>
+          <form class="lead-form" data-lead-form data-source="diagnostic" id="reportForm" novalidate>
+            <div class="field">
+              <label for="rf-name">Nom</label>
+              <input id="rf-name" name="name" type="text" autocomplete="name" required minlength="2" maxlength="80">
+            </div>
+            <div class="field">
+              <label for="rf-email">E-mail</label>
+              <input id="rf-email" name="email" type="email" autocomplete="email" required maxlength="254">
+            </div>
+            <div class="field">
+              <label for="rf-company">Entreprise <span class="opt">(facultatif)</span></label>
+              <input id="rf-company" name="company" type="text" autocomplete="organization" maxlength="120">
+            </div>
+            <label class="consent">
+              <input type="checkbox" name="consent" required>
+              <span>J'accepte que BeneIT conserve ces informations et mes réponses pour m'envoyer le rapport et me recontacter à ce sujet. <a href="/confidentialite">En savoir plus</a></span>
+            </label>
+            <div class="hp" aria-hidden="true"><label>Ne pas remplir <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+            <button type="submit" class="cta-btn">Recevoir mon rapport PDF →</button>
+            <div class="form-status" role="status" tabindex="-1"></div>
+          </form>
+        </div>
+      </section>
+
+    </div>
+  </div>
+  </main>
+
+  <footer class="site-footer">
+    <span>© 2026 BeneIT — assistance informatique, Nice</span>
+    <nav aria-label="Informations légales">
+      <a href="/mentions-legales">Mentions légales</a>
+      <a href="/confidentialite">Confidentialité</a>
+      <a href="/cgv">CGV</a>
+    </nav>
+  </footer>
+</div>
+
+<!-- Honeypot du questionnaire — invisible, seuls les robots le remplissent -->
+<input type="text" name="website" id="hp-website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+<script src="js/wizard.js"></script>
+<script src="js/lead-form.js"></script>
+</body>
+</html>

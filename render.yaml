@@ -4,7 +4,7 @@ services:
     runtime: node
     plan: starter
     region: frankfurt
-    buildCommand: npm install
+    buildCommand: npm install && npm test && npm run check:prod
     startCommand: npm start
     disk:
       name: beneit-data
@@ -17,7 +17,7 @@ services:
       - key: PORT
         value: 3000
       - key: FRONTEND_URL
-        value: https://beneit-audit.onrender.com
+        value: https://beneit.nedjb.fr
       - key: AI_PROVIDER
         value: groq
       - key: AI_MODEL
@@ -29,7 +29,7 @@ services:
       - key: SMTP_PORT
         value: 587
       - key: SMTP_FROM
-        value: noreply@beneit.fr
+        value: noreply@nedjb.fr
       - key: SSL_ALERT_DAYS
         value: 14
       - key: CRON_STALE_MINUTES
